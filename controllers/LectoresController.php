@@ -8,7 +8,6 @@ use app\models\LectoresSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\db\Expression;
 
 /**
  * LectoresController implements the CRUD actions for Lectores model.
@@ -67,16 +66,18 @@ class LectoresController extends Controller
         $model = new Lectores();
 
         if ($model->load(Yii::$app->request->post())) {
-        	$model->create_time = new Expression('NOW()');
-        	$model->update_time = new Expression('NOW()');
-        	 if( $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        	 }
-        	}  
+        			$model->create_time = new Expression('NOW()');
+        			$model->update_time = new Expression('NOW()');
+        				if ($model->save()) {
+            			return $this->redirect(['view', 'id' => $model->lectores_id]);
+        				} 
+        		}
             return $this->render('create', [
                 'model' => $model,
             ]);
         }
+    
+
     /**
      * Updates an existing Lectores model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -88,16 +89,15 @@ class LectoresController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
-			 $model->update_time = new Expression('NOW()');        	 
-        	   if($model->save()) {
-            	return $this->redirect(['index', 'id' => $model->id]);
-        		}
-        }		 
+				$model->update_time = new Expression('NOW()');
+        			   if($model->save()) {
+            		return $this->redirect(['index', 'id' => $model->lectores_id]);
+        				}
+        }
             return $this->render('update', [
                 'model' => $model,
             ]);
         }
-    
 
     /**
      * Deletes an existing Lectores model.

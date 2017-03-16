@@ -19,7 +19,7 @@ class LectoresSearch extends Lectores
     {
         return [
             [['usuario_crea_mod', 'create_time', 'update_time', 'nombre', 'documento', 'direccion', 'telefono', 'mail'], 'safe'],
-            [['id', 'clase_lector_id', 'clase_documento_id'], 'integer'],
+            [['lectores_id', 'clase_lector_id', 'clase_documento_id'], 'integer'],
         ];
     }
 
@@ -61,7 +61,7 @@ class LectoresSearch extends Lectores
         $query->andFilterWhere([
             'create_time' => $this->create_time,
             'update_time' => $this->update_time,
-            'id' => $this->id,
+            'lectores_id' => $this->lectores_id,
             'clase_lector_id' => $this->clase_lector_id,
             'clase_documento_id' => $this->clase_documento_id,
         ]);

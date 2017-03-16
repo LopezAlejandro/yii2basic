@@ -18,37 +18,25 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a(Yii::t('app', 'Create Lectores'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-<?php Pjax::begin(); ?>    
-		  <?= GridView::widget([
+<?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            //'usuario_crea_mod',
-            //'create_time',
-            //'update_time',
-            //'id',
+            'usuario_crea_mod',
+            'create_time',
+            'update_time',
+            'lectores_id',
             'nombre',
-            'documento',
+            // 'documento',
             // 'clase_lector_id',
             // 'clase_documento_id',
             // 'direccion',
             // 'telefono',
-             'mail',
+            // 'mail',
 
-            [
-            	'class' => 'yii\grid\ActionColumn',
-            	'template' => '{view} {update} {delete} {mail}',
-            	'buttons' => [
-            			'mail' => function($url ,$model ,$key) 
-            			{
-            				return $model->mail != '' ? HTML::mailto(
-            				'<span class="glyphicon glyphicon-envelope"></span>',
-            				$model->mail) : '';
-            			},
-            	],
-            ],	
+            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 <?php Pjax::end(); ?></div>

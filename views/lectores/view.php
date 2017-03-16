@@ -2,13 +2,11 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use app\models\ClaseLector;
-use app\models\ClaseDocumento;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Lectores */
 
-$this->title = $model->id;
+$this->title = $model->lectores_id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Lectores'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -17,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
+        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->lectores_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->lectores_id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
@@ -30,16 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
+            'usuario_crea_mod',
+            'create_time',
+            'update_time',
+            'lectores_id',
             'nombre',
-            [
-            	'attribute'=>'clase_documento_id',
-            	'value'=>ClaseDocumento::findOne($model->id)->descripcion_documento
-            	],
             'documento',
-            [
-            	'attribute'=>'clase_lector_id',
-            	'value'=>ClaseLector::findOne($model->id)->descripcion
-            	],
+            'clase_lector_id',
+            'clase_documento_id',
             'direccion',
             'telefono',
             'mail',

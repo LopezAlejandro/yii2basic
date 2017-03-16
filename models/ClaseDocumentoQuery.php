@@ -3,9 +3,9 @@
 namespace app\models;
 
 /**
- * This is the ActiveQuery class for [[ClaseLector]].
+ * This is the ActiveQuery class for [[ClaseDocumento]].
  *
- * @see ClaseLector
+ * @see ClaseDocumento
  */
 class ClaseDocumentoQuery extends \yii\db\ActiveQuery
 {
@@ -16,7 +16,7 @@ class ClaseDocumentoQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return ClaseLector[]|array
+     * @return ClaseDocumento[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class ClaseDocumentoQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return ClaseLector|array|null
+     * @return ClaseDocumento|array|null
      */
     public function one($db = null)
     {

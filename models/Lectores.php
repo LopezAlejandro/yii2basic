@@ -3,9 +3,6 @@
 namespace app\models;
 
 use Yii;
-use yii\helpers\ArrayHelper;
-use app\models\ClaseLector;
-use app\models\ClaseDocumento;
 
 /**
  * This is the model class for table "lectores".
@@ -13,7 +10,7 @@ use app\models\ClaseDocumento;
  * @property string $usuario_crea_mod
  * @property string $create_time
  * @property string $update_time
- * @property integer $id
+ * @property integer $lectores_id
  * @property string $nombre
  * @property string $documento
  * @property integer $clase_lector_id
@@ -25,7 +22,7 @@ use app\models\ClaseDocumento;
  * @property ClaseDocumento $claseDocumento
  * @property ClaseLector $claseLector
  * @property LectoresHasMultas[] $lectoresHasMultas
- * @property Multas[] $multas
+ * @property Multas[] $lectoresMultas
  * @property Prestamos[] $prestamos
  */
 class Lectores extends \yii\db\ActiveRecord
@@ -45,18 +42,15 @@ class Lectores extends \yii\db\ActiveRecord
     {
         return [
             [['create_time', 'update_time'], 'safe'],
-            [['nombre', 'documento', 'clase_lector_id', 'clase_documento_id', 'direccion'], 'required'],
+            [['nombre', 'documento', 'clase_lector_id', 'clase_documento_id', 'direccion', 'telefono', 'mail'], 'required'],
             [['clase_lector_id', 'clase_documento_id'], 'integer'],
             [['usuario_crea_mod'], 'string', 'max' => 255],
             [['nombre', 'documento'], 'string', 'max' => 45],
             [['direccion'], 'string', 'max' => 70],
             [['telefono'], 'string', 'max' => 15],
-            [['clase_documento_id'], 'exist', 'skipOnError' => true, 'targetClass' => ClaseDocumento::className(), 'targetAttribute' => ['clase_documento_id' => 'id']],
-            [['clase_lector_id'], 'exist', 'skipOnError' => true, 'targetClass' => ClaseLector::className(), 'targetAttribute' => ['clase_lector_id' => 'id']],
-            [['mail'], 'filter', 'filter' => 'trim'],
-				[['mail'], 'required'],
-				[['mail'], 'email'],
-				[['mail'], 'unique'],
+            [['mail'], 'string', 'max' => 50],
+            [['clase_documento_id'], 'exist', 'skipOnError' => true, 'targetClass' => ClaseDocumento::className(), 'targetAttribute' => ['clase_documento_id' => 'clase_documento_id']],
+            [['clase_lector_id'], 'exist', 'skipOnError' => true, 'targetClass' => ClaseLector::className(), 'targetAttribute' => ['clase_lector_id' => 'clase_lector_id']],
         ];
     }
 
@@ -69,14 +63,14 @@ class Lectores extends \yii\db\ActiveRecord
             'usuario_crea_mod' => Yii::t('app', 'Usuario Crea Mod'),
             'create_time' => Yii::t('app', 'Create Time'),
             'update_time' => Yii::t('app', 'Update Time'),
-            'id' => Yii::t('app', 'ID'),
-            'nombre' => Yii::t('app', 'Nombre y Apellido'),
-            'documento' => Yii::t('app', 'Nro de Documento'),
-            'clase_lector_id' => Yii::t('app', 'Clase Lector'),
-            'clase_documento_id' => Yii::t('app', 'Tipo de Documento'),
-            'direccion' => Yii::t('app', 'Dirección'),
-            'telefono' => Yii::t('app', 'Teléfono'),
-            'mail' => Yii::t('app', 'Correo Electrónico'),
+            'lectores_id' => Yii::t('app', 'Lectores ID'),
+            'nombre' => Yii::t('app', 'Nombre'),
+            'documento' => Yii::t('app', 'Documento'),
+            'clase_lector_id' => Yii::t('app', 'Clase Lector ID'),
+            'clase_documento_id' => Yii::t('app', 'Clase Documento ID'),
+            'direccion' => Yii::t('app', 'Direccion'),
+            'telefono' => Yii::t('app', 'Telefono'),
+            'mail' => Yii::t('app', 'Mail'),
         ];
     }
 
@@ -85,7 +79,7 @@ class Lectores extends \yii\db\ActiveRecord
      */
     public function getClaseDocumento()
     {
-        return $this->hasOne(ClaseDocumento::className(), ['id' => 'clase_documento_id']);
+        return $this->hasOne(ClaseDocumento::className(), ['clase_documento_id' => 'clase_documento_id']);
     }
 
     /**
@@ -93,7 +87,7 @@ class Lectores extends \yii\db\ActiveRecord
      */
     public function getClaseLector()
     {
-        return $this->hasOne(ClaseLector::className(), ['id' => 'clase_lector_id']);
+        return $this->hasOne(ClaseLector::className(), ['clase_lector_id' => 'clase_lector_id']);
     }
 
     /**
@@ -101,15 +95,15 @@ class Lectores extends \yii\db\ActiveRecord
      */
     public function getLectoresHasMultas()
     {
-        return $this->hasMany(LectoresHasMultas::className(), ['lectores_idl' => 'id']);
+        return $this->hasMany(LectoresHasMultas::className(), ['lectores_lectores_id' => 'lectores_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getMultas()
+    public function getLectoresMultas()
     {
-        return $this->hasMany(Multas::className(), ['id' => 'multas_id'])->viaTable('lectores_has_multas', ['lectores_idl' => 'id']);
+        return $this->hasMany(Multas::className(), ['multas_id' => 'lectores_multas_id'])->viaTable('lectores_has_multas', ['lectores_lectores_id' => 'lectores_id']);
     }
 
     /**
@@ -117,7 +111,7 @@ class Lectores extends \yii\db\ActiveRecord
      */
     public function getPrestamos()
     {
-        return $this->hasMany(Prestamos::className(), ['lectores_idl' => 'id']);
+        return $this->hasMany(Prestamos::className(), ['lectores_idl' => 'lectores_id']);
     }
 
     /**
@@ -128,17 +122,4 @@ class Lectores extends \yii\db\ActiveRecord
     {
         return new LectoresQuery(get_called_class());
     }
-    
-    public static function getListaClaseLector()
-	 {
-    		$opciones = ClaseLector::find()->asArray()->all();
-    		return ArrayHelper::map($opciones, 'id', 'descripcion');
-	 }
- 
-	 public static function getListaClaseDocumento()
-	 {
-    		$opciones = ClaseDocumento::find()->asArray()->all();
-    		return ArrayHelper::map($opciones, 'id', 'descripcion_documento');
-	 }
-	 
 }
