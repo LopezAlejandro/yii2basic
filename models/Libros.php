@@ -3,22 +3,22 @@
 namespace app\models;
 
 use Yii;
-use yii\helpers\ArrayHelper;
-use app\models\TipoLibro;
 
 /**
  * This is the model class for table "libros".
  *
- * @property integer $id
+ * @property integer $libros_id
  * @property string $titulo
  * @property string $editorial
  * @property integer $ano
  * @property integer $tipo_libro_id
+ * @property integer $nro_libro
+ * @property integer $edicion
  *
  * @property Copias[] $copias
  * @property TipoLibro $tipoLibro
  * @property LibrosHasAutor[] $librosHasAutors
- * @property Autor[] $autors
+ * @property Autor[] $librosAutors
  */
 class Libros extends \yii\db\ActiveRecord
 {
@@ -36,10 +36,10 @@ class Libros extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['titulo'], 'required'],
-            [['ano', 'tipo_libro_id'], 'integer'],
+            [['titulo', 'nro_libro'], 'required'],
+            [['ano', 'tipo_libro_id', 'nro_libro', 'edicion'], 'integer'],
             [['titulo', 'editorial'], 'string', 'max' => 45],
-            [['tipo_libro_id'], 'exist', 'skipOnError' => true, 'targetClass' => TipoLibro::className(), 'targetAttribute' => ['tipo_libro_id' => 'id']],
+            [['tipo_libro_id'], 'exist', 'skipOnError' => true, 'targetClass' => TipoLibro::className(), 'targetAttribute' => ['tipo_libro_id' => 'tipo_libro_id']],
         ];
     }
 
@@ -49,11 +49,13 @@ class Libros extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
+            'libros_id' => Yii::t('app', 'Libros ID'),
             'titulo' => Yii::t('app', 'Titulo'),
             'editorial' => Yii::t('app', 'Editorial'),
-            'ano' => Yii::t('app', 'Año'),
+            'ano' => Yii::t('app', 'Ano'),
             'tipo_libro_id' => Yii::t('app', 'Tipo Libro ID'),
+            'nro_libro' => Yii::t('app', 'Nro Libro'),
+            'edicion' => Yii::t('app', 'Edicion'),
         ];
     }
 
@@ -62,7 +64,7 @@ class Libros extends \yii\db\ActiveRecord
      */
     public function getCopias()
     {
-        return $this->hasMany(Copias::className(), ['libros_id' => 'id']);
+        return $this->hasMany(Copias::className(), ['libros_id' => 'libros_id']);
     }
 
     /**
@@ -70,7 +72,7 @@ class Libros extends \yii\db\ActiveRecord
      */
     public function getTipoLibro()
     {
-        return $this->hasOne(TipoLibro::className(), ['id' => 'tipo_libro_id']);
+        return $this->hasOne(TipoLibro::className(), ['tipo_libro_id' => 'tipo_libro_id']);
     }
 
     /**
@@ -78,22 +80,16 @@ class Libros extends \yii\db\ActiveRecord
      */
     public function getLibrosHasAutors()
     {
-        return $this->hasMany(LibrosHasAutor::className(), ['libros_id' => 'id']);
+        return $this->hasMany(LibrosHasAutor::className(), ['libros_libros_id' => 'libros_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAutors()
+    public function getLibrosAutors()
     {
-        return $this->hasMany(Autor::className(), ['id' => 'autor_id'])->viaTable('libros_has_autor', ['libros_id' => 'id']);
+        return $this->hasMany(Autor::className(), ['autor_id' => 'libros_autor_id'])->viaTable('libros_has_autor', ['libros_libros_id' => 'libros_id']);
     }
-    
-    public static function getListaTipoLibro()
-	 {
-    		$opciones = TipoLibro::find()->asArray()->all();
-    		return ArrayHelper::map($opciones, 'id', 'descripcion');
-	 }
 
     /**
      * @inheritdoc

@@ -5,21 +5,21 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "tipo_libro".
+ * This is the model class for table "estado".
  *
- * @property integer $tipo_libro_id
+ * @property integer $estado_id
  * @property string $descripcion
  *
- * @property Libros[] $libros
+ * @property Copias[] $copias
  */
-class TipoLibro extends \yii\db\ActiveRecord
+class Estado extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'tipo_libro';
+        return 'estado';
     }
 
     /**
@@ -39,7 +39,7 @@ class TipoLibro extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'tipo_libro_id' => Yii::t('app', 'Tipo Libro ID'),
+            'estado_id' => Yii::t('app', 'Estado ID'),
             'descripcion' => Yii::t('app', 'Descripcion'),
         ];
     }
@@ -47,17 +47,17 @@ class TipoLibro extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getLibros()
+    public function getCopias()
     {
-        return $this->hasMany(Libros::className(), ['tipo_libro_id' => 'tipo_libro_id']);
+        return $this->hasMany(Copias::className(), ['estado_id' => 'estado_id']);
     }
 
     /**
      * @inheritdoc
-     * @return TipoLibroQuery the active query used by this AR class.
+     * @return EstadoQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new TipoLibroQuery(get_called_class());
+        return new EstadoQuery(get_called_class());
     }
 }

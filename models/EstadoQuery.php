@@ -3,11 +3,11 @@
 namespace app\models;
 
 /**
- * This is the ActiveQuery class for [[ClaseDocumento]].
+ * This is the ActiveQuery class for [[Estado]].
  *
- * @see ClaseDocumento
+ * @see Estado
  */
-class ClaseDocumentoQuery extends \yii\db\ActiveQuery
+class EstadoQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class ClaseDocumentoQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return ClaseDocumento[]|array
+     * @return Estado[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class ClaseDocumentoQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return ClaseDocumento|array|null
+     * @return Estado|array|null
      */
     public function one($db = null)
     {

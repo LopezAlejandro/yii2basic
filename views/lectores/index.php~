@@ -3,6 +3,10 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use app\models\ClaseDocumento;
+use app\models\ClaseLector;
+use yii\helpers\ArrayHelper;
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\LectoresSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -18,37 +22,49 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a(Yii::t('app', 'Create Lectores'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-<?php Pjax::begin(); ?>    
-		  <?= GridView::widget([
+<?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            //'usuario_crea_mod',
-            //'create_time',
-            //'update_time',
-            //'id',
             'nombre',
-            'documento',
-            // 'clase_lector_id',
-            // 'clase_documento_id',
-            // 'direccion',
-            // 'telefono',
-             'mail',
-
             [
+            	'attribute' => 'clase_documento_id',
+            	'value' => function($model) {
+            		$clasedocumento = ClaseDocumento::findOne($model->clase_documento_id);
+            		return $clasedocumento->descripcion_documento;
+            	},
+            	'filter' => ArrayHelper::map(ClaseDocumento::find()->all(),'clase_documento_id','descripcion_documento'),
+            ],
+				            
+            'documento',
+            'clase_lector_id',
+            [
+            	'attribute' => 'clase_lector_id',
+            	'value' => function($model) {
+            		$claselector = ClaseLector::findOne($model->clase_lector_id);
+            		return $claselector->descripcion;
+            	},
+            	'filter' => ArrayHelper::map(ClaseLector::find()->all(),'clase_lector_id','descripcion'),
+            ],
+            'direccion',
+            'telefono',
+            'mail',
+
+				[
             	'class' => 'yii\grid\ActionColumn',
             	'template' => '{view} {update} {delete} {mail}',
             	'buttons' => [
-            			'mail' => function($url ,$model ,$key) 
-            			{
-            				return $model->mail != '' ? HTML::a(
-            				'<span class="glyphicon glyphicon-envelope"></span>',
-            				$model->mail) : '';
-            			},
+            		'mail' => function($url ,$model ,$key)
+            		{
+            			return $model->mail != '' ? HTML::mailto(
+            			'<span class="glyphicon glyphicon-envelope"></span>',
+            			$model->mail) : '';
+            		},
             	],
-            ],	
+            ],            
+            
         ],
     ]); ?>
 <?php Pjax::end(); ?></div>

@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Lectores;
+use app\models\Copias;
 
 /**
- * LectoresSearch represents the model behind the search form about `app\models\Lectores`.
+ * CopiasSearch represents the model behind the search form about `app\models\Copias`.
  */
-class LectoresSearch extends Lectores
+class CopiasSearch extends Copias
 {
     /**
      * @inheritdoc
@@ -18,8 +18,7 @@ class LectoresSearch extends Lectores
     public function rules()
     {
         return [
-            [['usuario_crea_mod', 'create_time', 'update_time', 'nombre', 'documento'], 'safe'],
-            [['id', 'clase_lector_id', 'clase_documento_id'], 'integer'],
+            [['copias_id', 'estado_id', 'libros_id', 'nro_copia', 'deposito_id'], 'integer'],
         ];
     }
 
@@ -41,7 +40,7 @@ class LectoresSearch extends Lectores
      */
     public function search($params)
     {
-        $query = Lectores::find();
+        $query = Copias::find();
 
         // add conditions that should always apply here
 
@@ -53,22 +52,18 @@ class LectoresSearch extends Lectores
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
-            $query->where('0=1');
+            // $query->where('0=1');
             return $dataProvider;
         }
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'create_time' => $this->create_time,
-            'update_time' => $this->update_time,
-            'id' => $this->id,
-            'clase_lector_id' => $this->clase_lector_id,
-            'clase_documento_id' => $this->clase_documento_id,
+            'copias_id' => $this->copias_id,
+            'estado_id' => $this->estado_id,
+            'libros_id' => $this->libros_id,
+            'nro_copia' => $this->nro_copia,
+            'deposito_id' => $this->deposito_id,
         ]);
-
-        $query->andFilterWhere(['like', 'usuario_crea_mod', $this->usuario_crea_mod])
-            ->andFilterWhere(['like', 'nombre', $this->nombre])
-            ->andFilterWhere(['like', 'documento', $this->documento]);
 
         return $dataProvider;
     }

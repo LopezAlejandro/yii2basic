@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "clase_documento".
  *
- * @property integer $id
+ * @property integer $clase_documento_id
  * @property string $descripcion_documento
  *
  * @property Lectores[] $lectores
@@ -39,7 +39,7 @@ class ClaseDocumento extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
+            'clase_documento_id' => Yii::t('app', 'Clase Documento ID'),
             'descripcion_documento' => Yii::t('app', 'Descripcion Documento'),
         ];
     }
@@ -49,7 +49,7 @@ class ClaseDocumento extends \yii\db\ActiveRecord
      */
     public function getLectores()
     {
-        return $this->hasMany(Lectores::className(), ['clase_documento_id' => 'id']);
+        return $this->hasMany(Lectores::className(), ['clase_documento_id' => 'clase_documento_id']);
     }
 
     /**

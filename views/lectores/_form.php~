@@ -12,14 +12,16 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'update_time')->textInput() ?>
+
     <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'documento')->textInput(['maxlength' => true]) ?>
-
-	 <?= $form->field($model, 'clase_lector_id')->dropDownList($model->listaClaseLector, ['prompt' => 'Seleccione Uno' ]);?>
- 
 	 <?= $form->field($model, 'clase_documento_id')->dropDownList($model->listaClaseDocumento, ['prompt' => 'Seleccione Uno' ]);?>
     
+    <?= $form->field($model, 'documento')->textInput(['maxlength' => true]) ?>
+ 
+	 <?= $form->field($model, 'clase_lector')->dropDownList($model->listaClaseLector, ['prompt' => 'Seleccione Uno' ]);?>
+
     <?= $form->field($model, 'direccion')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'telefono')->textInput(['maxlength' => true]) ?>

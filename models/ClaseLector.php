@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "clase_lector".
  *
- * @property integer $id
+ * @property integer $clase_lector_id
  * @property string $descripcion
  * @property integer $dias_prestamo
  *
@@ -41,7 +41,7 @@ class ClaseLector extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
+            'clase_lector_id' => Yii::t('app', 'Clase Lector ID'),
             'descripcion' => Yii::t('app', 'Descripcion'),
             'dias_prestamo' => Yii::t('app', 'Dias Prestamo'),
         ];
@@ -52,15 +52,15 @@ class ClaseLector extends \yii\db\ActiveRecord
      */
     public function getLectores()
     {
-        return $this->hasMany(Lectores::className(), ['clase_lector_id' => 'id']);
+        return $this->hasMany(Lectores::className(), ['clase_lector_id' => 'clase_lector_id']);
     }
 
     /**
      * @inheritdoc
-     * @return ClaseDocumentoQuery the active query used by this AR class.
+     * @return ClaseLectorQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new ClaseDocumentoQuery(get_called_class());
+        return new ClaseLectorQuery(get_called_class());
     }
 }

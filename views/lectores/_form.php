@@ -17,9 +17,9 @@ use yii\widgets\ActiveForm;
 	 <?= $form->field($model, 'clase_documento_id')->dropDownList($model->listaClaseDocumento, ['prompt' => 'Seleccione Uno' ]);?>
     
     <?= $form->field($model, 'documento')->textInput(['maxlength' => true]) ?>
-    
-	 <?= $form->field($model, 'clase_lector_id')->dropDownList($model->listaClaseLector, ['prompt' => 'Seleccione Uno' ]);?>    
-    
+ 
+	 <?= $form->field($model, 'clase_lector_id')->dropDownList($model->listaClaseLector, ['prompt' => 'Seleccione Uno' ]);?>
+
     <?= $form->field($model, 'direccion')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'telefono')->textInput(['maxlength' => true]) ?>

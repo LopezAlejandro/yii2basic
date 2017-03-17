@@ -7,10 +7,13 @@ use Yii;
 /**
  * This is the model class for table "copias".
  *
- * @property integer $id
+ * @property integer $copias_id
  * @property integer $estado_id
  * @property integer $libros_id
+ * @property integer $nro_copia
+ * @property integer $deposito_id
  *
+ * @property Deposito $deposito
  * @property Estado $estado
  * @property Libros $libros
  * @property Prestamos[] $prestamos
@@ -31,10 +34,11 @@ class Copias extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['estado_id', 'libros_id'], 'required'],
-            [['estado_id', 'libros_id'], 'integer'],
-            [['estado_id'], 'exist', 'skipOnError' => true, 'targetClass' => Estado::className(), 'targetAttribute' => ['estado_id' => 'id']],
-            [['libros_id'], 'exist', 'skipOnError' => true, 'targetClass' => Libros::className(), 'targetAttribute' => ['libros_id' => 'id']],
+            [['estado_id', 'libros_id', 'nro_copia', 'deposito_id'], 'required'],
+            [['estado_id', 'libros_id', 'nro_copia', 'deposito_id'], 'integer'],
+            [['deposito_id'], 'exist', 'skipOnError' => true, 'targetClass' => Deposito::className(), 'targetAttribute' => ['deposito_id' => 'deposito_deposito_id']],
+            [['estado_id'], 'exist', 'skipOnError' => true, 'targetClass' => Estado::className(), 'targetAttribute' => ['estado_id' => 'estado_id']],
+            [['libros_id'], 'exist', 'skipOnError' => true, 'targetClass' => Libros::className(), 'targetAttribute' => ['libros_id' => 'libros_id']],
         ];
     }
 
@@ -44,10 +48,20 @@ class Copias extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
+            'copias_id' => Yii::t('app', 'Copias ID'),
             'estado_id' => Yii::t('app', 'Estado ID'),
             'libros_id' => Yii::t('app', 'Libros ID'),
+            'nro_copia' => Yii::t('app', 'Nro Copia'),
+            'deposito_id' => Yii::t('app', 'Deposito ID'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDeposito()
+    {
+        return $this->hasOne(Deposito::className(), ['deposito_deposito_id' => 'deposito_id']);
     }
 
     /**
@@ -55,7 +69,7 @@ class Copias extends \yii\db\ActiveRecord
      */
     public function getEstado()
     {
-        return $this->hasOne(Estado::className(), ['id' => 'estado_id']);
+        return $this->hasOne(Estado::className(), ['estado_id' => 'estado_id']);
     }
 
     /**
@@ -63,7 +77,7 @@ class Copias extends \yii\db\ActiveRecord
      */
     public function getLibros()
     {
-        return $this->hasOne(Libros::className(), ['id' => 'libros_id']);
+        return $this->hasOne(Libros::className(), ['libros_id' => 'libros_id']);
     }
 
     /**
@@ -71,7 +85,7 @@ class Copias extends \yii\db\ActiveRecord
      */
     public function getPrestamos()
     {
-        return $this->hasMany(Prestamos::className(), ['copias_id' => 'id']);
+        return $this->hasMany(Prestamos::className(), ['copias_id' => 'copias_id']);
     }
 
     /**

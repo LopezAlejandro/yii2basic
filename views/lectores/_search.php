@@ -15,17 +15,17 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?php // $form->field($model, 'usuario_crea_mod') ?>
+    <?= $form->field($model, 'usuario_crea_mod') ?>
 
-    <?php // $form->field($model, 'create_time') ?>
+    <?= $form->field($model, 'create_time') ?>
 
-    <?php // $form->field($model, 'update_time') ?>
+    <?= $form->field($model, 'update_time') ?>
 
-    <?php // $form->field($model, 'id') ?>
+    <?= $form->field($model, 'lectores_id') ?>
 
-    <?php $form->field($model, 'nombre') ?>
+    <?= $form->field($model, 'nombre') ?>
 
-    <?php $form->field($model, 'documento') ?>
+    <?php // echo $form->field($model, 'documento') ?>
 
     <?php // echo $form->field($model, 'clase_lector_id') ?>
 
@@ -35,7 +35,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'telefono') ?>
 
-    <?php $form->field($model, 'mail') ?>
+    <?php // echo $form->field($model, 'mail') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

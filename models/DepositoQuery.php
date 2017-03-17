@@ -3,11 +3,11 @@
 namespace app\models;
 
 /**
- * This is the ActiveQuery class for [[ClaseDocumento]].
+ * This is the ActiveQuery class for [[Deposito]].
  *
- * @see ClaseDocumento
+ * @see Deposito
  */
-class ClaseDocumentoQuery extends \yii\db\ActiveQuery
+class DepositoQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class ClaseDocumentoQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return ClaseDocumento[]|array
+     * @return Deposito[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class ClaseDocumentoQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return ClaseDocumento|array|null
+     * @return Deposito|array|null
      */
     public function one($db = null)
     {

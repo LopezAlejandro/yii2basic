@@ -4,30 +4,26 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\LibrosSearch */
+/* @var $model app\models\CopiasSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="libros-search">
+<div class="copias-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
+    <?= $form->field($model, 'copias_id') ?>
+
+    <?= $form->field($model, 'estado_id') ?>
+
     <?= $form->field($model, 'libros_id') ?>
 
-    <?= $form->field($model, 'titulo') ?>
+    <?= $form->field($model, 'nro_copia') ?>
 
-    <?= $form->field($model, 'editorial') ?>
-
-    <?= $form->field($model, 'ano') ?>
-
-    <?= $form->field($model, 'tipo_libro_id') ?>
-
-    <?php // echo $form->field($model, 'nro_libro') ?>
-
-    <?php // echo $form->field($model, 'edicion') ?>
+    <?= $form->field($model, 'deposito_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

@@ -3,17 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Lectores;
-use app\models\LectoresSearch;
+use app\models\Copias;
+use app\models\CopiasSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\db\Expression;
 
 /**
- * LectoresController implements the CRUD actions for Lectores model.
+ * CopiasController implements the CRUD actions for Copias model.
  */
-class LectoresController extends Controller
+class CopiasController extends Controller
 {
     /**
      * @inheritdoc
@@ -31,12 +30,12 @@ class LectoresController extends Controller
     }
 
     /**
-     * Lists all Lectores models.
+     * Lists all Copias models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new LectoresSearch();
+        $searchModel = new CopiasSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,7 +45,7 @@ class LectoresController extends Controller
     }
 
     /**
-     * Displays a single Lectores model.
+     * Displays a single Copias model.
      * @param integer $id
      * @return mixed
      */
@@ -58,28 +57,25 @@ class LectoresController extends Controller
     }
 
     /**
-     * Creates a new Lectores model.
+     * Creates a new Copias model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Lectores();
+        $model = new Copias();
 
-        if ($model->load(Yii::$app->request->post())) {
-        			$model->create_time = new Expression('NOW()');
-        			$model->update_time = new Expression('NOW()');
-        				if($model->save()) {
-            			return $this->redirect(['view', 'id' => $model->lectores_id]);
-            		}
-            	}
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->copias_id]);
+        } else {
             return $this->render('create', [
                 'model' => $model,
             ]);
-     }
-    
+        }
+    }
+
     /**
-     * Updates an existing Lectores model.
+     * Updates an existing Copias model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -89,7 +85,7 @@ class LectoresController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->lectores_id]);
+            return $this->redirect(['view', 'id' => $model->copias_id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -98,7 +94,7 @@ class LectoresController extends Controller
     }
 
     /**
-     * Deletes an existing Lectores model.
+     * Deletes an existing Copias model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -111,19 +107,18 @@ class LectoresController extends Controller
     }
 
     /**
-     * Finds the Lectores model based on its primary key value.
+     * Finds the Copias model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Lectores the loaded model
+     * @return Copias the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Lectores::findOne($id)) !== null) {
+        if (($model = Copias::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-   
 }
