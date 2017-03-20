@@ -47,8 +47,24 @@ $config = [
             ],
         ],
         */
-    ],
+        'i18n' => [
+        'translations' => [
+            'kvgrid' => [
+                'class' => 'yii\i18n\PhpMessageSource',
+                'basePath' => '@vendor/kartik-v/yii2-grid/messages',
+            ],
+      ],
+    ],    
+],
     'params' => $params,
+    
+    'modules' => [
+   		'gridview' =>  [
+        	'class' => '\kartik\grid\Module'
+    		]
+		],
+		
+    
 ];
 
 if (YII_ENV_DEV) {

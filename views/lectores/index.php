@@ -1,11 +1,12 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+//use yii\grid\GridView;
 use yii\widgets\Pjax;
 use app\models\ClaseDocumento;
 use app\models\ClaseLector;
 use yii\helpers\ArrayHelper;
+use kartik\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\LectoresSearch */
@@ -22,49 +23,95 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a(Yii::t('app', 'Create Lectores'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-<?php Pjax::begin(); ?>    
-		<?= GridView::widget([
+    
+    <?php $colorPluginOptions =  [
+    'showPalette' => true,
+    'showPaletteOnly' => true,
+    'showSelectionPalette' => true,
+    'showAlpha' => false,
+    'allowEmpty' => false,
+    'preferredFormat' => 'name',
+    'palette' => [
+        [
+            "white", "black", "grey", "silver", "gold", "brown", 
+        ],
+        [
+            "red", "orange", "yellow", "indigo", "maroon", "pink"
+        ],
+        [
+            "blue", "green", "violet", "cyan", "magenta", "purple", 
+        ],
+    	]
+		];?>
+		
+		<?php $gridColumns = [
+			[
+    			'class'=>'kartik\grid\SerialColumn',
+    			'contentOptions'=>['class'=>'kartik-sheet-style'],
+    			'width'=>'36px',
+    			'header'=>'',
+    			'headerOptions'=>['class'=>'kartik-sheet-style']
+			],
+			[
+    			'class'=>'kartik\grid\RadioColumn',
+    			'width'=>'36px',
+    			'headerOptions'=>['class'=>'kartik-sheet-style'],
+			],
+			[
+    			'class'=>'kartik\grid\ExpandRowColumn',
+    			'width'=>'50px',
+    			'value'=>function ($model, $key, $index, $column) {
+        				return GridView::ROW_COLLAPSED;
+    			},
+    			'detail'=>function ($model, $key, $index, $column) {
+        				return Yii::$app->controller->renderPartial('_expand-row-details', ['model'=>$model]);
+    			},
+    			'headerOptions'=>['class'=>'kartik-sheet-style'], 
+    			'expandOneOnly'=>true
+			],
+		]	
+			?>
+ 
+		<?php GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'nombre',
-            [
-            	'attribute' => 'clase_documento_id',
-            	'value' => function($model) {
-            		$clasedocumento = ClaseDocumento::findOne($model->clase_documento_id);
-            		return $clasedocumento->descripcion_documento;
-            	},
-            	'filter' => ArrayHelper::map(ClaseDocumento::find()->all(),'clase_documento_id','descripcion_documento'),
+        'columns'=>$gridColumns,
+    	  'containerOptions'=>['style'=>'overflow: auto'], // only set when $responsive = false
+    	  'headerRowOptions'=>['class'=>'kartik-sheet-style'],
+    	  'filterRowOptions'=>['class'=>'kartik-sheet-style'],
+    	  'pjax'=>true, // pjax is set to always true for this demo
+        // set your toolbar
+        'toolbar'=> [
+            ['content'=>
+                Html::button('<i class="glyphicon glyphicon-plus"></i>', ['type'=>'button', 'title'=>Yii::t('kvgrid', 'Add Book'), 'class'=>'btn btn-success', 'onclick'=>'alert("This will launch the book creation form.\n\nDisabled for this demo!");']) . ' '.
+                Html::a('<i class="glyphicon glyphicon-repeat"></i>', ['grid-demo'], ['data-pjax'=>0, 'class'=>'btn btn-default', 'title'=>Yii::t('kvgrid', 'Reset Grid')])
             ],
-				            
-            'documento',
-            [
-            	'attribute' => 'clase_lector_id',
-            	'value' => function($model) {
-            		$claselector = ClaseLector::findOne($model->clase_lector_id);
-            		return $claselector->descripcion;
-            	},
-            	'filter' => ArrayHelper::map(ClaseLector::find()->all(),'clase_lector_id','descripcion'),
-            ],
-            'direccion',
-            'telefono',
-            'mail',
-
-				[
-            	'class' => 'yii\grid\ActionColumn',
-            	'template' => '{view} {update} {delete} {mail}',
-            	'buttons' => [
-            		'mail' => function($url ,$model ,$key)
-            		{
-            			return $model->mail != '' ? HTML::mailto(
-            			'<span class="glyphicon glyphicon-envelope"></span>',
-            			$model->mail) : '';
-            		},
-            	],
-            ],            
-            
+           '{export}',
+           '{toggleData}',
         ],
-    ]); ?>
-<?php Pjax::end(); ?></div>
+        // set export properties
+       'export'=>[
+          'fontAwesome'=>true
+       ],
+       // parameters from the demo form
+       'bordered'=>$bordered,
+       'striped'=>$striped,
+       'condensed'=>$condensed,
+       'responsive'=>$responsive,
+       'hover'=>$hover,
+       'showPageSummary'=>$pageSummary,
+       'panel'=>[
+            'type'=>GridView::TYPE_PRIMARY,
+            'heading'=>$heading,
+       ],
+       'persistResize'=>false,
+       'exportConfig'=>$exportConfig,
+]);?> 
+        
+        
+        
+        
+        
+        
+
+</div>
