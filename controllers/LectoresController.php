@@ -70,7 +70,7 @@ class LectoresController extends Controller
         			$model->create_time = new Expression('NOW()');
         			$model->update_time = new Expression('NOW()');
         				if($model->save()) {
-            			return $this->redirect(['view', 'id' => $model->lectores_id]);
+            			return $this->redirect(['index', 'id' => $model->lectores_id]);
             		}
             	}
             return $this->render('create', [
@@ -88,14 +88,17 @@ class LectoresController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->lectores_id]);
-        } else {
+        if ($model->load(Yii::$app->request->post())) {
+        			$model->update_time = new Expression('NOW()');
+        			if($model->save()) {
+            		return $this->redirect(['index', 'id' => $model->lectores_id]);
+        			}
+        		}        
             return $this->render('update', [
                 'model' => $model,
             ]);
-        }
-    }
+     }
+    
 
     /**
      * Deletes an existing Lectores model.
