@@ -8,7 +8,7 @@ use app\models\ClaseDocumento;
 /* @var $this yii\web\View */
 /* @var $model app\models\Lectores */
 
-$this->title = $model->lectores_id;
+$this->title = $model->nombre;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Lectores'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -33,12 +33,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'nombre',
             [
                 'attribute'=>'clase_documento_id',
-                'value'=>ClaseDocumento::findOne($model->id)->descripcion_documento
+                'value'=>ClaseDocumento::findOne($model->clase_documento_id)->descripcion_documento
             ],
             'documento',
             [
                 'attribute'=>'clase_lector_id',
-                'value'=>ClaseLector::findOne($model->id)->descripcion
+                'value'=>ClaseLector::findOne($model->clase_lector_id)->descripcion
             ],
             'clase_lector_id',
             'direccion',
