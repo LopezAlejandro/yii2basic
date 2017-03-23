@@ -46,6 +46,23 @@ $this->params['breadcrumbs'][] = $this->title;
 			[
 				'attribute' =>'ano'
 			],
+			
+			[
+            'attribute'=>'ano',
+            'value' => function ($model, $index, $widget) {
+                return Yii::$app->formatter->asDate($model->ano);
+            },
+            'filterType' => GridView::FILTER_DATE,
+            'filterWidgetOptions' => [
+                'pluginOptions' => [
+                    'format' => 'yyyy',
+                    'autoclose' => true,
+                    'todayHighlight' => true,
+                ]
+            ],
+            'width' => '160px',
+            'hAlign' => 'center',
+        ],
 			[
             'attribute' => 'tipo_libro_id',
             'value' => function($model) {
