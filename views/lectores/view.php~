@@ -1,9 +1,11 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\DetailView;
+//use yii\widgets\DetailView;
 use app\models\ClaseLector;
 use app\models\ClaseDocumento;
+use yii\helpers\ArrayHelper;
+use kartik\detail\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Lectores */
@@ -26,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
+<!--
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -40,11 +42,51 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=>'clase_lector_id',
                 'value'=>ClaseLector::findOne($model->clase_lector_id)->descripcion
             ],
-            'clase_lector_id',
             'direccion',
             'telefono',
             'mail',
         ],
     ]) ?>
+--!> 
+<?php    
+    echo DetailView::widget([
+    'model'=>$model,
+    'condensed'=>true,
+    'hover'=>true,
+    'mode'=>DetailView::MODE_VIEW,
+    'panel'=>[
+        'heading'=>'Lector # ' . $model->lectores_id,
+        'type'=>DetailView::TYPE_INFO,
+    ],
+    'attributes'=>[
+        [
+    			'attribute'=>'nombre',
+    			'vAlign'=>'middle',
+    		//	'width'=>'210px',
+			],
+			[
+            'attribute' => 'clase_documento_id',
+            'value' => ArrayHelper::map(ClaseDocumento::findOne($model->clase_documento_id),'clase_documento_id','descripcion_documento')[1][2],
+            'type'=> DetailView::INPUT_SELECT2,
+            'widgetOptions'=>[
+                    'data'=>ArrayHelper::map(ClaseDocumento::find()->orderBy('descripcion_documento')->asArray()->all(), 'clase_documento_id', 'descripcion_documento'),
+                    'options' => ['placeholder' => 'Select ...'],
+                    'pluginOptions' => ['allowClear'=>true, 'width'=>'100%'],
+          	],
+          ],
+          
+          
+			[
+				'attribute' =>'documento'
+			],
+			[
+            'attribute' => 'clase_lector_id',
+            
+         ],
+        
+    ]
+]);
+?>
+    
 
 </div>

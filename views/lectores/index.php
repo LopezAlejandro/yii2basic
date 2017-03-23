@@ -30,11 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
     			'headerOptions'=>['class'=>'kartik-sheet-style']
 			],
 			[
-    			'class'=>'kartik\grid\RadioColumn',
-    			'width'=>'36px',
-    			'headerOptions'=>['class'=>'kartik-sheet-style'],
-			],
-			[
     			'attribute'=>'nombre',
     			'vAlign'=>'middle',
     		//	'width'=>'210px',
@@ -66,13 +61,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         'mail' => function($url ,$model ,$key)
                         {
                                 return $model->mail != '' ? HTML::mailto(
-                                '<span class="glyphicon glyphicon-envelope"></span>',
+                                '<span class="glyphicon glyphicon-envelope" title="Enviar un mail al lector" data-toggle=tooltip></span>',
                                 $model->mail) : '';
                         },
                 ],
-    			'viewOptions'=>['title'=>'This will launch the book details page. Disabled for this demo!', 'data-toggle'=>'tooltip'],
-    			'updateOptions'=>['title'=>'This will launch the book update page. Disabled for this demo!', 'data-toggle'=>'tooltip'],
-    			'deleteOptions'=>['title'=>'This will launch the book delete action. Disabled for this demo!', 'data-toggle'=>'tooltip'],
+    			'viewOptions'=>['title'=>'Ver detalles del lector', 'data-toggle'=>'tooltip'],
+    			'updateOptions'=>['title'=>'Actualizar datos del lector!', 'data-toggle'=>'tooltip'],
+    			'deleteOptions'=>['title'=>'Borrar el lector', 'data-toggle'=>'tooltip'],
     			'headerOptions'=>['class'=>'kartik-sheet-style'],
 			],
 		]	
@@ -89,12 +84,11 @@ $this->params['breadcrumbs'][] = $this->title;
         // set your toolbar
         'toolbar'=> [
             ['content'=>
-                //Html::button('<i class="glyphicon glyphicon-plus"></i>', ['type'=>'button', 'title'=>Yii::t('app', 'Create Lectores'), 'class'=>'create']),
                 Html::a('<i class="glyphicon glyphicon-plus"></i>', ['create'], ['class' => 'btn btn-success','title'=>Yii::t('app', 'Create Lectores') ]).' '.
                 Html::a('<i class="glyphicon glyphicon-repeat"></i>', ['index'], ['data-pjax'=>0, 'class'=>'btn btn-default', 'title'=>Yii::t('kvgrid', 'Reset Grid')])
             ],
-           '{export}',
            '{toggleData}',
+           '{export}',
         ],
         // set export properties
        'export'=>[
