@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="lectores-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
+<!--
     <p>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->lectores_id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->lectores_id], [
@@ -28,26 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-<!--
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'nombre',
-            [
-                'attribute'=>'clase_documento_id',
-                'value'=>ClaseDocumento::findOne($model->clase_documento_id)->descripcion_documento
-            ],
-            'documento',
-            [
-                'attribute'=>'clase_lector_id',
-                'value'=>ClaseLector::findOne($model->clase_lector_id)->descripcion
-            ],
-            'direccion',
-            'telefono',
-            'mail',
-        ],
-    ]) ?>
---!> 
+--!>
 <?php    
     echo DetailView::widget([
     'model'=>$model,
@@ -62,15 +43,16 @@ $this->params['breadcrumbs'][] = $this->title;
         [
     			'attribute'=>'nombre',
     			'vAlign'=>'middle',
+    			'hAlign'=>'left', 
     		//	'width'=>'210px',
 			],
 			[
             'attribute' => 'clase_documento_id',
-            'value' => ArrayHelper::map(ClaseDocumento::findOne($model->clase_documento_id),'clase_documento_id','descripcion_documento')[0][2],
+            'value' => $model->claseDocumento->descripcion_documento,
             'type'=> DetailView::INPUT_SELECT2,
             'widgetOptions'=>[
                     'data'=>ArrayHelper::map(ClaseDocumento::find()->orderBy('descripcion_documento')->asArray()->all(), 'clase_documento_id', 'descripcion_documento'),
-                    'options' => ['placeholder' => 'Select ...'],
+                    'options' => ['placeholder' => 'Seleccione uno ...'],
                     'pluginOptions' => ['allowClear'=>true, 'width'=>'100%'],
           	],
           ],
@@ -81,10 +63,29 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 			[
             'attribute' => 'clase_lector_id',
-            
+            'value' => $model->claseLector->descripcion,
+            'type'=> DetailView::INPUT_SELECT2,
+            'widgetOptions'=>[
+                    'data'=>ArrayHelper::map(ClaseLector::find()->orderBy('descripcion')->asArray()->all(), 'clase_lector_id', 'descripcion'),
+                    'options' => ['placeholder' => 'Seleccione uno ...'],
+                    'pluginOptions' => ['allowClear'=>true, 'width'=>'100%'],
+          	],
+         ],
+         [
+         	'attribute' => 'direccion',
+         ],
+         [
+         	'attribute' => 'telefono',
+         ],
+         [
+         	'attribute' => 'mail',
          ],
         
-    ]
+    ],
+    'deleteOptions'=>[
+                        'params' => ['custom_param'=>true],
+                         'url'=>['delete', 'id' => $model->lectores_id],
+        ],
 ]);
 ?>
     

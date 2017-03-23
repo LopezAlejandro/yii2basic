@@ -30,11 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
     			'headerOptions'=>['class'=>'kartik-sheet-style']
 			],
 			[
-    			'class'=>'kartik\grid\RadioColumn',
-    			'width'=>'36px',
-    			'headerOptions'=>['class'=>'kartik-sheet-style'],
-			],
-			[
     			'attribute'=>'nombre',
     			'vAlign'=>'middle',
     		//	'width'=>'210px',

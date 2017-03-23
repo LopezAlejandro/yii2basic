@@ -3,6 +3,9 @@
 namespace app\controllers;
 
 use Yii;
+use yii\helpers\Url;
+use yii\helpers\Json;
+use yii\base\InvalidCallException;
 use app\models\Lectores;
 use app\models\LectoresSearch;
 use yii\web\Controller;
@@ -50,12 +53,18 @@ class LectoresController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+
+    public function actionView($id) {
+        $model = $this->findModel($id);
+ 
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->lectores_id]);
+        } else {
+            return $this->render('view', ['model' => $model]);
+        }
     }
+
+
 
     /**
      * Creates a new Lectores model.
@@ -106,12 +115,49 @@ class LectoresController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
+/**    public function actionDelete($id)
+*    {
+*        $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+*        return $this->redirect(['index']);
+*    }
+*/
+
+    public function actionDelete($id) 
+    {
+        $post = Yii::$app->request->post();
+    	Yii::trace('Entering delete action');
+    	if (Yii::$app->request->isAjax && isset($post['custom_param'])) {
+    		if ($this->findModel($id)->delete()) {
+    			echo Json::encode([
+    				'success' => true,
+    				'messages' => [
+    					'kv-detail-info' => 'El lector # ' . $id . ' ha sido exitosamente eliminado. <a href="' .
+    					Url::to(['/lectores/index']) . '" class="btn btn-sm btn-info">' .
+    					'<i class="glyphicon glyphicon-hand-right"></i>  Click aqui</a> para continuar.'
+    				]
+    			]);
+    		} else {
+    			echo Json::encode([
+   					'success' => false,
+   					'messages' => [
+						'kv-detail-error' => 'No puede eliminarse al lector # ' . $id . '.'
+   					]
+    			]);
+    		}
+    		return;
+    	} elseif (Yii::$app->request->post()) {
+    		$this->findModel($id)->delete();
+    		return $this->redirect(['index']);
+    	}
+    	throw new InvalidCallException("Ud no tiene permitido realizar esta operacion. Contactese con el administrador.");
     }
+
+
+
+
+
+
 
     /**
      * Finds the Lectores model based on its primary key value.
