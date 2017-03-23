@@ -52,10 +52,10 @@ class Libros extends \yii\db\ActiveRecord
             'libros_id' => Yii::t('app', 'Libros ID'),
             'titulo' => Yii::t('app', 'Titulo'),
             'editorial' => Yii::t('app', 'Editorial'),
-            'ano' => Yii::t('app', 'Ano'),
-            'tipo_libro_id' => Yii::t('app', 'Tipo Libro ID'),
+            'ano' => Yii::t('app', 'Año'),
+            'tipo_libro_id' => Yii::t('app', 'Tipo Libro'),
             'nro_libro' => Yii::t('app', 'Nro Libro'),
-            'edicion' => Yii::t('app', 'Edicion'),
+            'edicion' => Yii::t('app', 'Edición'),
         ];
     }
 

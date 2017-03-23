@@ -22,7 +22,8 @@
         "kartik-v/yii2-grid": "@dev",
         "kartik-v/yii2-mpdf": "*",
         "kartik-v/yii2-editable": "@dev",
-        "kartik-v/yii2-widgets" : "@dev"
+        "kartik-v/yii2-widgets" : "@dev",
+        "kartik-v/yii2-datecontrol": "@dev"
    },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

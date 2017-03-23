@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <!--    <h1><?= Html::encode($this->title) ?></h1>
     <?php  // $this->render('_search', ['model' => $searchModel]); ?>
---!>
+-->
 	
 	<?php $gridColumns = [
 			[
@@ -78,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
     	  'containerOptions'=>['style'=>'overflow: auto'], // only set when $responsive = false
     	  'headerRowOptions'=>['class'=>'kartik-sheet-style'],
     	  'filterRowOptions'=>['class'=>'kartik-sheet-style'],
-    	  'pjax'=>true, // pjax is set to always true for this demo
+    	  'pjax'=>true, 
         // set your toolbar
         'toolbar'=> [
             ['content'=>

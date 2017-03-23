@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
          ],
 			[
     			'class'=>'kartik\grid\ActionColumn',
-    			'template' => '{view} {update} {delete} {mail}',
+    			'template' => '{view} {mail}',
                 'buttons' => [
                         'mail' => function($url ,$model ,$key)
                         {
@@ -66,8 +66,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         },
                 ],
     			'viewOptions'=>['title'=>'Ver detalles del lector', 'data-toggle'=>'tooltip'],
-    			'updateOptions'=>['title'=>'Actualizar datos del lector!', 'data-toggle'=>'tooltip'],
-    			'deleteOptions'=>['title'=>'Borrar el lector', 'data-toggle'=>'tooltip'],
     			'headerOptions'=>['class'=>'kartik-sheet-style'],
 			],
 		]	
