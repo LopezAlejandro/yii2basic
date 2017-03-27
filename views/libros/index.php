@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         'panel' => [
             'heading' => '<h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> '.Html::encode($this->title).' </h3>',
-            'type' => 'info',
+            'type' => GridView::TYPE_PRIMARY,
             'before' => Html::a('<i class="glyphicon glyphicon-plus"></i> Agregar', ['create'], ['class' => 'btn btn-success']),
             'after' => Html::a('<i class="glyphicon glyphicon-repeat"></i> Limpiar', ['index'], ['class' => 'btn btn-info']),
             'showFooter' => false
