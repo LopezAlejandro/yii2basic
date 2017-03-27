@@ -31,7 +31,7 @@ class LibrosSearch extends Libros
 
     public function search($params)
     {
-        $query = Libros::find()->innerJoinWith('librosAutors',true);
+        $query = Libros::find()->innerJoinWith('autorAutors',true);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

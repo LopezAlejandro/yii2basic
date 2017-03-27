@@ -88,10 +88,7 @@ $this->params['breadcrumbs'][] = $this->title;
            '{toggleData}',
            '{export}',
         ],
-        // set export properties
-       'export'=>[
-          'fontAwesome'=>true
-       ],
+    
        // parameters from the demo form
        'bordered'=>true,
        'striped'=>true,
@@ -101,7 +98,7 @@ $this->params['breadcrumbs'][] = $this->title;
        'showPageSummary'=>false,
        'panel'=>[
             'type'=>GridView::TYPE_PRIMARY,
-            'heading'=>'<h2 class="panel-title"><i class="glyphicon glyphicon-user"></i><b>  Lectores</b></h2>',
+            'heading'=>'<h3 class="panel-title"><i class="glyphicon glyphicon-user"></i><b> '.Html::encode($this->title).'</b> </h3>',
             'footer'=>false, 
        ],
        'persistResize'=>false,

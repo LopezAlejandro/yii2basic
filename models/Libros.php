@@ -16,8 +16,9 @@ use Yii;
  * @property integer $edicion
  *
  * @property Copias[] $copias
+ * @property TipoLibro $tipoLibro
  * @property LibrosHasAutor[] $librosHasAutors
- * @property Autor[] $autorAutors
+ * @property Autor[] $librosAutors
  */
 class Libros extends \yii\db\ActiveRecord
 {
@@ -38,6 +39,7 @@ class Libros extends \yii\db\ActiveRecord
             [['titulo', 'nro_libro'], 'required'],
             [['ano', 'tipo_libro_id', 'nro_libro', 'edicion'], 'integer'],
             [['titulo', 'editorial'], 'string', 'max' => 45],
+            [['tipo_libro_id'], 'exist', 'skipOnError' => true, 'targetClass' => TipoLibro::className(), 'targetAttribute' => ['tipo_libro_id' => 'tipo_libro_id']],
         ];
     }
 
@@ -48,12 +50,12 @@ class Libros extends \yii\db\ActiveRecord
     {
         return [
             'libros_id' => Yii::t('app', 'Libros ID'),
-            'titulo' => Yii::t('app', 'Título'),
+            'titulo' => Yii::t('app', 'Titulo'),
             'editorial' => Yii::t('app', 'Editorial'),
-            'ano' => Yii::t('app', 'Año'),
-            'tipo_libro_id' => Yii::t('app', 'Tipo de Libro'),
-            'nro_libro' => Yii::t('app', 'Nro de Libro'),
-            'edicion' => Yii::t('app', 'Edición'),
+            'ano' => Yii::t('app', 'Ano'),
+            'tipo_libro_id' => Yii::t('app', 'Tipo Libro ID'),
+            'nro_libro' => Yii::t('app', 'Nro Libro'),
+            'edicion' => Yii::t('app', 'Edicion'),
         ];
     }
 
@@ -68,6 +70,14 @@ class Libros extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getTipoLibro()
+    {
+        return $this->hasOne(TipoLibro::className(), ['tipo_libro_id' => 'tipo_libro_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getLibrosHasAutors()
     {
         return $this->hasMany(LibrosHasAutor::className(), ['libros_libros_id' => 'libros_id']);
@@ -76,9 +86,9 @@ class Libros extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAutorAutors()
+    public function getLibrosAutors()
     {
-        return $this->hasMany(Autor::className(), ['autor_id' => 'autor_autor_id'])->viaTable('libros_has_autor', ['libros_libros_id' => 'libros_id']);
+        return $this->hasMany(Autor::className(), ['autor_id' => 'libros_autor_id'])->viaTable('libros_has_autor', ['libros_libros_id' => 'libros_id']);
     }
 
     /**
