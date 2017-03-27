@@ -2,12 +2,14 @@
 
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Libros */
+/**
+ * @var yii\web\View $this
+ * @var app\models\Libros $model
+ */
 
 $this->title = Yii::t('app', 'Update {modelClass}: ', [
     'modelClass' => 'Libros',
-]) . $model->libros_id;
+]) . ' ' . $model->libros_id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Libros'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->libros_id, 'url' => ['view', 'id' => $model->libros_id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');

@@ -1,33 +1,45 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use kartik\widgets\ActiveForm;
+use kartik\builder\Form;
+use kartik\datecontrol\DateControl;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Libros */
-/* @var $form yii\widgets\ActiveForm */
+/**
+ * @var yii\web\View $this
+ * @var app\models\Libros $model
+ * @var yii\widgets\ActiveForm $form
+ */
 ?>
 
 <div class="libros-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['type' => ActiveForm::TYPE_HORIZONTAL]); echo Form::widget([
 
-    <?= $form->field($model, 'titulo')->textInput(['maxlength' => true]) ?>
+        'model' => $model,
+        'form' => $form,
+        'columns' => 1,
+        'attributes' => [
 
-    <?= $form->field($model, 'editorial')->textInput(['maxlength' => true]) ?>
+            'titulo' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Titulo...', 'maxlength' => 45]],
 
-    <?= $form->field($model, 'ano')->textInput() ?>
+            'nro_libro' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Nro Libro...']],
 
-    <?= $form->field($model, 'tipo_libro_id')->textInput() ?>
+            'ano' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Ano...']],
 
-    <?= $form->field($model, 'nro_libro')->textInput() ?>
+            'tipo_libro_id' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Tipo Libro ID...']],
 
-    <?= $form->field($model, 'edicion')->textInput() ?>
+            'edicion' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Edicion...']],
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
+            'editorial' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Editorial...', 'maxlength' => 45]],
 
-    <?php ActiveForm::end(); ?>
+        ]
+
+    ]);
+
+    echo Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'),
+        ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']
+    );
+    ActiveForm::end(); ?>
 
 </div>

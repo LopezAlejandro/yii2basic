@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "968a26a8d25873476d345f49d9a7023f",
+    "content-hash": "64e36d9d2afb18161c82855403f45490",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -57,16 +57,16 @@
         },
         {
             "name": "bower-asset/bootstrap3-dialog",
-            "version": "v1.35.3",
+            "version": "v1.35.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nakupanda/bootstrap3-dialog.git",
-                "reference": "4aa9d536516957e01c39afd1b5e8bdd88976ef7b"
+                "reference": "3dd11d586f78de75356af418907ec6e3b347377c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nakupanda/bootstrap3-dialog/zipball/4aa9d536516957e01c39afd1b5e8bdd88976ef7b",
-                "reference": "4aa9d536516957e01c39afd1b5e8bdd88976ef7b",
+                "url": "https://api.github.com/repos/nakupanda/bootstrap3-dialog/zipball/3dd11d586f78de75356af418907ec6e3b347377c",
+                "reference": "3dd11d586f78de75356af418907ec6e3b347377c",
                 "shasum": ""
             },
             "require": {
@@ -138,6 +138,31 @@
                 "jquery",
                 "library"
             ]
+        },
+        {
+            "name": "bower-asset/jquery-ui",
+            "version": "1.11.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/components/jqueryui.git",
+                "reference": "c34f8dbf3ba57b3784b93f26119f436c0e8288e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/components/jqueryui/zipball/c34f8dbf3ba57b3784b93f26119f436c0e8288e1",
+                "reference": "c34f8dbf3ba57b3784b93f26119f436c0e8288e1",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.6"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "jquery-ui.js"
+                ],
+                "bower-asset-ignore": []
+            }
         },
         {
             "name": "bower-asset/jquery.inputmask",
@@ -315,6 +340,44 @@
             "time": "2016-09-14T20:40:20+00:00"
         },
         {
+            "name": "components/flag-icon-css",
+            "version": "2.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lipis/flag-icon-css.git",
+                "reference": "b0a4e05d5e5054e58bd7537c3f1f6712ead19dae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lipis/flag-icon-css/zipball/b0a4e05d5e5054e58bd7537c3f1f6712ead19dae",
+                "reference": "b0a4e05d5e5054e58bd7537c3f1f6712ead19dae",
+                "shasum": ""
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "name": "flag-icon-css",
+                    "files": [
+                        "less/**",
+                        "css/**",
+                        "flags/**"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Panayiotis Lipiridis (Lipis)",
+                    "email": "lipiridis@gmail.com"
+                }
+            ],
+            "description": "CSS for vector based country flags",
+            "time": "2016-12-11T22:30:13+00:00"
+        },
+        {
             "name": "ezyang/htmlpurifier",
             "version": "v4.9.2",
             "source": {
@@ -360,6 +423,54 @@
                 "html"
             ],
             "time": "2017-03-13T06:30:53+00:00"
+        },
+        {
+            "name": "fortawesome/font-awesome",
+            "version": "v4.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FortAwesome/Font-Awesome.git",
+                "reference": "a8386aae19e200ddb0f6845b5feeee5eb7013687"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/a8386aae19e200ddb0f6845b5feeee5eb7013687",
+                "reference": "a8386aae19e200ddb0f6845b5feeee5eb7013687",
+                "shasum": ""
+            },
+            "require-dev": {
+                "jekyll": "1.0.2",
+                "lessc": "1.4.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.6.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OFL-1.1",
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dave Gandy",
+                    "email": "dave@fontawesome.io",
+                    "homepage": "http://twitter.com/davegandy",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The iconic font and CSS framework",
+            "homepage": "http://fontawesome.io/",
+            "keywords": [
+                "FontAwesome",
+                "awesome",
+                "bootstrap",
+                "font",
+                "icon"
+            ],
+            "time": "2016-10-24T15:52:54+00:00"
         },
         {
             "name": "kartik-v/bootstrap-fileinput",
@@ -597,6 +708,59 @@
                 "time"
             ],
             "time": "2017-01-08T09:13:05+00:00"
+        },
+        {
+            "name": "kartik-v/yii2-builder",
+            "version": "v1.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-builder.git",
+                "reference": "f6236484c753059935dcd1487bb725fec8f9823c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-builder/zipball/f6236484c753059935dcd1487bb725fec8f9823c",
+                "reference": "f6236484c753059935dcd1487bb725fec8f9823c",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/yii2-grid": "~3.0",
+                "kartik-v/yii2-helpers": "~1.3",
+                "kartik-v/yii2-krajee-base": "~1.7",
+                "kartik-v/yii2-widget-activeform": "~1.4"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.6.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\builder\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "Build forms (single-row or multi-row/tabular) easily for Yii Framework 2.0",
+            "homepage": "https://github.com/kartik-v/yii2-builder",
+            "keywords": [
+                "builder",
+                "extension",
+                "form",
+                "widget",
+                "yii2"
+            ],
+            "time": "2016-11-19T11:38:12+00:00"
         },
         {
             "name": "kartik-v/yii2-datecontrol",
@@ -912,6 +1076,54 @@
                 "yii2"
             ],
             "time": "2016-11-26T06:03:52+00:00"
+        },
+        {
+            "name": "kartik-v/yii2-icons",
+            "version": "v1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-icons.git",
+                "reference": "4ed8225bcfee505fb0f56d84c2a4df48a40022dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-icons/zipball/4ed8225bcfee505fb0f56d84c2a4df48a40022dd",
+                "reference": "4ed8225bcfee505fb0f56d84c2a4df48a40022dd",
+                "shasum": ""
+            },
+            "require": {
+                "components/flag-icon-css": "*",
+                "fortawesome/font-awesome": "*",
+                "kartik-v/yii2-krajee-base": "*",
+                "yiisoft/yii2-jui": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "kartik\\icons\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD 3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://demos.krajee.com/"
+                }
+            ],
+            "description": "Set of icon frameworks for use in Yii Framework 2.0",
+            "homepage": "https://github.com/kartik-v/yii2-icons",
+            "keywords": [
+                "extension",
+                "font",
+                "icon",
+                "yii",
+                "yii2"
+            ],
+            "time": "2017-02-22T06:02:00+00:00"
         },
         {
             "name": "kartik-v/yii2-krajee-base",
@@ -2199,6 +2411,46 @@
             "time": "2017-02-13T07:52:53+00:00"
         },
         {
+            "name": "warrence/yii2-kartikgii",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/warrence/yii2-kartikgii.git",
+                "reference": "6e6650a99628d0c10a771c4f5887bb222b0cb3c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/warrence/yii2-kartikgii/zipball/6e6650a99628d0c10a771c4f5887bb222b0cb3c8",
+                "reference": "6e6650a99628d0c10a771c4f5887bb222b0cb3c8",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/yii2-builder": "*",
+                "kartik-v/yii2-datecontrol": "*",
+                "kartik-v/yii2-detail-view": "*",
+                "kartik-v/yii2-grid": "*",
+                "kartik-v/yii2-helpers": "*",
+                "kartik-v/yii2-icons": "*",
+                "kartik-v/yii2-widgets": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "warrence\\kartikgii\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Warrence",
+                    "email": "warrence@gmail.com"
+                }
+            ],
+            "description": "Gii Generator base on Kartik-V extension https://github.com/kartik-v",
+            "time": "2016-11-19 10:09:37"
+        },
+        {
             "name": "yiisoft/yii2",
             "version": "2.0.11.2",
             "source": {
@@ -2399,6 +2651,56 @@
             "time": "2016-12-20T13:26:02+00:00"
         },
         {
+            "name": "yiisoft/yii2-jui",
+            "version": "2.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-jui.git",
+                "reference": "843a2160cfe30f5c8b0cb2e9dbd8ee6bcf97e71d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-jui/zipball/843a2160cfe30f5c8b0cb2e9dbd8ee6bcf97e71d",
+                "reference": "843a2160cfe30f5c8b0cb2e9dbd8ee6bcf97e71d",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery-ui": "1.11.*@stable",
+                "yiisoft/yii2": ">=2.0.4"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                },
+                "asset-installer-paths": {
+                    "npm-asset-library": "vendor/npm",
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "yii\\jui\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Qiang Xue",
+                    "email": "qiang.xue@gmail.com"
+                }
+            ],
+            "description": "The Jquery UI extension for the Yii framework",
+            "keywords": [
+                "jQuery UI",
+                "yii2"
+            ],
+            "time": "2016-07-22T22:26:59+00:00"
+        },
+        {
             "name": "yiisoft/yii2-swiftmailer",
             "version": "2.0.6",
             "source": {
@@ -2538,16 +2840,16 @@
         },
         {
             "name": "codeception/base",
-            "version": "2.2.9",
+            "version": "2.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/base.git",
-                "reference": "8d5f54ce583ceaa9627c2441e20bbd4873de50cc"
+                "reference": "99142344c1c3ea147d2908473ee96bfef81a2349"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/base/zipball/8d5f54ce583ceaa9627c2441e20bbd4873de50cc",
-                "reference": "8d5f54ce583ceaa9627c2441e20bbd4873de50cc",
+                "url": "https://api.github.com/repos/Codeception/base/zipball/99142344c1c3ea147d2908473ee96bfef81a2349",
+                "reference": "99142344c1c3ea147d2908473ee96bfef81a2349",
                 "shasum": ""
             },
             "require": {
@@ -2560,6 +2862,7 @@
                 "phpunit/phpunit": ">4.8.20 <6.0",
                 "sebastian/comparator": "~1.1",
                 "sebastian/diff": "^1.4",
+                "stecman/symfony-console-completion": "^0.7.0",
                 "symfony/browser-kit": ">=2.7 <4.0",
                 "symfony/console": ">=2.7 <4.0",
                 "symfony/css-selector": ">=2.7 <4.0",
@@ -2624,7 +2927,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2017-02-04T02:16:42+00:00"
+            "time": "2017-03-25T03:34:50+00:00"
         },
         {
             "name": "codeception/specify",
@@ -4159,6 +4462,51 @@
             "time": "2016-10-03T07:35:21+00:00"
         },
         {
+            "name": "stecman/symfony-console-completion",
+            "version": "0.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stecman/symfony-console-completion.git",
+                "reference": "5461d43e53092b3d3b9dbd9d999f2054730f4bbb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stecman/symfony-console-completion/zipball/5461d43e53092b3d3b9dbd9d999f2054730f4bbb",
+                "reference": "5461d43e53092b3d3b9dbd9d999f2054730f4bbb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/console": "~2.3 || ~3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.6.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Stecman\\Component\\Symfony\\Console\\BashCompletion\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Holdaway",
+                    "email": "stephen@stecman.co.nz"
+                }
+            ],
+            "description": "Automatic BASH completion for Symfony Console Component based applications.",
+            "time": "2016-02-24T05:08:54+00:00"
+        },
+        {
             "name": "symfony/browser-kit",
             "version": "v3.2.6",
             "source": {
@@ -4871,7 +5219,8 @@
         "kartik-v/yii2-grid": 20,
         "kartik-v/yii2-editable": 20,
         "kartik-v/yii2-widgets": 20,
-        "kartik-v/yii2-datecontrol": 20
+        "kartik-v/yii2-datecontrol": 20,
+        "warrence/yii2-kartikgii": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -18,12 +18,17 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
         'y' => 
         array (
             'yii\\swiftmailer\\' => 16,
+            'yii\\jui\\' => 8,
             'yii\\gii\\' => 8,
             'yii\\faker\\' => 10,
             'yii\\debug\\' => 10,
             'yii\\composer\\' => 13,
             'yii\\bootstrap\\' => 14,
             'yii\\' => 4,
+        ),
+        'w' => 
+        array (
+            'warrence\\kartikgii\\' => 19,
         ),
         'p' => 
         array (
@@ -47,6 +52,7 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
             'kartik\\plugins\\depdrop\\' => 23,
             'kartik\\plugins\\dateformatter\\' => 29,
             'kartik\\mpdf\\' => 12,
+            'kartik\\icons\\' => 13,
             'kartik\\helpers\\' => 15,
             'kartik\\growl\\' => 13,
             'kartik\\grid\\' => 12,
@@ -60,6 +66,7 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
             'kartik\\datecontrol\\' => 19,
             'kartik\\date\\' => 12,
             'kartik\\color\\' => 13,
+            'kartik\\builder\\' => 15,
             'kartik\\base\\' => 12,
             'kartik\\alert\\' => 13,
             'kartik\\affix\\' => 13,
@@ -83,6 +90,7 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\BrowserKit\\' => 29,
+            'Stecman\\Component\\Symfony\\Console\\BashCompletion\\' => 49,
         ),
         'P' => 
         array (
@@ -114,6 +122,10 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-swiftmailer',
         ),
+        'yii\\jui\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yiisoft/yii2-jui',
+        ),
         'yii\\gii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-gii',
@@ -137,6 +149,10 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
         'yii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
+        ),
+        'warrence\\kartikgii\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/warrence/yii2-kartikgii',
         ),
         'phpDocumentor\\Reflection\\' => 
         array (
@@ -208,6 +224,10 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-mpdf',
         ),
+        'kartik\\icons\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-icons',
+        ),
         'kartik\\helpers\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-helpers',
@@ -259,6 +279,10 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
         'kartik\\color\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-colorinput',
+        ),
+        'kartik\\builder\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-builder',
         ),
         'kartik\\base\\' => 
         array (
@@ -315,6 +339,10 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
         'Symfony\\Component\\BrowserKit\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/browser-kit',
+        ),
+        'Stecman\\Component\\Symfony\\Console\\BashCompletion\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stecman/symfony-console-completion/src',
         ),
         'Psr\\Log\\' => 
         array (
