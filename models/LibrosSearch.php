@@ -12,14 +12,11 @@ use app\models\Libros;
  */
 class LibrosSearch extends Libros
 {
-	
-	 public $autorname;
-	
     public function rules()
     {
         return [
             [['libros_id', 'ano', 'tipo_libro_id', 'nro_libro', 'edicion'], 'integer'],
-            [['titulo', 'editorial','nombre'], 'safe'],
+            [['titulo', 'editorial'], 'safe'],
         ];
     }
 
@@ -31,7 +28,7 @@ class LibrosSearch extends Libros
 
     public function search($params)
     {
-        $query = Libros::find()->innerJoinWith('librosAutors',true);
+        $query = Libros::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
