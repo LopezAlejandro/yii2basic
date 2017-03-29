@@ -43,6 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
         [
     			'attribute'=>'nombre',
     			'vAlign'=>'middle',
+    			'hAlign'=>'left', 
     		//	'width'=>'210px',
 			],
 			[

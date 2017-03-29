@@ -5,6 +5,7 @@ use kartik\grid\GridView;
 use yii\widgets\Pjax;
 use yii\helpers\ArrayHelper;
 use app\models\TipoLibro;
+
 /**
  * @var yii\web\View $this
  * @var yii\data\ActiveDataProvider $dataProvider
@@ -15,12 +16,13 @@ $this->title = Yii::t('app', 'Libros');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="libros-index">
-<!--
+<!--    
     <div class="page-header">
         <h1><?= Html::encode($this->title) ?></h1>
     </div>
+--!>    
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
---!>
+
     <p>
         <?php /* echo Html::a(Yii::t('app', 'Create {modelClass}', [
     'modelClass' => 'Libros',
@@ -32,29 +34,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn',
-            	'header'=>''
+            'header'=>'',
             ],
 
 //            'libros_id',
             'titulo',
-            [
-            	'attribute'=> 'nombre',
-            	'value' => function ($model) {
-            		foreach($model->AutorAutors as $autor) {
-            			$autorNames[]=$autor->autorname;
-            			}
-            			return implode("\n",$autorNames);
-            	}
-            ],
             'editorial',
             'ano',
-            ['attribute'=>'tipo_libro_id',
-            'value' => function($model) {
-                        $tipolibro = TipoLibro::findOne($model->tipo_libro_id);
-                        return $tipolibro->descripcion;
-                },
-            'filter' => ArrayHelper::map(TipoLibro::find()->all(),'tipo_libro_id','descripcion'),
-            ],
+            [
+            	'attribute'=>'tipo_libro_id',
+		         'value' => function($model) {
+		                       $tipolibro = TipoLibro::findOne($model->tipo_libro_id);
+		                       return $tipolibro->descripcion;
+		               },
+		         'filter' => ArrayHelper::map(TipoLibro::find()->all(),'tipo_tipo_libro_id','descripcion'),
+		      ],
             'nro_libro', 
             'edicion', 
 
@@ -75,20 +69,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'condensed' => true,
         'floatHeader' => true,
         
-        'toolbar'=> [
-            ['content'=>
-                Html::a('<i class="glyphicon glyphicon-plus"></i>', ['create'], ['class' => 'btn btn-success','title'=>Yii::t('app', 'Create Lectores') ]).' '.
-                Html::a('<i class="glyphicon glyphicon-repeat"></i>', ['index'], ['data-pjax'=>0, 'class'=>'btn btn-default', 'title'=>Yii::t('kvgrid', 'Reset Grid')])
-            ],
-           '{toggleData}',
-           '{export}',
-        ],
+        'toolbar'=> [ 
+		           ['content'=> 
+		               Html::a('<i class="glyphicon glyphicon-plus"></i>', ['create'], ['class' => 'btn btn-success','title'=>Yii::t('app', 'Create Lectores') ]).' '. 
+		               Html::a('<i class="glyphicon glyphicon-repeat"></i>', ['index'], ['data-pjax'=>0, 'class'=>'btn btn-default', 'title'=>Yii::t('kvgrid', 'Reset Grid')]) 
+		           ], 
+		          '{toggleData}', 
+		          '{export}', 
+		       ], 
 
         'panel' => [
-            'heading' => '<h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i><b> '.Html::encode($this->title).' </b></h3>',
-            'type' => GridView::TYPE_PRIMARY,
-            'showFooter' => false,
-            'footer'=>false
+            'heading' => '<h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> '.Html::encode($this->title).' </h3>',
+            'type' => 'primary',
+            'footer' => false
         ],
     ]); Pjax::end(); ?>
 

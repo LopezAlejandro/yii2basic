@@ -7,13 +7,13 @@ use Yii;
 /**
  * This is the model class for table "autor".
  *
- * @property integer $id
+ * @property integer $autor_id
  * @property string $nombre
  * @property string $nacionalidad
  * @property string $nacimiento
  *
  * @property LibrosHasAutor[] $librosHasAutors
- * @property Libros[] $libros
+ * @property Libros[] $librosLibros
  */
 class Autor extends \yii\db\ActiveRecord
 {
@@ -43,7 +43,7 @@ class Autor extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
+            'autor_id' => Yii::t('app', 'Autor ID'),
             'nombre' => Yii::t('app', 'Nombre'),
             'nacionalidad' => Yii::t('app', 'Nacionalidad'),
             'nacimiento' => Yii::t('app', 'Nacimiento'),
@@ -55,15 +55,15 @@ class Autor extends \yii\db\ActiveRecord
      */
     public function getLibrosHasAutors()
     {
-        return $this->hasMany(LibrosHasAutor::className(), ['autor_id' => 'id']);
+        return $this->hasMany(LibrosHasAutor::className(), ['autor_autor_id' => 'autor_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getLibros()
+    public function getLibrosLibros()
     {
-        return $this->hasMany(Libros::className(), ['id' => 'libros_id'])->viaTable('libros_has_autor', ['autor_id' => 'id']);
+        return $this->hasMany(Libros::className(), ['libros_id' => 'libros_libros_id'])->viaTable('libros_has_autor', ['autor_autor_id' => 'autor_id']);
     }
 
     /**

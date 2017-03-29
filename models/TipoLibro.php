@@ -49,7 +49,7 @@ class TipoLibro extends \yii\db\ActiveRecord
      */
     public function getLibros()
     {
-        return $this->hasMany(Libros::className(), ['tipo_libro_id' => 'tipo_libro_id']);
+        return $this->hasMany(Libros::className(), ['tipo_tipo_libro_id' => 'tipo_libro_id']);
     }
 
     /**

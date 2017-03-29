@@ -103,9 +103,9 @@ class LibrosController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
     }
+
 
     /**
      * Finds the Libros model based on its primary key value.
