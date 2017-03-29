@@ -4,7 +4,10 @@ use yii\helpers\Html;
 use kartik\widgets\ActiveForm;
 use kartik\builder\Form;
 use kartik\datecontrol\DateControl;
-
+use kartik\builder\TabularForm;
+use kartik\grid\GridView;
+use yii\helpers\ArrayHelper;
+use app\models\TipoLibro;
 /**
  * @var yii\web\View $this
  * @var app\models\Libros $model
@@ -21,15 +24,18 @@ use kartik\datecontrol\DateControl;
         'columns' => 1,
         'attributes' => [
 
-            'titulo' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Titulo...', 'maxlength' => 45]],
+            'titulo' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Título...', 'maxlength' => 45]],
 
-            'nro_libro' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Nro Libro...']],
+            'nro_libro' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Nro de Libro...']],
 
-            'ano' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Ano...']],
+            'ano' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Año...']],
+            
+            'tipo_libro_id' => [
+            		'type' => TabularForm::INPUT_DROPDOWN_LIST, 
+            		'items'=>ArrayHelper::map(tipoLibro::find()->orderBy('descripcion')->asArray()->all(), 'tipo_libro_id', 'descripcion')
+        		],
 
-            'tipo_libro_id' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Tipo Libro ID...']],
-
-            'edicion' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Edicion...']],
+            'edicion' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Edición...']],
 
             'editorial' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Editorial...', 'maxlength' => 45]],
 

@@ -3,8 +3,9 @@
 use yii\helpers\Html;
 use kartik\detail\DetailView;
 use kartik\datecontrol\DateControl;
-use app\models\TipoLibro;
 use yii\helpers\ArrayHelper;
+use app\models\TipoLibro;
+use kartik\builder\TabularForm;
 
 /**
  * @var yii\web\View $this
@@ -20,23 +21,24 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="page-header">
         <h1><?= Html::encode($this->title) ?></h1>
     </div>
---!>
-
-    <?php echo DetailView::widget([
+-->
+<?php
+    echo DetailView::widget([
         'model' => $model,
+       
         'condensed' => false,
         'hover' => true,
-        'mode' => Yii::$app->request->get('edit') == 't' ? DetailView::MODE_EDIT : DetailView::MODE_VIEW,
+        'mode' => DetailView::MODE_EDIT,
         'panel' => [
             'heading' => $this->title,
-            'type' => DetailView::TYPE_PRIMARY,
+            'type' => DetailView::TYPE_INFO,
         ],
         'attributes' => [
             'libros_id',
             'titulo',
             'editorial',
             'ano',
-            'tipo_libro_id',
+            
             [
             	'attribute' => 'tipo_libro_id',
             	'value' => $model->tipoLibro->descripcion,
@@ -45,15 +47,17 @@ $this->params['breadcrumbs'][] = $this->title;
                     'data'=>ArrayHelper::map(TipoLibro::find()->orderBy('descripcion')->asArray()->all(), 'tipo_libro_id', 'descripcion'),
                     'options' => ['placeholder' => 'Seleccione uno ...'],
                     'pluginOptions' => ['allowClear'=>true, 'width'=>'100%'],
-          		],
-         	],
+          	],
+        		],
             'nro_libro',
             'edicion',
         ],
-        'deleteOptions' => [
-            'url' => ['delete', 'id' => $model->libros_id],
+        'deleteOptions'=>[
+                        'params' => ['custom_param'=>true],
+                         'url'=>['delete', 'id' => $model->libros_id],
         ],
         'enableEditMode' => true,
-    ]) ?>
+    ]) 
+?>
 
 </div>
