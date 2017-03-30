@@ -39,6 +39,17 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
 
             'titulo',
+            [
+					'label' => 'Autores',
+					'format' => 'ntext',
+					'attribute' => 'nombre',
+					'value' => function($model) {
+						foreach ($model->autorAutors as $autor)	{
+							$autorNames[] =$autor->nombre;
+							}
+							return implode("\n",$autorNames);			
+					},         
+            ],
             'editorial',
             'ano',
             [
