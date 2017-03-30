@@ -21,6 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <h1><?= Html::encode($this->title) ?></h1>
     </div>
 --!>    
+
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
@@ -37,7 +38,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'header'=>'',
             ],
 
-//            'libros_id',
             'titulo',
             'editorial',
             'ano',
@@ -68,7 +68,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'hover' => true,
         'condensed' => true,
         'floatHeader' => true,
-        
         'toolbar'=> [ 
 		           ['content'=> 
 		               Html::a('<i class="glyphicon glyphicon-plus"></i>', ['create'], ['class' => 'btn btn-success','title'=>Yii::t('app', 'Create Lectores') ]).' '. 

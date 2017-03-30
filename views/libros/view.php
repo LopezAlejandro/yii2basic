@@ -6,6 +6,7 @@ use kartik\datecontrol\DateControl;
 use yii\helpers\ArrayHelper;
 use app\models\TipoLibro;
 
+
 /**
  * @var yii\web\View $this
  * @var app\models\Libros $model
@@ -16,17 +17,21 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Libros'), 'url' => [
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="libros-view">
+
 <!-- 
+
     <div class="page-header">
         <h1><?= Html::encode($this->title) ?></h1>
     </div>
 -->
 
 <?php echo DetailView::widget([
+
         'model' => $model,
+       
         'condensed' => false,
         'hover' => true,
-        'mode' => Yii::$app->request->get('edit') == 't' ? DetailView::MODE_EDIT : DetailView::MODE_VIEW,
+        'mode' => DetailView::MODE_EDIT,
         'panel' => [
             'heading' => $this->title,
             'type' => DetailView::TYPE_PRIMARY,
@@ -45,6 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'pluginOptions' => ['allowClear'=>true, 'width'=>'100%'],
           	],
          ],
+
             'nro_libro',
             'edicion',
         ],
