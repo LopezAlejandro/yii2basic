@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
        
         'condensed' => false,
         'hover' => true,
-        'mode' => DetailView::MODE_EDIT,
+        'mode' => Yii::$app->request->get('edit') == 't' ? DetailView::MODE_EDIT : DetailView::MODE_VIEW,
         'panel' => [
             'heading' => $this->title,
             'type' => DetailView::TYPE_PRIMARY,
