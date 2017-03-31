@@ -4,6 +4,6 @@ return [
     'class' => 'yii\db\Connection',
     'dsn' => 'mysql:host=localhost;dbname=yii2advanced',
     'username' => 'root',
-    'password' => 'r31n4d0',
+    'password' => 'garfio',
     'charset' => 'utf8',
 ];

@@ -3,7 +3,6 @@
 namespace app\models;
 
 use Yii;
-use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "autor".
@@ -75,14 +74,4 @@ class Autor extends \yii\db\ActiveRecord
     {
         return new AutorQuery(get_called_class());
     }
-    
-    /**
- 	 * @return array
- 	 */
-	 public static function getListAutor()
-	 {
-    	$models = static::find()->orderBy('nombre')->all();
-
-    	return ArrayHelper::map($models, 'autor_id', 'nombre');
-	 }
 }

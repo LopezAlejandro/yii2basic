@@ -42,7 +42,6 @@ public $editableAutor = [];
             [['titulo', 'nro_libro'], 'required'],
             [['ano', 'tipo_libro_id', 'nro_libro', 'edicion'], 'integer'],
             [['titulo', 'editorial'], 'string', 'max' => 45],
-            [['nombre'],'safe'],
             [['tipo_libro_id'], 'exist', 'skipOnError' => true, 'targetClass' => TipoLibro::className(), 'targetAttribute' => ['tipo_libro_id' => 'tipo_tipo_libro_id']],
         ];
     }
