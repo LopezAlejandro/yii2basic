@@ -30,6 +30,12 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
         array (
             'warrence\\kartikgii\\' => 19,
         ),
+        'v' => 
+        array (
+            'voskobovich\\linker\\updaters\\' => 28,
+            'voskobovich\\linker\\interfaces\\' => 30,
+            'voskobovich\\linker\\' => 19,
+        ),
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
@@ -103,6 +109,7 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
         ),
         'F' => 
         array (
+            'Fxp\\Composer\\AssetPlugin\\' => 25,
             'Faker\\' => 6,
         ),
         'D' => 
@@ -153,6 +160,18 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
         'warrence\\kartikgii\\' => 
         array (
             0 => __DIR__ . '/..' . '/warrence/yii2-kartikgii',
+        ),
+        'voskobovich\\linker\\updaters\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/voskobovich/yii2-linker-behavior/src/updaters',
+        ),
+        'voskobovich\\linker\\interfaces\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/voskobovich/yii2-linker-behavior/src/interfaces',
+        ),
+        'voskobovich\\linker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/voskobovich/yii2-linker-behavior/src',
         ),
         'phpDocumentor\\Reflection\\' => 
         array (
@@ -355,6 +374,10 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
+        ),
+        'Fxp\\Composer\\AssetPlugin\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fxp/composer-asset-plugin',
         ),
         'Faker\\' => 
         array (

@@ -25,7 +25,8 @@
         "kartik-v/yii2-widgets" : "@dev",
         "kartik-v/yii2-datecontrol": "@dev",
         "warrence/yii2-kartikgii": "dev-master",
-        "kartik-v/yii2-widget-activeform": "@dev"
+        "kartik-v/yii2-widget-activeform": "@dev",
+	"voskobovich/yii2-linker-behavior": "^4.0"
    },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

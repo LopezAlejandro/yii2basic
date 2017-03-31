@@ -23,6 +23,10 @@ use app\models\TipoLibro;
  */
 class Libros extends \yii\db\ActiveRecord
 {
+
+	// declare authorsId property
+	public $authorIds = [];
+   
     /**
      * @inheritdoc
      */
@@ -40,6 +44,7 @@ class Libros extends \yii\db\ActiveRecord
             [['titulo', 'nro_libro'], 'required'],
             [['ano', 'tipo_libro_id', 'nro_libro', 'edicion'], 'integer'],
             [['titulo', 'editorial'], 'string', 'max' => 45],
+            [['nombre'],'safe'],
             [['tipo_libro_id'], 'exist', 'skipOnError' => true, 'targetClass' => TipoLibro::className(), 'targetAttribute' => ['tipo_libro_id' => 'tipo_tipo_libro_id']],
         ];
     }
@@ -107,4 +112,56 @@ class Libros extends \yii\db\ActiveRecord
     		$opciones = TipoLibro::find()->asArray()->all();
     		return ArrayHelper::map($opciones, 'tipo_libro_id', 'descripcion');
 	 }
+	 
+	 	// you need a getter for select2 dropdown
+	 public function getdropAuthor()
+ 	 {
+    		$data = Autor::find()->asArray()->all();
+    		return ArrayHelper::map($data, 'autor_id', 'nombre');
+ 	 }
+ 	 
+ 	 // You will need a getter for the current set o Authors in this Book
+	 public function getAuthorIds()
+ 	 {
+   		$this->authorIds = \yii\helpers\ArrayHelper::getColumn(
+     		$this->getLibrosHasAutors()->asArray()->all(),
+     		'author_id'
+   		);
+   		return $this->authorIds;
+ 	 }
+ 	 
+ 	 
+ 	 // You need to save the relations in BookHasAuthor table (adicional code for updates)
+	 public function afterSave($insert,$changedAttributes)
+ 	 {
+   		$actualAuthors = [];
+   		$authorExists = 0; //for updates
+ 
+   		if (($actualAuthors = LibrosHasAutor::find()
+    			->andWhere("libros_libros_id = $this->libros_id")
+    			->asArray()
+    			->all()) !== null) {
+      		$actualAuthors = ArrayHelper::getColumn($actualAuthors, 'autor_id');
+      		$authorExists = 1; // if there is authors relations, we will work it latter
+   			}
+ 
+   		if (!empty($this->despIds)) { //save the relations
+      		foreach ($this->despIds as $id) {
+         	$actualAuthors = array_diff($actualAuthors, [$id]); //remove remaining authors from array
+     			$r = new LibrosHasAutor();
+     			$r->libros_libros_id = $this->id;
+     			$r->libros_autor_id = $id;
+     			$r->save();
+    			}
+   		}
+ 
+   		if ($authorExists == 1) { //delete authors tha does not belong anymore to this book
+    			foreach ($actualAuthors as $remove) {
+      			$r = LibrosHasAutor::findOne(['autor_id' => $remove, 'libros_id' => $this->id]);
+      			$r->delete();
+    			}
+   		}
+ 
+   		parent::afterSave($insert,$changedAttributes); //don't forget this
+	}
 }

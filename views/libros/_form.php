@@ -20,6 +20,11 @@ use kartik\widgets\Select2;
     <?php $form = ActiveForm::begin(['type' => ActiveForm::TYPE_HORIZONTAL]); ?>
     <div class="form-group">
         <?= $form->field($model, 'titulo',['labelOptions'=>['class'=>'col-sm-2 col-md-2']]); ?> 
+        <?= $form->field($model, 'AuthorIds')->widget(Select2::classname(), [
+   			'data'=>$model->dropAuthor,
+   			'options' => ['multiple' => true]
+  				]);?>
+        
         <?= $form->field($model, 'nro_libro',['labelOptions'=>['class'=>'col-sm-2 col-md-2']])->textInput(); ?>
         <?= $form->field($model, 'ano',['labelOptions'=>['class'=>'col-sm-2 col-md-2']])->textInput(); ?>
         <?= $form->field($model, 'tipo_libro_id', ['labelOptions'=>['class'=>'col-sm-2 col-md-2']])->widget(Select2::classname(), [

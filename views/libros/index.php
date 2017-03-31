@@ -5,6 +5,7 @@ use kartik\grid\GridView;
 use yii\widgets\Pjax;
 use yii\helpers\ArrayHelper;
 use app\models\TipoLibro;
+use app\models\Autor;
 
 /**
  * @var yii\web\View $this
@@ -39,17 +40,35 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
 
             'titulo',
+//            [
+//					'label' => 'Autores',
+//					'format' => 'ntext',
+//					'attribute' => 'nombre',
+//					'value' => function($model) {
+//						foreach ($model->autorAutors as $autor)	{
+//							$autorNames[] =$autor->nombre;
+//							}
+//							return implode("\n",$autorNames);			
+//					}, 
+//					'filter' => ArrayHelper::map(Autor::find()->all(),'autor_id','nombre'),        
+//            ],
+            
             [
-					'label' => 'Autores',
-					'format' => 'ntext',
-					'attribute' => 'nombre',
-					'value' => function($model) {
+        			'attribute'=>'nombre', 
+        			'value' => function($model) {
 						foreach ($model->autorAutors as $autor)	{
 							$autorNames[] =$autor->nombre;
 							}
 							return implode("\n",$autorNames);			
-					},         
-            ],
+					}, 
+        			'filterType'=>GridView::FILTER_SELECT2,
+        			'filter'=>ArrayHelper::map(Autor::find()->orderBy('nombre')->asArray()->all(), 'autor_id', 'nombre'), 
+        			'filterWidgetOptions'=>[
+            	'pluginOptions'=>['allowClear'=>true],
+        			],
+        			'filterInputOptions'=>['placeholder'=>'Any author'],
+        			'format'=>'raw'
+    			],
             'editorial',
             'ano',
             [
@@ -58,7 +77,13 @@ $this->params['breadcrumbs'][] = $this->title;
 		                       $tipolibro = TipoLibro::findOne($model->tipo_libro_id);
 		                       return $tipolibro->descripcion;
 		               },
+		         'filterType'=>GridView::FILTER_SELECT2,      
 		         'filter' => ArrayHelper::map(TipoLibro::find()->all(),'tipo_tipo_libro_id','descripcion'),
+		         'filterWidgetOptions'=>[
+            	'pluginOptions'=>['allowClear'=>true],
+        			],
+        			'filterInputOptions'=>['placeholder'=>'Tipo de Libro'],
+        			'format'=>'raw'
 		      ],
             'nro_libro', 
             'edicion', 
