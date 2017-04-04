@@ -23,6 +23,8 @@ use yii\helpers\ArrayHelper;
 class Libros extends \yii\db\ActiveRecord
 {
 
+	 public $autorIds = [];
+	 
     /**
      * @inheritdoc
      */
@@ -94,9 +96,18 @@ class Libros extends \yii\db\ActiveRecord
     
     public static function getListaAutores()
     {
-    	$models =static::find()->orderBy('nombre')->all();
-    	return ArrayHelper::map($models,'autor_id','nombre');
+    	$data =Autor::find()->asArray()->all();
+    	return ArrayHelper::map($data,'autor_id','nombre');
     }
+    
+    public function getAutorIds()
+    {
+			$this->autorIds = getColumn(
+				$this->getLibrosHasAutors()->asArray()->all,'autor_autor_id');
+			return $this->autorIds;	    
+    }
+    
+ 
 
     /**
      * @inheritdoc
