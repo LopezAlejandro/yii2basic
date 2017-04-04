@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-use arogachev\ManyToMany\behaviors\ManyToManyBehavior;
+use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "libros".
  *
@@ -22,8 +22,6 @@ use arogachev\ManyToMany\behaviors\ManyToManyBehavior;
  */
 class Libros extends \yii\db\ActiveRecord
 {
-
-public $editableAutor = [];
 
     /**
      * @inheritdoc
@@ -93,6 +91,12 @@ public $editableAutor = [];
     {
         return $this->hasMany(Autor::className(), ['autor_id' => 'autor_autor_id'])->viaTable('libros_has_autor', ['libros_libros_id' => 'libros_id'])->orderBy('nombre');
     }
+    
+    public static function getListaAutores()
+    {
+    	$models =static::find()->orderBy('nombre')->all();
+    	return ArrayHelper::map($models,'autor_id','nombre');
+    }
 
     /**
      * @inheritdoc
@@ -103,23 +107,4 @@ public $editableAutor = [];
         return new LibrosQuery(get_called_class());
     }
 
-
-	/**
-  	* @inheritdoc
-  	*/
-	public function behaviors()
-	{
-    	return [
-        [
-            'class' => ManyToManyBehavior::className(),
-            'relations' => [
-                [
-                    'name' => 'autorAutors',
-                    // This is the same as in previous example
-                    'editableAttribute' => 'editableAutor',
-                ],
-            ],
-        ],
-    ];
-	}
 }

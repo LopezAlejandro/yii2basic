@@ -22,7 +22,14 @@ use kartik\datecontrol\DateControl;
         'attributes' => [
 
             'titulo' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Titulo...', 'maxlength' => 45]],
-
+			
+			$form->field($model, 'autor')->widget(Select2::classname(), [
+    		'data' => $data,
+    		'options' => ['placeholder' => 'Select a state ...'],
+    		'pluginOptions' => [
+        	'allowClear' => true
+    			],
+    		],
             'nro_libro' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Nro Libro...']],
 
             'ano' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Ano...']],

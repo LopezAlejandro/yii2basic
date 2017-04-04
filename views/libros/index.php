@@ -26,7 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ]), ['create'], ['class' => 'btn btn-success'])*/  ?>
     </p>
 
-    <?php Pjax::begin(); echo GridView::widget([
+    <?php Pjax::begin(); 
+    echo GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -34,14 +35,27 @@ $this->params['breadcrumbs'][] = $this->title;
 
 //            'libros_id',
             'titulo',
+    			[
+					'label' => 'Autor',
+					'format' => 'ntext',
+					'attribute' => 'autorname',
+					'value' => function($models) {
+					
+								foreach ($models->autorAutors as $autor) {
+									$autorNames[] = $autor->nombre;
+								}
+								return implode("\n",$autorNames);
+					},
+    			],
     
             'editorial',
             'ano',
 //            'tipo_libro_id',
+				 
              [
 		               'attribute'=>'tipo_libro_id',
-		                'value' => function($model) {
-		                              $tipolibro = TipoLibro::findOne($model->tipo_libro_id);
+		                'value' => function($models) {
+		                              $tipolibro = TipoLibro::findOne($models->tipo_libro_id);
 		                              return $tipolibro->descripcion;
 		                      },
 		                'filterType'=>GridView::FILTER_SELECT2,     

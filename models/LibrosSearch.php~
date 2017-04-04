@@ -12,13 +12,14 @@ use app\models\Libros;
  */
 class LibrosSearch extends Libros
 {
-	 public $autornombre;
-	     
+    
+	 public $autorname;
+	    
     public function rules()
     {
         return [
             [['libros_id', 'ano', 'tipo_libro_id', 'nro_libro', 'edicion'], 'integer'],
-            [['titulo', 'editorial','nombre'], 'safe'],
+            [['titulo', 'editorial','autorname'], 'safe'],
         ];
     }
 
@@ -34,11 +35,12 @@ class LibrosSearch extends Libros
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort' => ['attributes' => ['titulo']]
+            'sort' => ['attributes' => ['titulo','nombre','editorial'] ]
         ]);
 
         $this->load($params);
-         if( !$this->validate()) {
+        
+        if (!$this->validate()) {
             return $dataProvider;
         }
 
@@ -51,7 +53,8 @@ class LibrosSearch extends Libros
         ]);
 
         $query->andFilterWhere(['like', 'titulo', $this->titulo])
-            ->andFilterWhere(['like', 'editorial', $this->editorial]);
+            ->andFilterWhere(['like', 'editorial', $this->editorial])
+            ->andFilterWhere(['like','nombre', $this->autorname]);
 
         return $dataProvider;
     }

@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-use arogachev\ManyToMany\behaviors\ManyToManyBehavior;
+use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "libros".
  *
@@ -23,8 +23,6 @@ use arogachev\ManyToMany\behaviors\ManyToManyBehavior;
 class Libros extends \yii\db\ActiveRecord
 {
 
-public $editableAutor = [];
-
     /**
      * @inheritdoc
      */
@@ -42,7 +40,6 @@ public $editableAutor = [];
             [['titulo', 'nro_libro'], 'required'],
             [['ano', 'tipo_libro_id', 'nro_libro', 'edicion'], 'integer'],
             [['titulo', 'editorial'], 'string', 'max' => 45],
-            [['nombre'],'safe'],
             [['tipo_libro_id'], 'exist', 'skipOnError' => true, 'targetClass' => TipoLibro::className(), 'targetAttribute' => ['tipo_libro_id' => 'tipo_tipo_libro_id']],
         ];
     }
@@ -54,12 +51,12 @@ public $editableAutor = [];
     {
         return [
             'libros_id' => Yii::t('app', 'Libros ID'),
-            'titulo' => Yii::t('app', 'Titulo'),
+            'titulo' => Yii::t('app', 'Título'),
             'editorial' => Yii::t('app', 'Editorial'),
-            'ano' => Yii::t('app', 'Ano'),
-            'tipo_libro_id' => Yii::t('app', 'Tipo Libro ID'),
-            'nro_libro' => Yii::t('app', 'Nro Libro'),
-            'edicion' => Yii::t('app', 'Edicion'),
+            'ano' => Yii::t('app', 'Año'),
+            'tipo_libro_id' => Yii::t('app', 'Tipo de Libro'),
+            'nro_libro' => Yii::t('app', 'Nro de Libro'),
+            'edicion' => Yii::t('app', 'Edición'),
         ];
     }
 
@@ -94,6 +91,12 @@ public $editableAutor = [];
     {
         return $this->hasMany(Autor::className(), ['autor_id' => 'autor_autor_id'])->viaTable('libros_has_autor', ['libros_libros_id' => 'libros_id'])->orderBy('nombre');
     }
+    
+    public static function getListaAutores()
+    {
+    	$models =static::find()->orderBy('nombre')->all();
+    	return ArrayHelper::map($models,'autor_id','nombre');
+    }
 
     /**
      * @inheritdoc
@@ -104,23 +107,4 @@ public $editableAutor = [];
         return new LibrosQuery(get_called_class());
     }
 
-
-	/**
-  	* @inheritdoc
-  	*/
-	public function behaviors()
-	{
-    	return [
-        [
-            'class' => ManyToManyBehavior::className(),
-            'relations' => [
-                [
-                    'name' => 'autorAutors',
-                    // This is the same as in previous example
-                    'editableAttribute' => 'editableAutor',
-                ],
-            ],
-        ],
-    ];
-	}
 }
