@@ -84,6 +84,7 @@ class LibrosController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model ->autorIds = $model->getAutorIds();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->libros_id]);
@@ -102,7 +103,13 @@ class LibrosController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        
+        if ($model->load(Yii::$app->request->post())) {
+        
+        		LibrosHasAutor::deleteAll('libros_libros_id = :librosId',[':librosId' => $model->id]);
+				$model->delete();        		
+        		}
 
         return $this->redirect(['index']);
     }

@@ -14,14 +14,16 @@ use kartik\datecontrol\DateControl;
 
 <div class="libros-form">
 
-    <?php $form = ActiveForm::begin(['type' => ActiveForm::TYPE_HORIZONTAL]); echo Form::widget([
+    <?php $form = ActiveForm::begin(['type' => ActiveForm::TYPE_HORIZONTAL]); 
+    
+    echo Form::widget([
 
         'model' => $model,
         'form' => $form,
         'columns' => 1,
         'attributes' => [
 
-            'titulo' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Titulo...', 'maxlength' => 45]],
+        'titulo' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Titulo...', 'maxlength' => 45]],
 			
 			$form->field($model, 'autor')->widget(Select2::classname(), [
     		'data' => $data,

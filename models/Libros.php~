@@ -23,7 +23,7 @@ use yii\helpers\ArrayHelper;
 class Libros extends \yii\db\ActiveRecord
 {
 
-	 public $autorIds[];
+	 public $autorIds = [];
 	 
     /**
      * @inheritdoc

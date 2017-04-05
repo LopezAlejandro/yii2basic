@@ -107,7 +107,31 @@ class Libros extends \yii\db\ActiveRecord
 			return $this->autorIds;	    
     }
     
- 
+    public function afterSave($insert)
+    {
+			$actualAutors = [];
+			$autorExists = 0;
+			
+			if (($actualAutors = LibrosHasAutor::find()
+				->andWhere("libros_libros_id = $this->libros_id")
+				->asArray()
+				->all()) !==null) {
+				$actualAutors = ArrayHelper::getColumn($actualAutors,'autor_id');
+				$autorExists = 1;
+				}
+			
+			if (!empty($this->despIds))	{
+			
+					foreach($this->despIds as $id) {
+							$actualAutors = array_diff($actualAutors,[$id]);
+							$r = new LibroHasAutor();
+							$r -> libros_libros_id = $this->id;
+							$r -> libros_autor_id = $id;
+							$r -> save();
+							}    
+    }
+    parent::afterSave($insert);
+ }
 
     /**
      * @inheritdoc
