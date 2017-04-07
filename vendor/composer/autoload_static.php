@@ -73,11 +73,8 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
         ),
         'c' => 
         array (
+            'cornernote\\linkall\\' => 19,
             'cebe\\markdown\\' => 14,
-        ),
-        'a' => 
-        array (
-            'arogachev\\ManyToMany\\' => 21,
         ),
         'W' => 
         array (
@@ -300,13 +297,13 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-affix',
         ),
+        'cornernote\\linkall\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cornernote/yii2-linkall/src',
+        ),
         'cebe\\markdown\\' => 
         array (
             0 => __DIR__ . '/..' . '/cebe/markdown',
-        ),
-        'arogachev\\ManyToMany\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/arogachev/yii2-many-to-many',
         ),
         'Webmozart\\Assert\\' => 
         array (

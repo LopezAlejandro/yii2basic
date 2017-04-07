@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "autor".
@@ -85,4 +86,16 @@ class Autor extends \yii\db\ActiveRecord
 
     	return ArrayHelper::map($models, 'autor_id', 'nombre');
 	 }
+	 
+	 
+	 public static function getAutorByName($name)
+    {
+        $autor = Autor::find()->where(['nombre' => $name])->one();
+        if (!$autor) {
+            $autor = new Autor();
+            $autor->nombre = $name;
+            $autor->save(false);
+        }
+        return $autor;
+    }
 }

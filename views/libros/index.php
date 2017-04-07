@@ -15,7 +15,8 @@ $this->title = Yii::t('app', 'Libros');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="libros-index">
-    <div class="page-header">
+
+<!--    <div class="page-header">
         <h1><?= Html::encode($this->title) ?></h1>
     </div>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -25,6 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
     'modelClass' => 'Libros',
 ]), ['create'], ['class' => 'btn btn-success'])*/  ?>
     </p>
+-->
 
     <?php Pjax::begin(); 
     echo GridView::widget([
@@ -86,12 +88,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'condensed' => true,
         'floatHeader' => true,
 
+			'toolbar'=> [
+            ['content'=>
+                Html::a('<i class="glyphicon glyphicon-plus"></i>', ['create'], ['class' => 'btn btn-success','title'=>Yii::t('app', 'Crear Libros') ]).' '.
+                Html::a('<i class="glyphicon glyphicon-repeat"></i>', ['index'], ['data-pjax'=>0, 'class'=>'btn btn-default', 'title'=>Yii::t('kvgrid', 'Reset Grid')])
+            ],
+           '{toggleData}',
+           '{export}',
+        ],
+
         'panel' => [
             'heading' => '<h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> '.Html::encode($this->title).' </h3>',
-            'type' => 'info',
-            'before' => Html::a('<i class="glyphicon glyphicon-plus"></i> Add', ['create'], ['class' => 'btn btn-success']),
-            'after' => Html::a('<i class="glyphicon glyphicon-repeat"></i> Reset List', ['index'], ['class' => 'btn btn-info']),
-            'showFooter' => false
+            'type' => 'primary',
+            'footer' => false
         ],
     ]); Pjax::end(); ?>
 

@@ -11,6 +11,7 @@ use yii\widgets\ActiveForm;
 <div class="lectores-form">
 
     <?php $form = ActiveForm::begin(); ?>
+    <?= $form->errorSummary($model) ?>
 
     <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
 

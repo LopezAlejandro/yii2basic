@@ -54,8 +54,8 @@ $this->params['breadcrumbs'][] = $this->title;
 				 
              [
 		               'attribute'=>'tipo_libro_id',
-		                'value' => function($model) {
-		                              $tipolibro = TipoLibro::findOne($model->tipo_libro_id);
+		                'value' => function($models) {
+		                              $tipolibro = TipoLibro::findOne($models->tipo_libro_id);
 		                              return $tipolibro->descripcion;
 		                      },
 		                'filterType'=>GridView::FILTER_SELECT2,     
@@ -86,12 +86,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'condensed' => true,
         'floatHeader' => true,
 
+			'toolbar'=> [
+            ['content'=>
+                Html::a('<i class="glyphicon glyphicon-plus"></i>', ['create'], ['class' => 'btn btn-success','title'=>Yii::t('app', 'Crear Libros') ]).' '.
+                Html::a('<i class="glyphicon glyphicon-repeat"></i>', ['index'], ['data-pjax'=>0, 'class'=>'btn btn-default', 'title'=>Yii::t('kvgrid', 'Reset Grid')])
+            ],
+           '{toggleData}',
+           '{export}',
+        ],
+
         'panel' => [
             'heading' => '<h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> '.Html::encode($this->title).' </h3>',
-            'type' => 'info',
-            'before' => Html::a('<i class="glyphicon glyphicon-plus"></i> Add', ['create'], ['class' => 'btn btn-success']),
-            'after' => Html::a('<i class="glyphicon glyphicon-repeat"></i> Reset List', ['index'], ['class' => 'btn btn-info']),
-            'showFooter' => false
+            'type' => 'primary',
+            'footer' => false
         ],
     ]); Pjax::end(); ?>
 

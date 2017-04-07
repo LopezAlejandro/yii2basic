@@ -4,7 +4,10 @@ use yii\helpers\Html;
 use kartik\widgets\ActiveForm;
 use kartik\builder\Form;
 use kartik\datecontrol\DateControl;
-
+use kartik\select2\Select2;
+use yii\helpers\ArrayHelper;
+use app\models\Autor;
+use app\models\TipoLibro;
 /**
  * @var yii\web\View $this
  * @var app\models\Libros $model
@@ -14,39 +17,44 @@ use kartik\datecontrol\DateControl;
 
 <div class="libros-form">
 
-    <?php $form = ActiveForm::begin(['type' => ActiveForm::TYPE_HORIZONTAL]); echo Form::widget([
+    <?php $form = ActiveForm::begin(['type' => ActiveForm::TYPE_HORIZONTAL]); ?>
+    
+    <?= $form->errorSummary($model) ?>
 
-        'model' => $model,
-        'form' => $form,
-        'columns' => 1,
-        'attributes' => [
+            <?= $form->field($model, 'titulo')->textInput() ?>
+            <?= $form->field($model,'autor_ids')->widget(Select2::classname(),[
+            		'model' => $model,
+            		'attribute' => 'autor_ids',
+            		'data'=>ArrayHelper::map(Autor::find()->all(),'nombre','nombre'),
+            		'pluginOptions'=>['allowClear'=>true],
+            		'options'=>[
+            						'multiple' => true,
+            						'placeholder'=>'Seleccione el autor...'
+            						],
+					  ]) ?>
+				
+            <?= $form->field($model,'nro_libro')-> textInput() ?>
 
-            'titulo' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Titulo...', 'maxlength' => 45]],
-			
-			$form->field($model, 'autor')->widget(Select2::classname(), [
-    		'data' => $data,
-    		'options' => ['placeholder' => 'Select a state ...'],
-    		'pluginOptions' => [
-        	'allowClear' => true
-    			],
-    		],
-            'nro_libro' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Nro Libro...']],
+            <?= $form->field($model,'ano')-> textInput() ?>
+            
+				<?= $form->field($model, 'tipo_libro_id')->widget(Select2::classname(),[
+						'model' => $model,
+						'attribute' => 'tipo_libro_id',
+						'data' =>ArrayHelper::map(TipoLibro::find()->all(),'descripcion','descripcion'),
+						'pluginOptions' => ['allowClear'=>true],
+						'options' => [
+											'placeholder' =>'Seleccione uno...'
+										 ],
+						]);?>
 
-            'ano' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Ano...']],
+            <?= $form->field($model,'edicion')->textInput() ?>
 
-            'tipo_libro_id' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Tipo Libro ID...']],
+           <?= $form->field($model,'editorial')->textInput() ?>
 
-            'edicion' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Edicion...']],
 
-            'editorial' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter Editorial...', 'maxlength' => 45]],
-
-        ]
-
-    ]);
-
-    echo Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'),
-        ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']
-    );
-    ActiveForm::end(); ?>
+    <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'),
+        ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary'] 
+    ) ?>
+<?php  ActiveForm::end(); ?>
 
 </div>

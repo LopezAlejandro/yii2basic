@@ -67,13 +67,15 @@ class LibrosController extends Controller
         $model = new Libros;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->libros_id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
+        		Yii::$app->getSession()->setFlash('success', Yii::t('app', 'El libro ha sido actualizado.'));
+            return $this->redirect(['update', 'id' => $model->libros_id]);
+        } elseif(!\Yii::$app->request->isPost) {
+        		$model->load(Yii::$app->request->get());
+            $model->autor_ids = ArrayHelper::map($model->autorAutors, 'nombre', 'nombre');
+        }    
+            return $this->render('create', ['model' => $model,]);
     }
+    
 
     /**
      * Updates an existing Libros model.
@@ -86,12 +88,14 @@ class LibrosController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->libros_id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
+        		Yii::$app->getSession()->setFlash('success', Yii::t('app', 'El libro ha sido actualizado.'));
+            return $this->redirect(['update', 'id' => $model->libros_id]);
+        } elseif (!\Yii::$app->request->isPost) {
+        		$model->load(Yii::$app->request->get());
+        		$model->autor_ids = ArrayHelper::map($model->autorAutors, 'nombre', 'nombre');
+        	}
+            return $this->render('update', ['model' => $model,]);
+        
     }
 
     /**

@@ -8,6 +8,7 @@ use app\models\LibrosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 
 /**
  * LibrosController implements the CRUD actions for Libros model.
@@ -67,13 +68,15 @@ class LibrosController extends Controller
         $model = new Libros;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->libros_id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
+        		Yii::$app->getSession()->setFlash('success', Yii::t('app', 'El libro ha sido actualizado.'));
+            return $this->redirect(['update', 'id' => $model->libros_id]);
+        } elseif(!\Yii::$app->request->isPost) {
+        		$model->load(Yii::$app->request->get());
+            $model->autor_ids = ArrayHelper::map($model->autorAutors, 'nombre', 'nombre');
+        }    
+            return $this->render('create', ['model' => $model,]);
     }
+    
 
     /**
      * Updates an existing Libros model.
@@ -84,15 +87,16 @@ class LibrosController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $model ->autorIds = $model->getAutorIds();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->libros_id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
+        		Yii::$app->getSession()->setFlash('success', Yii::t('app', 'El libro ha sido actualizado.'));
+            return $this->redirect(['update', 'id' => $model->libros_id]);
+        } elseif (!\Yii::$app->request->isPost) {
+        		$model->load(Yii::$app->request->get());
+        		$model->autor_ids = ArrayHelper::map($model->autorAutors, 'nombre', 'nombre');
+        	}
+            return $this->render('update', ['model' => $model,]);
+        
     }
 
     /**
@@ -103,13 +107,7 @@ class LibrosController extends Controller
      */
     public function actionDelete($id)
     {
-        $model = $this->findModel($id);
-        
-        if ($model->load(Yii::$app->request->post())) {
-        
-        		LibrosHasAutor::deleteAll('libros_libros_id = :librosId',[':librosId' => $model->id]);
-				$model->delete();        		
-        		}
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }

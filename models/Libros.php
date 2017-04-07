@@ -4,6 +4,9 @@ namespace app\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
+use cornernote\linkall\LinkAllBehavior;
+use yii\db\ActiveRecord;
+
 /**
  * This is the model class for table "libros".
  *
@@ -23,7 +26,7 @@ use yii\helpers\ArrayHelper;
 class Libros extends \yii\db\ActiveRecord
 {
 
-	 public $autorIds = [];
+	 public $autor_ids;
 	 
     /**
      * @inheritdoc
@@ -39,7 +42,7 @@ class Libros extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['titulo', 'nro_libro'], 'required'],
+            [['titulo', 'nro_libro','autor_ids'], 'required'],
             [['ano', 'tipo_libro_id', 'nro_libro', 'edicion'], 'integer'],
             [['titulo', 'editorial'], 'string', 'max' => 45],
             [['tipo_libro_id'], 'exist', 'skipOnError' => true, 'targetClass' => TipoLibro::className(), 'targetAttribute' => ['tipo_libro_id' => 'tipo_tipo_libro_id']],
@@ -59,6 +62,14 @@ class Libros extends \yii\db\ActiveRecord
             'tipo_libro_id' => Yii::t('app', 'Tipo de Libro'),
             'nro_libro' => Yii::t('app', 'Nro de Libro'),
             'edicion' => Yii::t('app', 'Edición'),
+            'autor_ids' => Yii::t('app','Autor'),
+        ];
+    }
+    
+    public function behaviors()
+    {
+        return [
+            LinkAllBehavior::className(),
         ];
     }
 
@@ -94,45 +105,6 @@ class Libros extends \yii\db\ActiveRecord
         return $this->hasMany(Autor::className(), ['autor_id' => 'autor_autor_id'])->viaTable('libros_has_autor', ['libros_libros_id' => 'libros_id'])->orderBy('nombre');
     }
     
-    public static function getListaAutores()
-    {
-    	$data =Autor::find()->asArray()->all();
-    	return ArrayHelper::map($data,'autor_id','nombre');
-    }
-    
-    public function getAutorIds()
-    {
-			$this->autorIds = getColumn(
-				$this->getLibrosHasAutors()->asArray()->all,'autor_autor_id');
-			return $this->autorIds;	    
-    }
-    
-    public function afterSave($insert)
-    {
-			$actualAutors = [];
-			$autorExists = 0;
-			
-			if (($actualAutors = LibrosHasAutor::find()
-				->andWhere("libros_libros_id = $this->libros_id")
-				->asArray()
-				->all()) !==null) {
-				$actualAutors = ArrayHelper::getColumn($actualAutors,'autor_id');
-				$autorExists = 1;
-				}
-			
-			if (!empty($this->despIds))	{
-			
-					foreach($this->despIds as $id) {
-							$actualAutors = array_diff($actualAutors,[$id]);
-							$r = new LibroHasAutor();
-							$r -> libros_libros_id = $this->id;
-							$r -> libros_autor_id = $id;
-							$r -> save();
-							}    
-    }
-    parent::afterSave($insert);
- }
-
     /**
      * @inheritdoc
      * @return LibrosQuery the active query used by this AR class.
@@ -141,5 +113,25 @@ class Libros extends \yii\db\ActiveRecord
     {
         return new LibrosQuery(get_called_class());
     }
+    
+    public function afterSave($insert, $changedAttributes)
+    {
+        $autores = [];
+        foreach ($this->autor_ids as $autor_name) {
+            $autor = Autor::getAutorByName($autor_name);
+            if ($autor) {
+                $autores[] = $autor;
+            }
+        }
+        $this->linkAll('autorAutors', $autores);
+        parent::afterSave($insert, $changedAttributes);
+    }
+
+    public static function getListaTipoLibro()
+	 {
+    		$opciones = TipoLibro::find()->asArray()->all();
+    		return ArrayHelper::map($opciones, 'tipo_libro_id', 'descripcion');
+	 }  
+    
 
 }
