@@ -8,6 +8,7 @@ use app\models\LibrosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 
 /**
  * LibrosController implements the CRUD actions for Libros model.

@@ -74,7 +74,7 @@ class LibrosController extends Controller
         		$model->load(Yii::$app->request->get());
             $model->autor_ids = ArrayHelper::map($model->autorAutors, 'nombre', 'nombre');
         }    
-            return $this->render('create', ['model' => $model,]);
+            return $this->render('create', ['model' => $model]);
     }
     
 
