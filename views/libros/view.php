@@ -5,15 +5,15 @@ use kartik\detail\DetailView;
 use kartik\datecontrol\DateControl;
 use yii\helpers\ArrayHelper;
 use app\models\TipoLibro;
-use app\models\Libros;
 use app\models\Autor;
+use app\models\Libros;
 
 /**
  * @var yii\web\View $this
  * @var app\models\Libros $model
  */
 
-$this->title = $model->libros_id;
+$this->title = $model->titulo;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Libros'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -35,18 +35,25 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         'attributes' => [
             'titulo',
-    			[
-                'attribute'=>'autor_ids',
-                'format'=>'raw',
-                'value'=>Html::a('John Steinbeck', '#', ['class'=>'kv-author-link']),
-                'type'=>DetailView::INPUT_SELECT2, 
-                'widgetOptions'=>[
-                    'data'=>ArrayHelper::map(Autor::find()->orderBy('nombre')->asArray()->all(), 'autor_id', 'nombre'),
-                    'options' => ['placeholder' => 'Select ...'],
-                    'pluginOptions' => ['allowClear'=>true, 'width'=>'100%'],
-                ],
-                'valueColOptions'=>['style'=>'width:30%']
+            [
+            'attribute' => 'autor_ids',		
+        		'model' => $model,
+        		'value' => print_r($model->autorAutors),
+				'type'=> DetailView::INPUT_SELECT2,            		
+            'widgetOptions'=>[
+				      'data'=>ArrayHelper::map(Autor::find()->all(),'nombre','nombre'),
+				      'options'=>[
+            						'multiple' => true,
+            						'placeholder'=>'Seleccione el autor...'
+            						],      
+						'showToggleAll'=> false,            		
+            		'pluginOptions'=>['allowClear'=>true],
+            		
+				],
             ],
+            
+            
+    			
             'editorial',
             'ano',
             
