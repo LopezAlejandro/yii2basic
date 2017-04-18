@@ -35,24 +35,25 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         'attributes' => [
             'titulo',
-            [
-            'attribute' => 'autor_ids',		
+        [
+            'attribute' => 'autor_ids',
+            'format' => 'raw',		
         		'model' => $model,
-        		'value' => print_r($model->autorAutors),
+				'value' => implode(" , ",ArrayHelper::map($model->autorAutors, 'nombre', 'nombre')),       		
+        		
 				'type'=> DetailView::INPUT_SELECT2,            		
             'widgetOptions'=>[
-				      'data'=>ArrayHelper::map(Autor::find()->all(),'nombre','nombre'),
+				     'data'=>ArrayHelper::map(Autor::find()->all(),'nombre','nombre'),
 				      'options'=>[
             						'multiple' => true,
-            						'placeholder'=>'Seleccione el autor...'
+            						'placeholder'=>'Seleccione el autor...',
             						],      
 						'showToggleAll'=> false,            		
-            		'pluginOptions'=>['allowClear'=>true],
+            		'pluginOptions'=>['allowClear'=>true,
+            					'width'=>'100%'],
             		
 				],
-            ],
-            
-            
+        ],
     			
             'editorial',
             'ano',
@@ -73,7 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'deleteOptions' => [
             'url' => ['delete', 'id' => $model->libros_id],
         ],
-        'enableEditMode' => true,
+        'enableEditMode' => false,
     ]) ?>
 
 </div>

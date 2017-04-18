@@ -90,7 +90,7 @@ class LibrosController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
         		Yii::$app->getSession()->setFlash('success', Yii::t('app', 'El libro ha sido actualizado.'));
-            return $this->redirect(['update', 'id' => $model->libros_id]);
+            return $this->redirect(['index', 'id' => $model->libros_id]);
         } elseif (!\Yii::$app->request->isPost) {
         		$model->load(Yii::$app->request->get());
         		$model->autor_ids = ArrayHelper::map($model->autorAutors, 'nombre', 'nombre');

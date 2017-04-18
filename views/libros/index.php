@@ -78,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'buttons' => [
                     'update' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-pencil"></span>',
-                            Yii::$app->urlManager->createUrl(['libros/view', 'id' => $model->libros_id, 'edit' => 't']),
+                            Yii::$app->urlManager->createUrl(['libros/update', 'id' => $model->libros_id, 'edit' => 't']),
                             ['title' => Yii::t('yii', 'Edit'),]
                         );
                     }
