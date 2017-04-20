@@ -51,6 +51,19 @@ $this->params['breadcrumbs'][] = $this->title;
 								return implode("\n",$autorNames);
 					},
     			],
+    			
+    			[
+    				'class'=>'kartik\grid\ExpandRowColumn',
+    				'width'=>'50px',
+    				'value'=>function ($model, $key, $index, $column) {
+        				return GridView::ROW_COLLAPSED;
+    				},
+    				'detail'=>function ($model, $key, $index, $column) {
+        				return Yii::$app->controller->renderPartial('_expand-row-details', ['model'=>$model]);
+    				},
+    				'headerOptions'=>['class'=>'kartik-sheet-style'] 
+    				'expandOneOnly'=>true
+				],
     
             'editorial',
             'ano',
@@ -78,7 +91,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'buttons' => [
                     'update' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-pencil"></span>',
-                            Yii::$app->urlManager->createUrl(['libros/view', 'id' => $model->libros_id, 'edit' => 't']),
+                            Yii::$app->urlManager->createUrl(['libros/update', 'id' => $model->libros_id, 'edit' => 't']),
                             ['title' => Yii::t('yii', 'Edit'),]
                         );
                     }

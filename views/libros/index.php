@@ -51,6 +51,19 @@ $this->params['breadcrumbs'][] = $this->title;
 								return implode("\n",$autorNames);
 					},
     			],
+    			
+    			[
+    				'class'=>'kartik\grid\ExpandRowColumn',
+    				'width'=>'50px',
+    				'value'=>function ($model, $key, $index, $column) {
+        				return GridView::ROW_COLLAPSED;
+    				},
+    				'detail'=>function ($model, $key, $index, $column) {
+        				return Yii::$app->controller->renderPartial('_expand-row-details', ['model'=>$model]);
+    				},
+    				'headerOptions'=>['class'=>'kartik-sheet-style'], 
+    				'expandOneOnly'=>true
+				],
     
             'editorial',
             'ano',
