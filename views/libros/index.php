@@ -6,6 +6,7 @@ use yii\widgets\Pjax;
 use yii\helpers\ArrayHelper;
 use app\models\TipoLibro;
 use app\models\Autor;
+use app\models\CopiasSearch;
 
 /**
  * @var yii\web\View $this
@@ -58,9 +59,21 @@ $this->params['breadcrumbs'][] = $this->title;
     				'value'=>function ($model, $key, $index, $column) {
         				return GridView::ROW_COLLAPSED;
     				},
-    				'detail'=>function ($model, $key, $index, $column) {
-        				return Yii::$app->controller->renderPartial('_expand-row-details', ['model'=>$model]);
-    				},
+ //   				'detail'=>function ($model, $key, $index, $column) {
+ //       				return Yii::$app->controller->renderPartial('_expand-row-details', ['model'=>$model]);
+ //   				},
+    				
+    				'detail' => function ($model, $key, $index, $column){
+                $searchModel =new CopiasSearch();
+                $searchModel->libros_id=$model->libros_id;   // [b]here is the problem [/b]
+                 $dataProvider=$searchModel->search(yii::$app->request->queryParams);
+                 return Yii::$app->controller->renderPartial('_expand-row-details',[
+                    'searchModel'=>$searchModel,
+                    'dataProvider'=>$dataProvider,
+                    ]);
+                    },
+    				
+    				
     				'headerOptions'=>['class'=>'kartik-sheet-style'], 
     				'expandOneOnly'=>true
 				],
