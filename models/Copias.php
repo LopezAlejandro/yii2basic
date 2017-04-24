@@ -49,10 +49,10 @@ class Copias extends \yii\db\ActiveRecord
     {
         return [
             'copias_id' => Yii::t('app', 'Copias ID'),
-            'estado_id' => Yii::t('app', 'Estado ID'),
+            'estado_id' => Yii::t('app', 'Estado'),
             'libros_id' => Yii::t('app', 'Libros ID'),
-            'nro_copia' => Yii::t('app', 'Nro Copia'),
-            'deposito_id' => Yii::t('app', 'Deposito ID'),
+            'nro_copia' => Yii::t('app', 'Nro Ejemplar'),
+            'deposito_id' => Yii::t('app', 'Depósito'),
         ];
     }
 

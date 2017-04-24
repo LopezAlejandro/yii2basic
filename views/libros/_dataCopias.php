@@ -8,14 +8,14 @@ use yii\data\ArrayDataProvider;
     ]);
     $gridColumns = [
         ['class' => 'yii\grid\SerialColumn'],
-        'copias_id',
+//        'copias_id',
         [
-                'attribute' => 'estado.estado_id',
+                'attribute' => 'estado.descripcion',
                 'label' => Yii::t('app', 'Estado')
             ],
         'nro_copia',
         [
-                'attribute' => 'deposito.deposito_deposito_id',
+                'attribute' => 'deposito.descripcion_deposito',
                 'label' => Yii::t('app', 'Deposito')
             ],
         [

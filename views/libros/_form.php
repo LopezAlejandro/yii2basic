@@ -33,14 +33,14 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'libros_id', ['template' => '{input}'])->textInput(['style' => 'display:none']); ?>
 
-    <?= $form->field($model, 'titulo')->textInput(['maxlength' => true, 'placeholder' => 'Titulo']) ?>
+    <?= $form->field($model, 'titulo')->textInput(['maxlength' => true, 'placeholder' => 'Título']) ?>
 
     <?= $form->field($model, 'editorial')->textInput(['maxlength' => true, 'placeholder' => 'Editorial']) ?>
 
-    <?= $form->field($model, 'ano')->textInput(['placeholder' => 'Ano']) ?>
+    <?= $form->field($model, 'ano')->textInput(['placeholder' => 'Año']) ?>
 
     <?= $form->field($model, 'tipo_libro_id')->widget(\kartik\widgets\Select2::classname(), [
-        'data' => \yii\helpers\ArrayHelper::map(\app\models\TipoLibro::find()->orderBy('tipo_tipo_libro_id')->asArray()->all(), 'tipo_tipo_libro_id', 'tipo_tipo_libro_id'),
+        'data' => \yii\helpers\ArrayHelper::map(\app\models\TipoLibro::find()->orderBy('tipo_tipo_libro_id')->asArray()->all(), 'tipo_tipo_libro_id', 'descripcion'),
         'options' => ['placeholder' => Yii::t('app', 'Choose Tipo libro')],
         'pluginOptions' => [
             'allowClear' => true
@@ -59,12 +59,12 @@ use yii\widgets\ActiveForm;
                 'row' => \yii\helpers\ArrayHelper::toArray($model->copias),
             ]),
         ],
-        [
-            'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode(Yii::t('app', 'LibrosHasAutor')),
-            'content' => $this->render('_formLibrosHasAutor', [
-                'row' => \yii\helpers\ArrayHelper::toArray($model->librosHasAutors),
-            ]),
-        ],
+//        [
+//            'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode(Yii::t('app', 'LibrosHasAutor')),
+//            'content' => $this->render('_formLibrosHasAutor', [
+//                'row' => \yii\helpers\ArrayHelper::toArray($model->librosHasAutors),
+//            ]),
+//        ],
     ];
     echo kartik\tabs\TabsX::widget([
         'items' => $forms,
