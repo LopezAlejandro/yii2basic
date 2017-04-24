@@ -7,11 +7,11 @@ use Yii;
 /**
  * This is the model class for table "libros_has_autor".
  *
- * @property integer $libros_id
- * @property integer $autor_id
+ * @property integer $libros_libros_id
+ * @property integer $autor_autor_id
  *
- * @property Autor $autor
- * @property Libros $libros
+ * @property Autor $autorAutor
+ * @property Libros $librosLibros
  */
 class LibrosHasAutor extends \yii\db\ActiveRecord
 {
@@ -29,10 +29,10 @@ class LibrosHasAutor extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['libros_id', 'autor_id'], 'required'],
-            [['libros_id', 'autor_id'], 'integer'],
-            [['autor_id'], 'exist', 'skipOnError' => true, 'targetClass' => Autor::className(), 'targetAttribute' => ['autor_id' => 'id']],
-            [['libros_id'], 'exist', 'skipOnError' => true, 'targetClass' => Libros::className(), 'targetAttribute' => ['libros_id' => 'id']],
+            [['libros_libros_id', 'autor_autor_id'], 'required'],
+            [['libros_libros_id', 'autor_autor_id'], 'integer'],
+            [['autor_autor_id'], 'exist', 'skipOnError' => true, 'targetClass' => Autor::className(), 'targetAttribute' => ['autor_autor_id' => 'autor_id']],
+            [['libros_libros_id'], 'exist', 'skipOnError' => true, 'targetClass' => Libros::className(), 'targetAttribute' => ['libros_libros_id' => 'libros_id']],
         ];
     }
 
@@ -42,25 +42,25 @@ class LibrosHasAutor extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'libros_id' => Yii::t('app', 'Libros ID'),
-            'autor_id' => Yii::t('app', 'Autor ID'),
+            'libros_libros_id' => Yii::t('app', 'Libros Libros ID'),
+            'autor_autor_id' => Yii::t('app', 'Autor Autor ID'),
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAutor()
+    public function getAutorAutor()
     {
-        return $this->hasOne(Autor::className(), ['id' => 'autor_id']);
+        return $this->hasOne(Autor::className(), ['autor_id' => 'autor_autor_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getLibros()
+    public function getLibrosLibros()
     {
-        return $this->hasOne(Libros::className(), ['id' => 'libros_id']);
+        return $this->hasOne(Libros::className(), ['libros_id' => 'libros_libros_id']);
     }
 
     /**

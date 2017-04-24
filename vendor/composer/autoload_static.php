@@ -9,8 +9,8 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
-        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '180092cfc969a12e06f2132a203a3184' => __DIR__ . '/..' . '/codeception/verify/src/Codeception/function.php',
     );
 
@@ -34,19 +34,30 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
+        'm' => 
+        array (
+            'mootensai\\relation\\' => 19,
+            'mootensai\\enhancedgii\\' => 22,
+            'mootensai\\components\\' => 21,
+            'mootensai\\behaviors\\' => 20,
+        ),
         'k' => 
         array (
             'kartik\\widgets\\' => 15,
             'kartik\\typeahead\\' => 17,
+            'kartik\\tree\\' => 12,
             'kartik\\touchspin\\' => 17,
             'kartik\\time\\' => 12,
+            'kartik\\tabs\\' => 12,
             'kartik\\switchinput\\' => 19,
             'kartik\\spinner\\' => 15,
+            'kartik\\sortable\\' => 16,
             'kartik\\sidenav\\' => 15,
             'kartik\\select2\\' => 15,
             'kartik\\rating\\' => 14,
             'kartik\\range\\' => 13,
             'kartik\\popover\\' => 15,
+            'kartik\\plugins\\tabs\\' => 20,
             'kartik\\plugins\\popover\\' => 23,
             'kartik\\plugins\\fileinput\\' => 25,
             'kartik\\plugins\\depdrop\\' => 23,
@@ -58,7 +69,9 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
             'kartik\\grid\\' => 12,
             'kartik\\form\\' => 12,
             'kartik\\file\\' => 12,
+            'kartik\\export\\' => 14,
             'kartik\\editable\\' => 16,
+            'kartik\\dynagrid\\' => 16,
             'kartik\\dialog\\' => 14,
             'kartik\\detail\\' => 14,
             'kartik\\depdrop\\' => 15,
@@ -73,6 +86,7 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
         ),
         'c' => 
         array (
+            'creocoder\\nestedsets\\' => 21,
             'cornernote\\linkall\\' => 19,
             'cebe\\markdown\\' => 14,
         ),
@@ -161,6 +175,23 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
             1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
         ),
+        'mootensai\\relation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mootensai/yii2-relation-trait',
+        ),
+        'mootensai\\enhancedgii\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mootensai/yii2-enhanced-gii',
+        ),
+        'mootensai\\components\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mootensai/yii2-optimistic-lock-validator',
+            1 => __DIR__ . '/..' . '/mootensai/yii2-jsblock',
+        ),
+        'mootensai\\behaviors\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mootensai/yii2-uuid-behavior',
+        ),
         'kartik\\widgets\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widgets',
@@ -168,6 +199,10 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
         'kartik\\typeahead\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-typeahead',
+        ),
+        'kartik\\tree\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-tree-manager',
         ),
         'kartik\\touchspin\\' => 
         array (
@@ -177,6 +212,10 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-timepicker',
         ),
+        'kartik\\tabs\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-tabs-x',
+        ),
         'kartik\\switchinput\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-switchinput',
@@ -184,6 +223,10 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
         'kartik\\spinner\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-spinner',
+        ),
+        'kartik\\sortable\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-sortable',
         ),
         'kartik\\sidenav\\' => 
         array (
@@ -204,6 +247,10 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
         'kartik\\popover\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-popover-x',
+        ),
+        'kartik\\plugins\\tabs\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/bootstrap-tabs-x',
         ),
         'kartik\\plugins\\popover\\' => 
         array (
@@ -249,9 +296,17 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-fileinput',
         ),
+        'kartik\\export\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-export',
+        ),
         'kartik\\editable\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-editable',
+        ),
+        'kartik\\dynagrid\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-dynagrid',
         ),
         'kartik\\dialog\\' => 
         array (
@@ -296,6 +351,10 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
         'kartik\\affix\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-affix',
+        ),
+        'creocoder\\nestedsets\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/creocoder/yii2-nested-sets/src',
         ),
         'cornernote\\linkall\\' => 
         array (
@@ -389,6 +448,10 @@ class ComposerStaticInit3be80abc5ff5f0cdaf969ffec0b74728
             'Prophecy\\' => 
             array (
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
+            ),
+            'PHPExcel' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes',
             ),
         ),
         'H' => 

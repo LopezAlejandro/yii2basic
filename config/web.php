@@ -77,6 +77,10 @@ $config = [
             // automatically use kartik\widgets for each of the above formats
             'autoWidget' => true,
     		],
+    		'treemanager' =>  [
+          'class' => '\kartik\tree\Module',
+          // see settings on http://demos.krajee.com/tree-manager#module
+      	]
     		
 		],
 ];

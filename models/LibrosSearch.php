@@ -8,38 +8,50 @@ use yii\data\ActiveDataProvider;
 use app\models\Libros;
 
 /**
- * LibrosSearch represents the model behind the search form about `app\models\Libros`.
+ * app\models\LibrosSearch represents the model behind the search form about `app\models\Libros`.
  */
-class LibrosSearch extends Libros
+ class LibrosSearch extends Libros
 {
-    
-	 public $autorname;
-	    
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
             [['libros_id', 'ano', 'tipo_libro_id', 'nro_libro', 'edicion'], 'integer'],
-            [['titulo', 'editorial','autorname'], 'safe'],
+            [['titulo', 'editorial'], 'safe'],
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
     public function scenarios()
     {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
 
+    /**
+     * Creates data provider instance with search query applied
+     *
+     * @param array $params
+     *
+     * @return ActiveDataProvider
+     */
     public function search($params)
     {
-        $query = Libros::find()->innerJoinWith('autorAutors',true);
+        $query = Libros::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
 
         $this->load($params);
-        
+
         if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
             return $dataProvider;
         }
 
@@ -52,8 +64,7 @@ class LibrosSearch extends Libros
         ]);
 
         $query->andFilterWhere(['like', 'titulo', $this->titulo])
-            ->andFilterWhere(['like', 'editorial', $this->editorial])
-            ->andFilterWhere(['like','nombre', $this->autorname]);
+            ->andFilterWhere(['like', 'editorial', $this->editorial]);
 
         return $dataProvider;
     }

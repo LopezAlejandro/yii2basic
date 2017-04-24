@@ -6,6 +6,7 @@ use yii\widgets\Pjax;
 use yii\helpers\ArrayHelper;
 use app\models\TipoLibro;
 use app\models\Autor;
+use app\models\CopiasSearch;
 
 /**
  * @var yii\web\View $this
@@ -52,30 +53,25 @@ $this->params['breadcrumbs'][] = $this->title;
 					},
     			],
     			
-    			[
-    				'class'=>'kartik\grid\ExpandRowColumn',
-    				'width'=>'50px',
-    				'value'=>function ($model, $key, $index, $column) {
-        				return GridView::ROW_COLLAPSED;
-    				},
- //   				'detail'=>function ($model, $key, $index, $column) {
- //       				return Yii::$app->controller->renderPartial('_expand-row-details', ['model'=>$model]);
- //   				},
+//    			[
+//    				'class'=>'kartik\grid\ExpandRowColumn',
+//    				'width'=>'50px',
+//    				'value'=>function ($model, $key, $index, $column) {
+//        				return GridView::ROW_COLLAPSED;
+//    				},
+
+//   				'detail'=>function ($model, $key, $index, $column) {
+//       				return Yii::$app->controller->renderPartial('_expand-row-details', ['model'=>$model]);
+//   				},
     				
-    				'detail' => function ($model, $key, $index, $column){
-                $searchModel =new copiasSearch();
-                $searchModel->libros_id=$model->libros_id;   // [b]here is the problem [/b]
-                 $dataProvider=$searchModel->search(yii::$app->request->queryParams);
-                 return Yii::$app->controller->renderPartial('_expand-row-details',[
-                    'searchModel'=>$searchModel,
-                    'dataProvider'=>$dataProvider,
-                    ]);
-                    },
+//    				'detail'=>function ($model, $key, $index, $column) {
+//        			return Yii::$app->controller->renderPartial('_expand-row-details', ['model'=>$model ,'dataProvider'=>$dataProvider]);
+//    				},
     				
     				
-    				'headerOptions'=>['class'=>'kartik-sheet-style'], 
-    				'expandOneOnly'=>true
-				],
+//    				'headerOptions'=>['class'=>'kartik-sheet-style'], 
+//    				'expandOneOnly'=>true
+//				],
     
             'editorial',
             'ano',
@@ -100,14 +96,23 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update} {delete} {prestar}',
                 'buttons' => [
                     'update' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-pencil"></span>',
                             Yii::$app->urlManager->createUrl(['libros/update', 'id' => $model->libros_id, 'edit' => 't']),
                             ['title' => Yii::t('yii', 'Edit'),]
                         );
-                    }
-                ],
+                    }],
+                  
+                  'buttons' => [
+                    'prestar' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-paste"></span>',
+                            Yii::$app->urlManager->createUrl(['prestamos/create', 'id' => $model->libros_id]),
+                            ['title' => Yii::t('yii', 'Prestar'),]
+                        );
+                    }],   
+                
             ],
         ],
         'responsive' => true,

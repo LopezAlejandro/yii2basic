@@ -21,7 +21,7 @@ use app\models\TipoLibro;
     
     <?= $form->errorSummary($model) ?>
 
-            <?= $form->field($model, 'titulo')->textInput() ?>
+            <?= $form->field($model, 'titulo')->textInput(['maxlength' => 90]) ?>
             <?= $form->field($model,'autor_ids')->widget(Select2::classname(),[
             		'model' => $model,
             		'attribute' => 'autor_ids',
@@ -34,7 +34,7 @@ use app\models\TipoLibro;
             						],
 					  ]) ?>
 				
-            <?= $form->field($model,'nro_libro')-> textInput() ?>
+            <?= $form->field($model,'nro_libro')-> textInput(['maxlength' => 10]) ?>
 
             <?= $form->field($model,'ano')-> textInput()->widget(\yii\widgets\MaskedInput::classname(),['mask'=>'9999']) ?>
             
@@ -48,9 +48,9 @@ use app\models\TipoLibro;
 										 ],
 						]);?>
 
-            <?= $form->field($model,'edicion')->textInput() ?>
+            <?= $form->field($model,'edicion')->textInput(['maxlength' => 10]) ?>
 
-           <?= $form->field($model,'editorial')->textInput() ?>
+           <?= $form->field($model,'editorial')->textInput(['maxlength' => 25]) ?>
 
 
     <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'),

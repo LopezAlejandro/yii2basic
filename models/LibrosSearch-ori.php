@@ -35,7 +35,6 @@ class LibrosSearch extends Libros
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort' => ['attributes' => ['titulo','nombre','editorial'] ]
         ]);
 
         $this->load($params);
