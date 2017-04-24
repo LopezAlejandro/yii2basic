@@ -2,10 +2,10 @@
 -- version 4.6.6
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 28-03-2017 a las 16:27:17
--- Versión del servidor: 10.1.21-MariaDB
--- Versión de PHP: 7.1.2
+-- Host: localhost
+-- Generation Time: Apr 24, 2017 at 07:06 PM
+-- Server version: 10.1.22-MariaDB
+-- PHP Version: 7.1.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `yii2advanced`
+-- Database: `yii2advanced`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `autor`
+-- Table structure for table `autor`
 --
 
 CREATE TABLE `autor` (
@@ -34,17 +34,18 @@ CREATE TABLE `autor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `autor`
+-- Dumping data for table `autor`
 --
 
 INSERT INTO `autor` (`autor_id`, `nombre`, `nacionalidad`, `nacimiento`) VALUES
 (1, 'Autor 1', 'Nacionalidad 1', '1963-03-01'),
-(2, 'Autor 2', 'Nacionalidad 2', '1976-03-17');
+(2, 'Autor 2', 'Nacionalidad 2', '1976-03-17'),
+(3, 'Anonimo', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `clase_documento`
+-- Table structure for table `clase_documento`
 --
 
 CREATE TABLE `clase_documento` (
@@ -53,7 +54,7 @@ CREATE TABLE `clase_documento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `clase_documento`
+-- Dumping data for table `clase_documento`
 --
 
 INSERT INTO `clase_documento` (`clase_documento_id`, `descripcion_documento`) VALUES
@@ -63,7 +64,7 @@ INSERT INTO `clase_documento` (`clase_documento_id`, `descripcion_documento`) VA
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `clase_lector`
+-- Table structure for table `clase_lector`
 --
 
 CREATE TABLE `clase_lector` (
@@ -73,7 +74,7 @@ CREATE TABLE `clase_lector` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `clase_lector`
+-- Dumping data for table `clase_lector`
 --
 
 INSERT INTO `clase_lector` (`clase_lector_id`, `descripcion`, `dias_prestamo`) VALUES
@@ -85,7 +86,7 @@ INSERT INTO `clase_lector` (`clase_lector_id`, `descripcion`, `dias_prestamo`) V
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `copias`
+-- Table structure for table `copias`
 --
 
 CREATE TABLE `copias` (
@@ -96,10 +97,18 @@ CREATE TABLE `copias` (
   `deposito_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `copias`
+--
+
+INSERT INTO `copias` (`copias_id`, `estado_id`, `libros_id`, `nro_copia`, `deposito_id`) VALUES
+(1, 1, 1, 15790, 2),
+(2, 1, 1, 15791, 1);
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `deposito`
+-- Table structure for table `deposito`
 --
 
 CREATE TABLE `deposito` (
@@ -107,10 +116,18 @@ CREATE TABLE `deposito` (
   `descripcion_deposito` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `deposito`
+--
+
+INSERT INTO `deposito` (`deposito_deposito_id`, `descripcion_deposito`) VALUES
+(1, 'Deposito 1'),
+(2, 'Deposito 2');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estado`
+-- Table structure for table `estado`
 --
 
 CREATE TABLE `estado` (
@@ -118,10 +135,19 @@ CREATE TABLE `estado` (
   `descripcion` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `estado`
+--
+
+INSERT INTO `estado` (`estado_id`, `descripcion`) VALUES
+(1, 'Disponible'),
+(2, 'Prestado'),
+(3, 'Reparacion');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `lectores`
+-- Table structure for table `lectores`
 --
 
 CREATE TABLE `lectores` (
@@ -139,7 +165,7 @@ CREATE TABLE `lectores` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `lectores`
+-- Dumping data for table `lectores`
 --
 
 INSERT INTO `lectores` (`usuario_crea_mod`, `create_time`, `update_time`, `lectores_id`, `nombre`, `documento`, `clase_lector_id`, `clase_documento_id`, `direccion`, `telefono`, `mail`) VALUES
@@ -150,7 +176,7 @@ INSERT INTO `lectores` (`usuario_crea_mod`, `create_time`, `update_time`, `lecto
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `lectores_has_multas`
+-- Table structure for table `lectores_has_multas`
 --
 
 CREATE TABLE `lectores_has_multas` (
@@ -161,7 +187,7 @@ CREATE TABLE `lectores_has_multas` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `libros`
+-- Table structure for table `libros`
 --
 
 CREATE TABLE `libros` (
@@ -171,25 +197,35 @@ CREATE TABLE `libros` (
   `ano` int(11) DEFAULT NULL,
   `tipo_libro_id` int(11) DEFAULT NULL,
   `nro_libro` int(11) NOT NULL,
-  `edicion` int(11) DEFAULT NULL
+  `edicion` int(11) DEFAULT NULL,
+  `created_at` date NOT NULL,
+  `updated_at` date NOT NULL,
+  `created_by` date NOT NULL,
+  `updated_by` date NOT NULL,
+  `deleted_at` date NOT NULL,
+  `deleted_by` date NOT NULL,
+  `created` date NOT NULL,
+  `modified` date NOT NULL,
+  `deleted` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `libros`
+-- Dumping data for table `libros`
 --
 
-INSERT INTO `libros` (`libros_id`, `titulo`, `editorial`, `ano`, `tipo_libro_id`, `nro_libro`, `edicion`) VALUES
-(1, 'Fundación de Buenos Aires', 'Eudeba', 1986, 1, 65025, 1990),
-(2, 'Argentina Siglo XXi', 'Eudeba', 2001, 1, 0, NULL),
-(3, 'Buenos Aires en el siglo XX', 'Eudeba', 1999, 2, 0, NULL),
-(4, 'Argentina Siglo XV', 'Eudeba', 2001, 2, 0, NULL),
-(5, 'Argentina Siglo XV', 'Eudeba', 2001, 2, 0, NULL),
-(6, 'Argentina Siglo XVIII', 'Eudeba', 2002, 3, 0, NULL);
+INSERT INTO `libros` (`libros_id`, `titulo`, `editorial`, `ano`, `tipo_libro_id`, `nro_libro`, `edicion`, `created_at`, `updated_at`, `created_by`, `updated_by`, `deleted_at`, `deleted_by`, `created`, `modified`, `deleted`) VALUES
+(1, 'Fundación de Buenos Aires', 'Eudeba', 1986, 1, 65025, 1990, '0000-00-00', '2017-04-24', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
+(2, 'Argentina Siglo XXi', 'Eudeba', 2001, 1, 0, NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
+(3, 'Buenos Aires en el siglo XX', 'Eudeba', 1999, 2, 0, NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
+(4, 'Argentina Siglo XV', 'Eudeba', 2001, 2, 0, NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
+(6, 'Argentina Siglo XVIII', 'Eudeba', 2002, 3, 0, NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
+(7, 'Prueba de alta', 'Tusquets', 1999, 3, 5689, 2, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
+(8, 'Prueba de alta 2', 'Tusquets', 2001, 2, 78524, 8, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `libros_has_autor`
+-- Table structure for table `libros_has_autor`
 --
 
 CREATE TABLE `libros_has_autor` (
@@ -198,40 +234,24 @@ CREATE TABLE `libros_has_autor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `libros_has_autor`
+-- Dumping data for table `libros_has_autor`
 --
 
 INSERT INTO `libros_has_autor` (`libros_libros_id`, `autor_autor_id`) VALUES
 (1, 1),
+(1, 3),
 (2, 1),
 (3, 1),
-(4, 2),
-(5, 2),
-(6, 2);
+(4, 3),
+(6, 1),
+(6, 2),
+(7, 3),
+(8, 2);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `migration`
---
-
-CREATE TABLE `migration` (
-  `version` varchar(180) NOT NULL,
-  `apply_time` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `migration`
---
-
-INSERT INTO `migration` (`version`, `apply_time`) VALUES
-('m000000_000000_base', 1488805918),
-('m130524_201442_init', 1488805925);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `multas`
+-- Table structure for table `multas`
 --
 
 CREATE TABLE `multas` (
@@ -243,7 +263,7 @@ CREATE TABLE `multas` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `prestamos`
+-- Table structure for table `prestamos`
 --
 
 CREATE TABLE `prestamos` (
@@ -257,7 +277,7 @@ CREATE TABLE `prestamos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `prestamos_has_multas`
+-- Table structure for table `prestamos_has_multas`
 --
 
 CREATE TABLE `prestamos_has_multas` (
@@ -268,7 +288,7 @@ CREATE TABLE `prestamos_has_multas` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipo_libro`
+-- Table structure for table `tipo_libro`
 --
 
 CREATE TABLE `tipo_libro` (
@@ -277,7 +297,7 @@ CREATE TABLE `tipo_libro` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `tipo_libro`
+-- Dumping data for table `tipo_libro`
 --
 
 INSERT INTO `tipo_libro` (`tipo_tipo_libro_id`, `descripcion`) VALUES
@@ -285,48 +305,30 @@ INSERT INTO `tipo_libro` (`tipo_tipo_libro_id`, `descripcion`) VALUES
 (2, 'Préstamo a Domicilio'),
 (3, 'Préstamo de Fin de Semana');
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `user`
---
-
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
-  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `auth_key` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `password_hash` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `password_reset_token` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `status` smallint(6) NOT NULL DEFAULT '10',
-  `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `autor`
+-- Indexes for table `autor`
 --
 ALTER TABLE `autor`
   ADD PRIMARY KEY (`autor_id`);
 
 --
--- Indices de la tabla `clase_documento`
+-- Indexes for table `clase_documento`
 --
 ALTER TABLE `clase_documento`
   ADD PRIMARY KEY (`clase_documento_id`);
 
 --
--- Indices de la tabla `clase_lector`
+-- Indexes for table `clase_lector`
 --
 ALTER TABLE `clase_lector`
   ADD PRIMARY KEY (`clase_lector_id`);
 
 --
--- Indices de la tabla `copias`
+-- Indexes for table `copias`
 --
 ALTER TABLE `copias`
   ADD PRIMARY KEY (`copias_id`),
@@ -335,19 +337,19 @@ ALTER TABLE `copias`
   ADD KEY `fk_copias_1_idx` (`deposito_id`);
 
 --
--- Indices de la tabla `deposito`
+-- Indexes for table `deposito`
 --
 ALTER TABLE `deposito`
   ADD PRIMARY KEY (`deposito_deposito_id`);
 
 --
--- Indices de la tabla `estado`
+-- Indexes for table `estado`
 --
 ALTER TABLE `estado`
   ADD PRIMARY KEY (`estado_id`);
 
 --
--- Indices de la tabla `lectores`
+-- Indexes for table `lectores`
 --
 ALTER TABLE `lectores`
   ADD PRIMARY KEY (`lectores_id`),
@@ -355,7 +357,7 @@ ALTER TABLE `lectores`
   ADD KEY `fk_lectores_clase_documento1_idx` (`clase_documento_id`);
 
 --
--- Indices de la tabla `lectores_has_multas`
+-- Indexes for table `lectores_has_multas`
 --
 ALTER TABLE `lectores_has_multas`
   ADD PRIMARY KEY (`lectores_lectores_id`,`lectores_multas_id`),
@@ -363,14 +365,14 @@ ALTER TABLE `lectores_has_multas`
   ADD KEY `fk_lectores_has_multas_lectores1` (`lectores_lectores_id`);
 
 --
--- Indices de la tabla `libros`
+-- Indexes for table `libros`
 --
 ALTER TABLE `libros`
   ADD PRIMARY KEY (`libros_id`),
   ADD KEY `tipo_libro_id` (`tipo_libro_id`);
 
 --
--- Indices de la tabla `libros_has_autor`
+-- Indexes for table `libros_has_autor`
 --
 ALTER TABLE `libros_has_autor`
   ADD PRIMARY KEY (`libros_libros_id`,`autor_autor_id`),
@@ -378,19 +380,13 @@ ALTER TABLE `libros_has_autor`
   ADD KEY `fk_libros_has_autor_libros1_idx` (`libros_libros_id`);
 
 --
--- Indices de la tabla `migration`
---
-ALTER TABLE `migration`
-  ADD PRIMARY KEY (`version`);
-
---
--- Indices de la tabla `multas`
+-- Indexes for table `multas`
 --
 ALTER TABLE `multas`
   ADD PRIMARY KEY (`multas_id`);
 
 --
--- Indices de la tabla `prestamos`
+-- Indexes for table `prestamos`
 --
 ALTER TABLE `prestamos`
   ADD PRIMARY KEY (`prestamos_id`),
@@ -398,7 +394,7 @@ ALTER TABLE `prestamos`
   ADD KEY `fk_prestamos_copias1` (`copias_id`);
 
 --
--- Indices de la tabla `prestamos_has_multas`
+-- Indexes for table `prestamos_has_multas`
 --
 ALTER TABLE `prestamos_has_multas`
   ADD PRIMARY KEY (`prestamos_prestamos_id`,`prestamos_multas_id`),
@@ -406,85 +402,71 @@ ALTER TABLE `prestamos_has_multas`
   ADD KEY `fk_prestamos_has_multas_prestamos1` (`prestamos_prestamos_id`);
 
 --
--- Indices de la tabla `tipo_libro`
+-- Indexes for table `tipo_libro`
 --
 ALTER TABLE `tipo_libro`
   ADD PRIMARY KEY (`tipo_tipo_libro_id`);
 
 --
--- Indices de la tabla `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `password_reset_token` (`password_reset_token`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `autor`
+-- AUTO_INCREMENT for table `autor`
 --
 ALTER TABLE `autor`
-  MODIFY `autor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `autor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de la tabla `clase_documento`
+-- AUTO_INCREMENT for table `clase_documento`
 --
 ALTER TABLE `clase_documento`
   MODIFY `clase_documento_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT de la tabla `clase_lector`
+-- AUTO_INCREMENT for table `clase_lector`
 --
 ALTER TABLE `clase_lector`
   MODIFY `clase_lector_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT de la tabla `copias`
+-- AUTO_INCREMENT for table `copias`
 --
 ALTER TABLE `copias`
-  MODIFY `copias_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `copias_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT de la tabla `estado`
+-- AUTO_INCREMENT for table `estado`
 --
 ALTER TABLE `estado`
-  MODIFY `estado_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `estado_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de la tabla `lectores`
+-- AUTO_INCREMENT for table `lectores`
 --
 ALTER TABLE `lectores`
-  MODIFY `lectores_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `lectores_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT de la tabla `libros`
+-- AUTO_INCREMENT for table `libros`
 --
 ALTER TABLE `libros`
-  MODIFY `libros_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `libros_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT de la tabla `multas`
+-- AUTO_INCREMENT for table `multas`
 --
 ALTER TABLE `multas`
   MODIFY `multas_id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `prestamos`
+-- AUTO_INCREMENT for table `prestamos`
 --
 ALTER TABLE `prestamos`
   MODIFY `prestamos_id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `tipo_libro`
+-- AUTO_INCREMENT for table `tipo_libro`
 --
 ALTER TABLE `tipo_libro`
   MODIFY `tipo_tipo_libro_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de la tabla `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `copias`
+-- Constraints for table `copias`
 --
 ALTER TABLE `copias`
   ADD CONSTRAINT `fk_copias_1` FOREIGN KEY (`deposito_id`) REFERENCES `deposito` (`deposito_deposito_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -492,41 +474,41 @@ ALTER TABLE `copias`
   ADD CONSTRAINT `fk_copias_libros1` FOREIGN KEY (`libros_id`) REFERENCES `libros` (`libros_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `lectores`
+-- Constraints for table `lectores`
 --
 ALTER TABLE `lectores`
   ADD CONSTRAINT `fk_lectores_clase_documento1` FOREIGN KEY (`clase_documento_id`) REFERENCES `clase_documento` (`clase_documento_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_lectores_clase_lector1` FOREIGN KEY (`clase_lector_id`) REFERENCES `clase_lector` (`clase_lector_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `lectores_has_multas`
+-- Constraints for table `lectores_has_multas`
 --
 ALTER TABLE `lectores_has_multas`
   ADD CONSTRAINT `fk_lectores_has_multas_lectores1` FOREIGN KEY (`lectores_lectores_id`) REFERENCES `lectores` (`lectores_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_lectores_has_multas_multas1` FOREIGN KEY (`lectores_multas_id`) REFERENCES `multas` (`multas_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `libros`
+-- Constraints for table `libros`
 --
 ALTER TABLE `libros`
   ADD CONSTRAINT `libros_ibfk_1` FOREIGN KEY (`tipo_libro_id`) REFERENCES `tipo_libro` (`tipo_tipo_libro_id`);
 
 --
--- Filtros para la tabla `libros_has_autor`
+-- Constraints for table `libros_has_autor`
 --
 ALTER TABLE `libros_has_autor`
   ADD CONSTRAINT `fk_libros_has_autor_autor1` FOREIGN KEY (`autor_autor_id`) REFERENCES `autor` (`autor_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_libros_has_autor_libros1` FOREIGN KEY (`libros_libros_id`) REFERENCES `libros` (`libros_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_libros_has_autor_libros1` FOREIGN KEY (`libros_libros_id`) REFERENCES `libros` (`libros_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `prestamos`
+-- Constraints for table `prestamos`
 --
 ALTER TABLE `prestamos`
   ADD CONSTRAINT `fk_prestamos_copias1` FOREIGN KEY (`copias_id`) REFERENCES `copias` (`copias_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_prestamos_lectores1` FOREIGN KEY (`lectores_idl`) REFERENCES `lectores` (`lectores_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `prestamos_has_multas`
+-- Constraints for table `prestamos_has_multas`
 --
 ALTER TABLE `prestamos_has_multas`
   ADD CONSTRAINT `fk_prestamos_has_multas_multas1` FOREIGN KEY (`prestamos_multas_id`) REFERENCES `multas` (`multas_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
