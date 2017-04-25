@@ -19,6 +19,7 @@ class Libros extends BaseLibros
 	    [
             [['titulo', 'nro_libro'], 'required'],
             [['ano', 'tipo_libro_id', 'nro_libro', 'edicion'], 'integer'],
+            [['created_at', 'updated_at', 'created_by', 'updated_by', 'deleted_at', 'deleted_by', 'created', 'modified', 'deleted'], 'safe'],
             [['titulo', 'editorial'], 'string', 'max' => 45]
         ]);
     }
@@ -30,12 +31,12 @@ class Libros extends BaseLibros
     {
         return [
             'libros_id' => Yii::t('app', 'Libros ID'),
-            'titulo' => Yii::t('app', 'Título'),
+            'titulo' => Yii::t('app', 'Titulo'),
             'editorial' => Yii::t('app', 'Editorial'),
-            'ano' => Yii::t('app', 'Año'),
-            'tipo_libro_id' => Yii::t('app', 'Tipo de Libro'),
-            'nro_libro' => Yii::t('app', 'Nro de Libro'),
-            'edicion' => Yii::t('app', 'Edición'),
+            'ano' => Yii::t('app', 'Ano'),
+            'tipo_libro_id' => Yii::t('app', 'Tipo Libro ID'),
+            'nro_libro' => Yii::t('app', 'Nro Libro'),
+            'edicion' => Yii::t('app', 'Edicion'),
         ];
     }
 }

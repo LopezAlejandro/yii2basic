@@ -45,18 +45,6 @@ $this->registerJs($search);
         ],
         ['attribute' => 'libros_id', 'visible' => false],
         'titulo',
-        [
-           'label' => 'Autor',
-           'format' => 'ntext',
-           'attribute' => 'autorname',
-           'value' => function($models) {
-                               foreach ($models->autorAutors as $autor) {
-                                        $autorNames[] = $autor->nombre;
-                                        }
-                                        return implode("\n",$autorNames);
-                                        },
-        ],
-
         'editorial',
         'ano',
         [
@@ -64,16 +52,16 @@ $this->registerJs($search);
                 'label' => Yii::t('app', 'Tipo Libro'),
                 'value' => function($model){
                     if ($model->tipoLibro)
-                    {return $model->tipoLibro->descripcion;}
+                    {return $model->tipoLibro->tipo_tipo_libro_id;}
                     else
                     {return NULL;}
                 },
                 'filterType' => GridView::FILTER_SELECT2,
-                'filter' => \yii\helpers\ArrayHelper::map(\app\models\TipoLibro::find()->asArray()->all(), 'tipo_tipo_libro_id', 'descripcion'),
+                'filter' => \yii\helpers\ArrayHelper::map(\app\models\TipoLibro::find()->asArray()->all(), 'tipo_tipo_libro_id', 'tipo_tipo_libro_id'),
                 'filterWidgetOptions' => [
                     'pluginOptions' => ['allowClear' => true],
                 ],
-                'filterInputOptions' => ['placeholder' => 'Tipo de libro', 'id' => 'grid-libros-search-tipo_libro_id']
+                'filterInputOptions' => ['placeholder' => 'Tipo libro', 'id' => 'grid-libros-search-tipo_libro_id']
             ],
         'nro_libro',
         'edicion',

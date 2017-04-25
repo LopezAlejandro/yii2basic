@@ -5,6 +5,7 @@ namespace app\models\base;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\BlameableBehavior;
+use mootensai\behaviors\UUIDBehavior;
 
 /**
  * This is the base model class for table "libros".
@@ -16,6 +17,15 @@ use yii\behaviors\BlameableBehavior;
  * @property integer $tipo_libro_id
  * @property integer $nro_libro
  * @property integer $edicion
+ * @property string $created_at
+ * @property string $updated_at
+ * @property string $created_by
+ * @property string $updated_by
+ * @property string $deleted_at
+ * @property string $deleted_by
+ * @property string $created
+ * @property string $modified
+ * @property string $deleted
  *
  * @property \app\models\Copias[] $copias
  * @property \app\models\TipoLibro $tipoLibro
@@ -34,6 +44,7 @@ class Libros extends \yii\db\ActiveRecord
         return [
             [['titulo', 'nro_libro'], 'required'],
             [['ano', 'tipo_libro_id', 'nro_libro', 'edicion'], 'integer'],
+            [['created_at', 'updated_at', 'created_by', 'updated_by', 'deleted_at', 'deleted_by', 'created', 'modified', 'deleted'], 'safe'],
             [['titulo', 'editorial'], 'string', 'max' => 45]
         ];
     }
@@ -53,12 +64,12 @@ class Libros extends \yii\db\ActiveRecord
     {
         return [
             'libros_id' => Yii::t('app', 'Libros ID'),
-            'titulo' => Yii::t('app', 'Título'),
+            'titulo' => Yii::t('app', 'Titulo'),
             'editorial' => Yii::t('app', 'Editorial'),
-            'ano' => Yii::t('app', 'Año'),
-            'tipo_libro_id' => Yii::t('app', 'Tipo de Libro'),
-            'nro_libro' => Yii::t('app', 'Nro de Libro'),
-            'edicion' => Yii::t('app', 'Edición'),
+            'ano' => Yii::t('app', 'Ano'),
+            'tipo_libro_id' => Yii::t('app', 'Tipo Libro ID'),
+            'nro_libro' => Yii::t('app', 'Nro Libro'),
+            'edicion' => Yii::t('app', 'Edicion'),
         ];
     }
     
@@ -111,6 +122,10 @@ class Libros extends \yii\db\ActiveRecord
                 'class' => BlameableBehavior::className(),
                 'createdByAttribute' => 'created_by',
                 'updatedByAttribute' => 'updated_by',
+            ],
+            'uuid' => [
+                'class' => UUIDBehavior::className(),
+                'column' => 'libros_id',
             ],
         ];
     }

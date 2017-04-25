@@ -27,7 +27,7 @@ echo TabularForm::widget([
             'type' => TabularForm::INPUT_WIDGET,
             'widgetClass' => \kartik\widgets\Select2::className(),
             'options' => [
-                'data' => \yii\helpers\ArrayHelper::map(\app\models\Estado::find()->orderBy('estado_id')->asArray()->all(), 'estado_id', 'descripcion'),
+                'data' => \yii\helpers\ArrayHelper::map(\app\models\Estado::find()->orderBy('estado_id')->asArray()->all(), 'estado_id', 'estado_id'),
                 'options' => ['placeholder' => Yii::t('app', 'Choose Estado')],
             ],
             'columnOptions' => ['width' => '200px']
@@ -38,7 +38,7 @@ echo TabularForm::widget([
             'type' => TabularForm::INPUT_WIDGET,
             'widgetClass' => \kartik\widgets\Select2::className(),
             'options' => [
-                'data' => \yii\helpers\ArrayHelper::map(\app\models\Deposito::find()->orderBy('deposito_deposito_id')->asArray()->all(), 'deposito_deposito_id', 'descripcion_deposito'),
+                'data' => \yii\helpers\ArrayHelper::map(\app\models\Deposito::find()->orderBy('deposito_deposito_id')->asArray()->all(), 'deposito_deposito_id', 'deposito_deposito_id'),
                 'options' => ['placeholder' => Yii::t('app', 'Choose Deposito')],
             ],
             'columnOptions' => ['width' => '200px']

@@ -19,7 +19,7 @@ use app\models\Libros;
     {
         return [
             [['libros_id', 'ano', 'tipo_libro_id', 'nro_libro', 'edicion'], 'integer'],
-            [['titulo', 'editorial'], 'safe'],
+            [['titulo', 'editorial', 'created_at', 'updated_at', 'created_by', 'updated_by', 'deleted_at', 'deleted_by', 'created', 'modified', 'deleted'], 'safe'],
         ];
     }
 
@@ -61,6 +61,15 @@ use app\models\Libros;
             'tipo_libro_id' => $this->tipo_libro_id,
             'nro_libro' => $this->nro_libro,
             'edicion' => $this->edicion,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'created_by' => $this->created_by,
+            'updated_by' => $this->updated_by,
+            'deleted_at' => $this->deleted_at,
+            'deleted_by' => $this->deleted_by,
+            'created' => $this->created,
+            'modified' => $this->modified,
+            'deleted' => $this->deleted,
         ]);
 
         $query->andFilterWhere(['like', 'titulo', $this->titulo])
