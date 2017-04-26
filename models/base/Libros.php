@@ -67,8 +67,8 @@ class Libros extends \yii\db\ActiveRecord
             'titulo' => Yii::t('app', 'Título'),
             'editorial' => Yii::t('app', 'Editorial'),
             'ano' => Yii::t('app', 'Año'),
-            'tipo_libro_id' => Yii::t('app', 'Tipo de Libro'),
-            'nro_libro' => Yii::t('app', 'Nro de Libro'),
+            'tipo_libro_id' => Yii::t('app', 'Tipo de libro'),
+            'nro_libro' => Yii::t('app', 'Nro de libro'),
             'edicion' => Yii::t('app', 'Edición'),
         ];
     }
@@ -122,6 +122,7 @@ class Libros extends \yii\db\ActiveRecord
                 'class' => BlameableBehavior::className(),
                 'createdByAttribute' => 'created_by',
                 'updatedByAttribute' => 'updated_by',
+                'value' => '1',
             ],
             'uuid' => [
                 'class' => UUIDBehavior::className(),

@@ -10,6 +10,9 @@ use \app\models\base\Libros as BaseLibros;
  */
 class Libros extends BaseLibros
 {
+	
+	 public $autor_ids;
+	 
     /**
      * @inheritdoc
      */
@@ -17,7 +20,7 @@ class Libros extends BaseLibros
     {
         return array_replace_recursive(parent::rules(),
 	    [
-            [['titulo', 'nro_libro'], 'required'],
+            [['titulo', 'nro_libro','autor_ids'], 'required'],
             [['ano', 'tipo_libro_id', 'nro_libro', 'edicion'], 'integer'],
             [['created_at', 'updated_at', 'created_by', 'updated_by', 'deleted_at', 'deleted_by', 'created', 'modified', 'deleted'], 'safe'],
             [['titulo', 'editorial'], 'string', 'max' => 45]

@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use kartik\grid\GridView;
+use yii\helpers\ArrayHelper;
+use kartik\select2\Select2;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Libros */
@@ -18,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <h2><?= Yii::t('app', 'Libros').' '. Html::encode($this->title) ?></h2>
         </div>
         <div class="col-sm-3" style="margin-top: 15px">
+<!--
 <?=             
              Html::a('<i class="fa glyphicon glyphicon-hand-up"></i> ' . Yii::t('app', 'PDF'), 
                 ['pdf', 'id' => $model->libros_id],
@@ -38,6 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
             ])
             ?>
+-->            
         </div>
     </div>
 
@@ -46,6 +50,27 @@ $this->params['breadcrumbs'][] = $this->title;
     $gridColumn = [
         ['attribute' => 'libros_id', 'visible' => false],
         'titulo',
+        [
+            'attribute' => 'autor_ids',
+            'format' => 'raw',
+                        'model' => $model,
+                                'value' => implode(" , ",ArrayHelper::map($model->autorAutors, 'autor_id', 'nombre')),
+
+
+                                'type'=> GridView::INPUT_SELECT2,
+            'widgetOptions'=>[
+                                     'data'=>ArrayHelper::map(Autor::find()->all(),'autor_id','nombre'),
+                                      'options'=>[
+                                                        'multiple' => true,
+                                                        'placeholder'=>'Seleccione el autor...',
+                                                        ],
+                                                'showToggleAll'=> false,
+                        'pluginOptions'=>['allowClear'=>true,
+                                                'width'=>'100%'],
+
+                                ],
+        ],
+
         'editorial',
         'ano',
         [
@@ -94,6 +119,7 @@ if($providerCopias->totalCount){
     </div>
     
     <div class="row">
+<!--
 <?php
 if($providerLibrosHasAutor->totalCount){
     $gridColumnLibrosHasAutor = [
@@ -115,5 +141,6 @@ if($providerLibrosHasAutor->totalCount){
     ]);
 }
 ?>
+-->
     </div>
 </div>
