@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'editorial',
         'ano',
         [
-            'attribute' => 'tipoLibro.tipo_tipo_libro_id',
+            'attribute' => 'tipoLibro.descripcion',
             'label' => Yii::t('app', 'Tipo Libro'),
         ],
         'nro_libro',
@@ -67,15 +67,15 @@ $this->params['breadcrumbs'][] = $this->title;
 if($providerCopias->totalCount){
     $gridColumnCopias = [
         ['class' => 'yii\grid\SerialColumn'],
-            'copias_id',
+          //  'copias_id',
             [
-                'attribute' => 'estado.estado_id',
+                'attribute' => 'estado.descripcion',
                 'label' => Yii::t('app', 'Estado')
             ],
             ['attribute' => 'libros_id', 'visible' => false],
             'nro_copia',
             [
-                'attribute' => 'deposito.deposito_deposito_id',
+                'attribute' => 'deposito.descripcion_deposito',
                 'label' => Yii::t('app', 'Deposito')
             ],
     ];

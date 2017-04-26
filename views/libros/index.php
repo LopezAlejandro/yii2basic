@@ -20,11 +20,12 @@ $this->registerJs($search);
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+<!--
     <p>
         <?= Html::a(Yii::t('app', 'Create Libros'), ['create'], ['class' => 'btn btn-success']) ?>
         <?= Html::a(Yii::t('app', 'Advance Search'), '#', ['class' => 'btn btn-info search-button']) ?>
     </p>
+-->
     <div class="search-form" style="display:none">
         <?=  $this->render('_search', ['model' => $searchModel]); ?>
     </div>
@@ -52,12 +53,12 @@ $this->registerJs($search);
                 'label' => Yii::t('app', 'Tipo Libro'),
                 'value' => function($model){
                     if ($model->tipoLibro)
-                    {return $model->tipoLibro->tipo_tipo_libro_id;}
+                    {return $model->tipoLibro->descripcion;}
                     else
                     {return NULL;}
                 },
                 'filterType' => GridView::FILTER_SELECT2,
-                'filter' => \yii\helpers\ArrayHelper::map(\app\models\TipoLibro::find()->asArray()->all(), 'tipo_tipo_libro_id', 'tipo_tipo_libro_id'),
+                'filter' => \yii\helpers\ArrayHelper::map(\app\models\TipoLibro::find()->asArray()->all(), 'tipo_tipo_libro_id', 'descripcion'),
                 'filterWidgetOptions' => [
                     'pluginOptions' => ['allowClear' => true],
                 ],
@@ -82,6 +83,10 @@ $this->registerJs($search);
         ],
         // your toolbar can include the additional full export menu
         'toolbar' => [
+				['content'=>
+                Html::a('<i class="glyphicon glyphicon-plus"></i>', ['create'], ['class' => 'btn btn-success','title'=>Yii::t('app', 'Crear Libros')]).' '.
+                Html::a('<i class="glyphicon glyphicon-repeat"></i>', ['index'], ['data-pjax'=>0, 'class'=>'btn btn-default', 'title'=>Yii::t('kvgrid', 'Reset Grid')])
+            ],        
             '{export}',
             ExportMenu::widget([
                 'dataProvider' => $dataProvider,
@@ -96,6 +101,7 @@ $this->registerJs($search);
                     ],
                 ],
             ]) ,
+            
         ],
     ]); ?>
 

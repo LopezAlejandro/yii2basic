@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 24, 2017 at 07:06 PM
+-- Generation Time: Apr 26, 2017 at 03:00 PM
 -- Server version: 10.1.22-MariaDB
 -- PHP Version: 7.1.3
 
@@ -103,7 +103,12 @@ CREATE TABLE `copias` (
 
 INSERT INTO `copias` (`copias_id`, `estado_id`, `libros_id`, `nro_copia`, `deposito_id`) VALUES
 (1, 1, 1, 15790, 2),
-(2, 1, 1, 15791, 1);
+(2, 1, 1, 15791, 1),
+(3, 1, 9, 14569, 1),
+(4, 2, 9, 14570, 1),
+(5, 1, 9, 14571, 2),
+(6, 1, 2, 6987, 1),
+(7, 1, 2, 6988, 1);
 
 -- --------------------------------------------------------
 
@@ -200,10 +205,10 @@ CREATE TABLE `libros` (
   `edicion` int(11) DEFAULT NULL,
   `created_at` date NOT NULL,
   `updated_at` date NOT NULL,
-  `created_by` date NOT NULL,
-  `updated_by` date NOT NULL,
+  `created_by` date DEFAULT NULL,
+  `updated_by` date DEFAULT NULL,
   `deleted_at` date NOT NULL,
-  `deleted_by` date NOT NULL,
+  `deleted_by` date DEFAULT NULL,
   `created` date NOT NULL,
   `modified` date NOT NULL,
   `deleted` date NOT NULL
@@ -215,12 +220,13 @@ CREATE TABLE `libros` (
 
 INSERT INTO `libros` (`libros_id`, `titulo`, `editorial`, `ano`, `tipo_libro_id`, `nro_libro`, `edicion`, `created_at`, `updated_at`, `created_by`, `updated_by`, `deleted_at`, `deleted_by`, `created`, `modified`, `deleted`) VALUES
 (1, 'Fundación de Buenos Aires', 'Eudeba', 1986, 1, 65025, 1990, '0000-00-00', '2017-04-24', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
-(2, 'Argentina Siglo XXi', 'Eudeba', 2001, 1, 0, NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
+(2, 'Argentina Siglo XXi', 'Eudeba', 2001, 1, 753, 3, '0000-00-00', '2017-04-26', '0000-00-00', NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
 (3, 'Buenos Aires en el siglo XX', 'Eudeba', 1999, 2, 0, NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
 (4, 'Argentina Siglo XV', 'Eudeba', 2001, 2, 0, NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
 (6, 'Argentina Siglo XVIII', 'Eudeba', 2002, 3, 0, NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
 (7, 'Prueba de alta', 'Tusquets', 1999, 3, 5689, 2, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
-(8, 'Prueba de alta 2', 'Tusquets', 2001, 2, 78524, 8, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00');
+(8, 'Prueba de alta 2', 'Tusquets', 2001, 2, 78524, 8, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
+(9, 'Nueva Prueba', 'Tusquets', 1986, 1, 852, 1, '2017-04-26', '2017-04-26', NULL, NULL, '0000-00-00', NULL, '0000-00-00', '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -240,7 +246,6 @@ CREATE TABLE `libros_has_autor` (
 INSERT INTO `libros_has_autor` (`libros_libros_id`, `autor_autor_id`) VALUES
 (1, 1),
 (1, 3),
-(2, 1),
 (3, 1),
 (4, 3),
 (6, 1),
@@ -430,7 +435,7 @@ ALTER TABLE `clase_lector`
 -- AUTO_INCREMENT for table `copias`
 --
 ALTER TABLE `copias`
-  MODIFY `copias_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `copias_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `estado`
 --
@@ -445,7 +450,7 @@ ALTER TABLE `lectores`
 -- AUTO_INCREMENT for table `libros`
 --
 ALTER TABLE `libros`
-  MODIFY `libros_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `libros_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `multas`
 --

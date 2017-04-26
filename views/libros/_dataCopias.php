@@ -1,6 +1,7 @@
 <?php
 use kartik\grid\GridView;
 use yii\data\ArrayDataProvider;
+use yii\helpers\Html;
 
     $dataProvider = new ArrayDataProvider([
         'allModels' => $model->copias,
@@ -8,19 +9,27 @@ use yii\data\ArrayDataProvider;
     ]);
     $gridColumns = [
         ['class' => 'yii\grid\SerialColumn'],
-        'copias_id',
+        //'copias_id',
         [
-                'attribute' => 'estado.estado_id',
+                'attribute' => 'estado.descripcion',
                 'label' => Yii::t('app', 'Estado')
             ],
         'nro_copia',
         [
-                'attribute' => 'deposito.deposito_deposito_id',
+                'attribute' => 'deposito.descripcion_deposito',
                 'label' => Yii::t('app', 'Deposito')
             ],
         [
             'class' => 'yii\grid\ActionColumn',
-            'controller' => 'copias'
+            'controller' => 'copias',
+            'template' => '{view} {update} {delete} {prestar}',
+            'buttons' => [
+                    'prestar' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-paste"></span>',
+                            Yii::$app->urlManager->createUrl(['prestamos/create', 'id' => $model->libros_id]),
+                            ['title' => Yii::t('yii', 'Prestar'),]
+                        );
+                    }],
         ],
     ];
     
