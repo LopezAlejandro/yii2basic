@@ -64,18 +64,19 @@ $config = [
     		'datecontrol' =>  [
          'class' => 'kartik\datecontrol\Module',
          'displaySettings' => [
-                'date' => 'd-m-Y',
-                'time' => 'H:i:s A',
-                'datetime' => 'd-m-Y H:i:s A',
+                'date' => 'dd-MM-yyyy',
+                'time' => 'hh:mm:ss a',
+                'datetime' => 'dd-MM-yyyy hh:mm:ss a',
             ],
             // format settings for saving each date attribute
             'saveSettings' => [
-                'date' => 'Y-m-d', 
-                'time' => 'H:i:s',
-                'datetime' => 'Y-m-d H:i:s',
+                'date' => 'php:U', 
+                'time' => 'php:H:i:s',
+                'datetime' => 'php:Y-m-d H:i:s',
             ],
             // automatically use kartik\widgets for each of the above formats
             'autoWidget' => true,
+            
     		],
     		'treemanager' =>  [
           'class' => '\kartik\tree\Module',

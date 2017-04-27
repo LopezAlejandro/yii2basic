@@ -19,10 +19,11 @@ use yii\helpers\Html;
                 'attribute' => 'deposito.descripcion_deposito',
                 'label' => Yii::t('app', 'Deposito')
             ],
-        [
+            
+			[
             'class' => 'yii\grid\ActionColumn',
             'controller' => 'copias',
-            'template' => '{view} {update} {delete} {prestar}',
+            'template' => '{prestar}',
             'buttons' => [
                     'prestar' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-paste"></span>',
@@ -32,6 +33,11 @@ use yii\helpers\Html;
                     }],
         
             
+        ],            
+            
+        [
+            'class' => 'yii\grid\ActionColumn',
+            'controller' => 'copias',
         ],
     ];
     
