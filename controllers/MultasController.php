@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Prestamos;
-use app\models\PrestamosSearch;
+use app\models\Multas;
+use app\models\MultasSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PrestamosController implements the CRUD actions for Prestamos model.
+ * MultasController implements the CRUD actions for Multas model.
  */
-class PrestamosController extends Controller
+class MultasController extends Controller
 {
     public function behaviors()
     {
@@ -27,12 +27,12 @@ class PrestamosController extends Controller
     }
 
     /**
-     * Lists all Prestamos models.
+     * Lists all Multas models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new PrestamosSearch();
+        $searchModel = new MultasSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -42,33 +42,37 @@ class PrestamosController extends Controller
     }
 
     /**
-     * Displays a single Prestamos model.
+     * Displays a single Multas model.
      * @param integer $id
      * @return mixed
      */
     public function actionView($id)
     {
         $model = $this->findModel($id);
+        $providerLectoresHasMultas = new \yii\data\ArrayDataProvider([
+            'allModels' => $model->lectoresHasMultas,
+        ]);
         $providerPrestamosHasMultas = new \yii\data\ArrayDataProvider([
             'allModels' => $model->prestamosHasMultas,
         ]);
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'providerLectoresHasMultas' => $providerLectoresHasMultas,
             'providerPrestamosHasMultas' => $providerPrestamosHasMultas,
         ]);
     }
 
     /**
-     * Creates a new Prestamos model.
+     * Creates a new Multas model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Prestamos();
+        $model = new Multas();
 
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
-            return $this->redirect(['view', 'id' => $model->prestamos_id]);
+            return $this->redirect(['view', 'id' => $model->multas_id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -77,7 +81,7 @@ class PrestamosController extends Controller
     }
 
     /**
-     * Updates an existing Prestamos model.
+     * Updates an existing Multas model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -87,7 +91,7 @@ class PrestamosController extends Controller
         $model = $this->findModel($id);
 
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
-            return $this->redirect(['view', 'id' => $model->prestamos_id]);
+            return $this->redirect(['view', 'id' => $model->multas_id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -96,7 +100,7 @@ class PrestamosController extends Controller
     }
 
     /**
-     * Deletes an existing Prestamos model.
+     * Deletes an existing Multas model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,18 +114,22 @@ class PrestamosController extends Controller
     
     /**
      * 
-     * Export Prestamos information into PDF format.
+     * Export Multas information into PDF format.
      * @param integer $id
      * @return mixed
      */
     public function actionPdf($id) {
         $model = $this->findModel($id);
+        $providerLectoresHasMultas = new \yii\data\ArrayDataProvider([
+            'allModels' => $model->lectoresHasMultas,
+        ]);
         $providerPrestamosHasMultas = new \yii\data\ArrayDataProvider([
             'allModels' => $model->prestamosHasMultas,
         ]);
 
         $content = $this->renderAjax('_pdf', [
             'model' => $model,
+            'providerLectoresHasMultas' => $providerLectoresHasMultas,
             'providerPrestamosHasMultas' => $providerPrestamosHasMultas,
         ]);
 
@@ -145,16 +153,36 @@ class PrestamosController extends Controller
 
     
     /**
-     * Finds the Prestamos model based on its primary key value.
+     * Finds the Multas model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Prestamos the loaded model
+     * @return Multas the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Prestamos::findOne($id)) !== null) {
+        if (($model = Multas::findOne($id)) !== null) {
             return $model;
+        } else {
+            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        }
+    }
+    
+    /**
+    * Action to load a tabular form grid
+    * for LectoresHasMultas
+    * @author Yohanes Candrajaya <moo.tensai@gmail.com>
+    * @author Jiwantoro Ndaru <jiwanndaru@gmail.com>
+    *
+    * @return mixed
+    */
+    public function actionAddLectoresHasMultas()
+    {
+        if (Yii::$app->request->isAjax) {
+            $row = Yii::$app->request->post('LectoresHasMultas');
+            if((Yii::$app->request->post('isNewRecord') && Yii::$app->request->post('_action') == 'load' && empty($row)) || Yii::$app->request->post('_action') == 'add')
+                $row[] = [];
+            return $this->renderAjax('_formLectoresHasMultas', ['row' => $row]);
         } else {
             throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
         }

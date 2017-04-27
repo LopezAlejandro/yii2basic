@@ -1,7 +1,6 @@
 <?php
 
 namespace app\models;
-
 use Yii;
 use \app\models\base\Libros as BaseLibros;
 
@@ -10,9 +9,6 @@ use \app\models\base\Libros as BaseLibros;
  */
 class Libros extends BaseLibros
 {
-	
-	 public $autor_ids;
-	 
     /**
      * @inheritdoc
      */
@@ -20,7 +16,7 @@ class Libros extends BaseLibros
     {
         return array_replace_recursive(parent::rules(),
 	    [
-            [['titulo', 'nro_libro','autor_ids'], 'required'],
+            [['titulo', 'nro_libro', 'created_at', 'updated_at', 'deleted_at', 'created', 'modified', 'deleted'], 'required'],
             [['ano', 'tipo_libro_id', 'nro_libro', 'edicion'], 'integer'],
             [['created_at', 'updated_at', 'created_by', 'updated_by', 'deleted_at', 'deleted_by', 'created', 'modified', 'deleted'], 'safe'],
             [['titulo', 'editorial'], 'string', 'max' => 45]
@@ -34,12 +30,12 @@ class Libros extends BaseLibros
     {
         return [
             'libros_id' => Yii::t('app', 'Libros ID'),
-            'titulo' => Yii::t('app', 'Título'),
+            'titulo' => Yii::t('app', 'Titulo'),
             'editorial' => Yii::t('app', 'Editorial'),
             'ano' => Yii::t('app', 'Año'),
-            'tipo_libro_id' => Yii::t('app', 'Tipo de Libro'),
-            'nro_libro' => Yii::t('app', 'Nro de Libro'),
-            'edicion' => Yii::t('app', 'Edición'),
+            'tipo_libro_id' => Yii::t('app', 'Tipo libro ID'),
+            'nro_libro' => Yii::t('app', 'Nro Libro'),
+            'edicion' => Yii::t('app', 'Edicion'),
         ];
     }
 }

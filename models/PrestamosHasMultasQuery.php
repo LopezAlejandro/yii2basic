@@ -3,11 +3,11 @@
 namespace app\models;
 
 /**
- * This is the ActiveQuery class for [[Prestamos]].
+ * This is the ActiveQuery class for [[PrestamosHasMultas]].
  *
- * @see Prestamos
+ * @see PrestamosHasMultas
  */
-class PrestamosQuery extends \yii\db\ActiveQuery
+class PrestamosHasMultasQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -17,7 +17,7 @@ class PrestamosQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return Prestamos[]|array
+     * @return PrestamosHasMultas[]|array
      */
     public function all($db = null)
     {
@@ -26,7 +26,7 @@ class PrestamosQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return Prestamos|array|null
+     * @return PrestamosHasMultas|array|null
      */
     public function one($db = null)
     {

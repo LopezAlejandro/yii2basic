@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Prestamos;
+use app\models\Multas;
 
 /**
- * app\models\PrestamosSearch represents the model behind the search form about `app\models\Prestamos`.
+ * app\models\MultasSearch represents the model behind the search form about `app\models\Multas`.
  */
- class PrestamosSearch extends Prestamos
+ class MultasSearch extends Multas
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ use app\models\Prestamos;
     public function rules()
     {
         return [
-            [['prestamos_id', 'extension', 'lectores_idl', 'copias_id', 'activo', 'created_by', 'updated_by'], 'integer'],
-            [['fecha_devolucion', 'created_at', 'updated_at'], 'safe'],
+            [['multas_id', 'activa'], 'integer'],
+            [['fin_multa'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ use app\models\Prestamos;
      */
     public function search($params)
     {
-        $query = Prestamos::find();
+        $query = Multas::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -56,16 +56,9 @@ use app\models\Prestamos;
         }
 
         $query->andFilterWhere([
-            'prestamos_id' => $this->prestamos_id,
-            'extension' => $this->extension,
-            'fecha_devolucion' => $this->fecha_devolucion,
-            'lectores_idl' => $this->lectores_idl,
-            'copias_id' => $this->copias_id,
-            'activo' => $this->activo,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'created_by' => $this->created_by,
-            'updated_by' => $this->updated_by,
+            'multas_id' => $this->multas_id,
+            'fin_multa' => $this->fin_multa,
+            'activa' => $this->activa,
         ]);
 
         return $dataProvider;

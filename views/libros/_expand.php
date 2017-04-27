@@ -10,19 +10,19 @@ $items = [
 //        ]),
 //    ],
         [
-        'label' => '<i class="glyphicon glyphicon-book"></i> '. Html::encode(Yii::t('app', 'Copias')),
+        'label' => '<i class="glyphicon glyphicon-book"></i> '. Html::encode(Yii::t('app', 'Ejemplares')),
         'content' => $this->render('_dataCopias', [
             'model' => $model,
             'row' => $model->copias,
         ]),
     ],
-//                [
-//        'label' => '<i class="glyphicon glyphicon-book"></i> '. Html::encode(Yii::t('app', 'Libros Has Autor')),
-//        'content' => $this->render('_dataLibrosHasAutor', [
-//            'model' => $model,
-//            'row' => $model->librosHasAutors,
-//        ]),
-//    ],
+                [
+        'label' => '<i class="glyphicon glyphicon-book"></i> '. Html::encode(Yii::t('app', 'Autores')),
+        'content' => $this->render('_dataLibrosHasAutor', [
+            'model' => $model,
+            'row' => $model->librosHasAutors,
+        ]),
+    ],
         ];
 echo TabsX::widget([
     'items' => $items,

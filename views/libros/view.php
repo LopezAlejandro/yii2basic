@@ -3,8 +3,6 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use kartik\grid\GridView;
-use yii\helpers\ArrayHelper;
-use kartik\select2\Select2;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Libros */
@@ -17,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row">
         <div class="col-sm-9">
-            <h2><?= Yii::t('app', 'Libros').' '. Html::encode($this->title) ?></h2>
+            <h2><?= Yii::t('app', 'Libros').' - '. Html::encode($this->title) ?></h2>
         </div>
         <div class="col-sm-3" style="margin-top: 15px">
 <!--
@@ -31,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'title' => Yii::t('app', 'Will open the generated PDF file in a new window')
                 ]
             )?>
-            
+-->            
             <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->libros_id], ['class' => 'btn btn-primary']) ?>
             <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->libros_id], [
                 'class' => 'btn btn-danger',
@@ -41,7 +39,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
             ])
             ?>
--->            
         </div>
     </div>
 
@@ -50,32 +47,11 @@ $this->params['breadcrumbs'][] = $this->title;
     $gridColumn = [
         ['attribute' => 'libros_id', 'visible' => false],
         'titulo',
-        [
-            'attribute' => 'autor_ids',
-            'format' => 'raw',
-                        'model' => $model,
-                                'value' => implode(" , ",ArrayHelper::map($model->autorAutors, 'autor_id', 'nombre')),
-
-
-                                'type'=> GridView::INPUT_SELECT2,
-            'widgetOptions'=>[
-                                     'data'=>ArrayHelper::map(Autor::find()->all(),'autor_id','nombre'),
-                                      'options'=>[
-                                                        'multiple' => true,
-                                                        'placeholder'=>'Seleccione el autor...',
-                                                        ],
-                                                'showToggleAll'=> false,
-                        'pluginOptions'=>['allowClear'=>true,
-                                                'width'=>'100%'],
-
-                                ],
-        ],
-
         'editorial',
         'ano',
         [
             'attribute' => 'tipoLibro.descripcion',
-            'label' => Yii::t('app', 'Tipo Libro'),
+            'label' => Yii::t('app', 'Tipo de libro'),
         ],
         'nro_libro',
         'edicion',
@@ -92,8 +68,8 @@ $this->params['breadcrumbs'][] = $this->title;
 if($providerCopias->totalCount){
     $gridColumnCopias = [
         ['class' => 'yii\grid\SerialColumn'],
-          //  'copias_id',
-            [
+//        	'copias_id',
+				[
                 'attribute' => 'estado.descripcion',
                 'label' => Yii::t('app', 'Estado')
             ],
@@ -110,7 +86,7 @@ if($providerCopias->totalCount){
         'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-copias']],
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
-            'heading' => '<span class="glyphicon glyphicon-book"></span> ' . Html::encode(Yii::t('app', 'Copias')),
+            'heading' => '<span class="glyphicon glyphicon-book"></span> ' . Html::encode(Yii::t('app', 'Ejemplares')),
         ],
         'columns' => $gridColumnCopias
     ]);
@@ -119,14 +95,13 @@ if($providerCopias->totalCount){
     </div>
     
     <div class="row">
-<!--
 <?php
 if($providerLibrosHasAutor->totalCount){
     $gridColumnLibrosHasAutor = [
         ['class' => 'yii\grid\SerialColumn'],
                         [
-                'attribute' => 'autorAutor.autor_id',
-                'label' => Yii::t('app', 'Autor Autor')
+                'attribute' => 'autorAutor.nombre',
+                'label' => Yii::t('app', 'Autor')
             ],
     ];
     echo Gridview::widget([
@@ -135,12 +110,11 @@ if($providerLibrosHasAutor->totalCount){
         'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-libros-has-autor']],
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
-            'heading' => '<span class="glyphicon glyphicon-book"></span> ' . Html::encode(Yii::t('app', 'Libros Has Autor')),
+            'heading' => '<span class="glyphicon glyphicon-book"></span> ' . Html::encode(Yii::t('app', 'Autores')),
         ],
         'columns' => $gridColumnLibrosHasAutor
     ]);
 }
 ?>
--->
     </div>
 </div>

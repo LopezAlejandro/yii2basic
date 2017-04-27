@@ -9,7 +9,7 @@ use yii\helpers\Html;
     ]);
     $gridColumns = [
         ['class' => 'yii\grid\SerialColumn'],
-        //'copias_id',
+//        'copias_id',
         [
                 'attribute' => 'estado.descripcion',
                 'label' => Yii::t('app', 'Estado')
@@ -30,6 +30,8 @@ use yii\helpers\Html;
                             ['title' => Yii::t('yii', 'Prestar'),]
                         );
                     }],
+        
+            
         ],
     ];
     

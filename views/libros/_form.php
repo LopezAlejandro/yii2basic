@@ -2,9 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use kartik\select2\Select2;
-use yii\helpers\ArrayHelper;
-use app\models\Autor;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Libros */
@@ -38,48 +35,36 @@ use app\models\Autor;
 
     <?= $form->field($model, 'titulo')->textInput(['maxlength' => true, 'placeholder' => 'Título']) ?>
 
-	 <?= $form->field($model,'autor_ids')->widget(\kartik\widgets\Select2::className(),[
-                        'model' => $model,
-                        'attribute' => 'autor_ids',
-                        'showToggleAll'=> false,
-                        'data'=>ArrayHelper::map(Autor::find()->all(),'nombre','nombre'),
-                        'pluginOptions'=>['allowClear'=>true],
-                        'options'=>[
-                                                        'multiple' => true,
-                                                        'placeholder'=>'Seleccione el autor...'
-                                                        ],
-                                          ]) ?>
-        
     <?= $form->field($model, 'editorial')->textInput(['maxlength' => true, 'placeholder' => 'Editorial']) ?>
 
     <?= $form->field($model, 'ano')->textInput(['placeholder' => 'Año']) ?>
 
     <?= $form->field($model, 'tipo_libro_id')->widget(\kartik\widgets\Select2::classname(), [
         'data' => \yii\helpers\ArrayHelper::map(\app\models\TipoLibro::find()->orderBy('tipo_tipo_libro_id')->asArray()->all(), 'tipo_tipo_libro_id', 'descripcion'),
-        'options' => ['placeholder' => Yii::t('app', 'Choose Tipo libro')],
+        'options' => ['placeholder' => Yii::t('app', 'Choose Tipo de libro')],
         'pluginOptions' => [
             'allowClear' => true
         ],
     ]); ?>
 
-    <?= $form->field($model, 'nro_libro')->textInput(['placeholder' => 'Nro de libro']) ?>
+    <?= $form->field($model, 'nro_libro')->textInput(['placeholder' => 'Nro Libro']) ?>
 
-    <?= $form->field($model, 'edicion')->textInput(['placeholder' => 'Edición']) ?>
+    <?= $form->field($model, 'edicion')->textInput(['placeholder' => 'Edicion']) ?>
 
     <?php
     $forms = [
         [
-            'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode(Yii::t('app', 'Copias')),
+            'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode(Yii::t('app', 'Ejemplares')),
             'content' => $this->render('_formCopias', [
                 'row' => \yii\helpers\ArrayHelper::toArray($model->copias),
             ]),
         ],
-//        [
-//            'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode(Yii::t('app', 'LibrosHasAutor')),
-//            'content' => $this->render('_formLibrosHasAutor', [
-//                'row' => \yii\helpers\ArrayHelper::toArray($model->librosHasAutors),
-//            ]),
-//        ],
+        [
+            'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode(Yii::t('app', 'Autores')),
+            'content' => $this->render('_formLibrosHasAutor', [
+                'row' => \yii\helpers\ArrayHelper::toArray($model->librosHasAutors),
+            ]),
+        ],
     ];
     echo kartik\tabs\TabsX::widget([
         'items' => $forms,

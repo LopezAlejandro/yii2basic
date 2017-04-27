@@ -1,14 +1,14 @@
 <?php
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\LibrosSearch */
+/* @var $searchModel app\models\PrestamosHasMultasController */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 use yii\helpers\Html;
 use kartik\export\ExportMenu;
 use kartik\grid\GridView;
 
-$this->title = Yii::t('app', 'Libros');
+$this->title = Yii::t('app', 'Prestamos Has Multas');
 $this->params['breadcrumbs'][] = $this->title;
 $search = "$('.search-button').click(function(){
 	$('.search-form').toggle(1000);
@@ -16,16 +16,15 @@ $search = "$('.search-button').click(function(){
 });";
 $this->registerJs($search);
 ?>
-<div class="libros-index">
+<div class="prestamos-has-multas-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-<!--
+
     <p>
-        <?= Html::a(Yii::t('app', 'Create Libros'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Prestamos Has Multas'), ['create'], ['class' => 'btn btn-success']) ?>
         <?= Html::a(Yii::t('app', 'Advance Search'), '#', ['class' => 'btn btn-info search-button']) ?>
     </p>
--->    
     <div class="search-form" style="display:none">
         <?=  $this->render('_search', ['model' => $searchModel]); ?>
     </div>
@@ -44,28 +43,32 @@ $this->registerJs($search);
             'headerOptions' => ['class' => 'kartik-sheet-style'],
             'expandOneOnly' => true
         ],
-        ['attribute' => 'libros_id', 'visible' => false],
-        'titulo',
-        'editorial',
-        'ano',
         [
-                'attribute' => 'tipo_libro_id',
-                'label' => Yii::t('app', 'Tipo de libro'),
-                'value' => function($model){
-                    if ($model->tipoLibro)
-                    {return $model->tipoLibro->descripcion;}
-                    else
-                    {return NULL;}
+                'attribute' => 'prestamos_prestamos_id',
+                'label' => Yii::t('app', 'Prestamos Prestamos'),
+                'value' => function($model){                   
+                    return $model->prestamosPrestamos->prestamos_id;                   
                 },
                 'filterType' => GridView::FILTER_SELECT2,
-                'filter' => \yii\helpers\ArrayHelper::map(\app\models\TipoLibro::find()->asArray()->all(), 'tipo_tipo_libro_id', 'descripcion'),
+                'filter' => \yii\helpers\ArrayHelper::map(\app\models\Prestamos::find()->asArray()->all(), 'prestamos_id', 'prestamos_id'),
                 'filterWidgetOptions' => [
                     'pluginOptions' => ['allowClear' => true],
                 ],
-                'filterInputOptions' => ['placeholder' => 'Tipo de libro', 'id' => 'grid-libros-search-tipo_libro_id']
+                'filterInputOptions' => ['placeholder' => 'Prestamos', 'id' => 'grid-prestamos-has-multas-controller-prestamos_prestamos_id']
             ],
-        'nro_libro',
-        'edicion',
+        [
+                'attribute' => 'prestamos_multas_id',
+                'label' => Yii::t('app', 'Prestamos Multas'),
+                'value' => function($model){                   
+                    return $model->prestamosMultas->multas_id;                   
+                },
+                'filterType' => GridView::FILTER_SELECT2,
+                'filter' => \yii\helpers\ArrayHelper::map(\app\models\Multas::find()->asArray()->all(), 'multas_id', 'multas_id'),
+                'filterWidgetOptions' => [
+                    'pluginOptions' => ['allowClear' => true],
+                ],
+                'filterInputOptions' => ['placeholder' => 'Multas', 'id' => 'grid-prestamos-has-multas-controller-prestamos_multas_id']
+            ],
         [
             'class' => 'yii\grid\ActionColumn',
         ],
@@ -76,19 +79,13 @@ $this->registerJs($search);
         'filterModel' => $searchModel,
         'columns' => $gridColumn,
         'pjax' => true,
-        
-        'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-libros']],
+        'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-prestamos-has-multas']],
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
             'heading' => '<span class="glyphicon glyphicon-book"></span>  ' . Html::encode($this->title),
-            'footer' => false, 
         ],
         // your toolbar can include the additional full export menu
         'toolbar' => [
-            ['content'=>
-                Html::a('<i class="glyphicon glyphicon-plus"></i>', ['create'], ['class' => 'btn btn-success','title'=>Yii::t('app', 'Crear Libros')]).' '.
-                Html::a('<i class="glyphicon glyphicon-repeat"></i>', ['index'], ['data-pjax'=>0, 'class'=>'btn btn-default', 'title'=>Yii::t('kvgrid', 'Reset Grid')])
-            ],        
             '{export}',
             ExportMenu::widget([
                 'dataProvider' => $dataProvider,

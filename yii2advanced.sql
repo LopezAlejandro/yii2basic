@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 26, 2017 at 03:00 PM
+-- Generation Time: Apr 27, 2017 at 04:25 PM
 -- Server version: 10.1.22-MariaDB
--- PHP Version: 7.1.3
+-- PHP Version: 7.1.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -102,13 +104,11 @@ CREATE TABLE `copias` (
 --
 
 INSERT INTO `copias` (`copias_id`, `estado_id`, `libros_id`, `nro_copia`, `deposito_id`) VALUES
-(1, 1, 1, 15790, 2),
-(2, 1, 1, 15791, 1),
-(3, 1, 9, 14569, 1),
-(4, 2, 9, 14570, 1),
-(5, 1, 9, 14571, 2),
-(6, 1, 2, 6987, 1),
-(7, 1, 2, 6988, 1);
+(3, 1, 1, 15790, 2),
+(4, 1, 1, 15791, 1),
+(8, 1, 2, 1598, 1),
+(9, 1, 2, 1599, 2),
+(10, 2, 2, 1600, 1);
 
 -- --------------------------------------------------------
 
@@ -203,11 +203,11 @@ CREATE TABLE `libros` (
   `tipo_libro_id` int(11) DEFAULT NULL,
   `nro_libro` int(11) NOT NULL,
   `edicion` int(11) DEFAULT NULL,
-  `created_at` date NOT NULL,
-  `updated_at` date NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
   `created_by` date DEFAULT NULL,
   `updated_by` date DEFAULT NULL,
-  `deleted_at` date NOT NULL,
+  `deleted_at` datetime NOT NULL,
   `deleted_by` date DEFAULT NULL,
   `created` date NOT NULL,
   `modified` date NOT NULL,
@@ -219,14 +219,13 @@ CREATE TABLE `libros` (
 --
 
 INSERT INTO `libros` (`libros_id`, `titulo`, `editorial`, `ano`, `tipo_libro_id`, `nro_libro`, `edicion`, `created_at`, `updated_at`, `created_by`, `updated_by`, `deleted_at`, `deleted_by`, `created`, `modified`, `deleted`) VALUES
-(1, 'Fundación de Buenos Aires', 'Eudeba', 1986, 1, 65025, 1990, '0000-00-00', '2017-04-24', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
-(2, 'Argentina Siglo XXi', 'Eudeba', 2001, 1, 753, 3, '0000-00-00', '2017-04-26', '0000-00-00', NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
-(3, 'Buenos Aires en el siglo XX', 'Eudeba', 1999, 2, 0, NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
-(4, 'Argentina Siglo XV', 'Eudeba', 2001, 2, 0, NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
-(6, 'Argentina Siglo XVIII', 'Eudeba', 2002, 3, 0, NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
-(7, 'Prueba de alta', 'Tusquets', 1999, 3, 5689, 2, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
-(8, 'Prueba de alta 2', 'Tusquets', 2001, 2, 78524, 8, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
-(9, 'Nueva Prueba', 'Tusquets', 1986, 1, 852, 1, '2017-04-26', '2017-04-26', NULL, NULL, '0000-00-00', NULL, '0000-00-00', '0000-00-00', '0000-00-00');
+(1, 'Fundación de Buenos Aires', 'Eudeba', 1986, 1, 65025, 1990, '0000-00-00 00:00:00', '2017-04-27 00:00:00', '0000-00-00', NULL, '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
+(2, 'Argentina Siglo XXi', 'Eudeba', 2001, 1, 0, 3, '0000-00-00 00:00:00', '2017-04-27 00:00:00', '0000-00-00', NULL, '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
+(3, 'Buenos Aires en el siglo XX', 'Eudeba', 1999, 2, 0, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
+(4, 'Argentina Siglo XV', 'Eudeba', 2001, 2, 0, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
+(6, 'Argentina Siglo XVIII', 'Eudeba', 2002, 3, 0, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
+(7, 'Prueba de alta', 'Tusquets', 1999, 3, 5689, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
+(8, 'Prueba de alta 2', 'Tusquets', 2001, 2, 78524, 8, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -244,8 +243,9 @@ CREATE TABLE `libros_has_autor` (
 --
 
 INSERT INTO `libros_has_autor` (`libros_libros_id`, `autor_autor_id`) VALUES
-(1, 1),
+(1, 2),
 (1, 3),
+(2, 3),
 (3, 1),
 (4, 3),
 (6, 1),
@@ -276,7 +276,12 @@ CREATE TABLE `prestamos` (
   `extension` tinyint(1) NOT NULL DEFAULT '0',
   `fecha_devolucion` date NOT NULL,
   `lectores_idl` int(11) NOT NULL,
-  `copias_id` int(11) NOT NULL
+  `copias_id` int(11) NOT NULL,
+  `activo` tinyint(1) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -435,7 +440,7 @@ ALTER TABLE `clase_lector`
 -- AUTO_INCREMENT for table `copias`
 --
 ALTER TABLE `copias`
-  MODIFY `copias_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `copias_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `estado`
 --
@@ -450,7 +455,7 @@ ALTER TABLE `lectores`
 -- AUTO_INCREMENT for table `libros`
 --
 ALTER TABLE `libros`
-  MODIFY `libros_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `libros_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `multas`
 --
@@ -518,6 +523,7 @@ ALTER TABLE `prestamos`
 ALTER TABLE `prestamos_has_multas`
   ADD CONSTRAINT `fk_prestamos_has_multas_multas1` FOREIGN KEY (`prestamos_multas_id`) REFERENCES `multas` (`multas_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_prestamos_has_multas_prestamos1` FOREIGN KEY (`prestamos_prestamos_id`) REFERENCES `prestamos` (`prestamos_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

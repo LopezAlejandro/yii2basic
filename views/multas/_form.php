@@ -4,9 +4,17 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Prestamos */
+/* @var $model app\models\Multas */
 /* @var $form yii\widgets\ActiveForm */
 
+\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos'=> \yii\web\View::POS_END, 
+    'viewParams' => [
+        'class' => 'LectoresHasMultas', 
+        'relID' => 'lectores-has-multas', 
+        'value' => \yii\helpers\Json::encode($model->lectoresHasMultas),
+        'isNewRecord' => ($model->isNewRecord) ? 1 : 0
+    ]
+]);
 \mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos'=> \yii\web\View::POS_END, 
     'viewParams' => [
         'class' => 'PrestamosHasMultas', 
@@ -17,48 +25,36 @@ use yii\widgets\ActiveForm;
 ]);
 ?>
 
-<div class="prestamos-form">
+<div class="multas-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->errorSummary($model); ?>
 
-    <?= $form->field($model, 'prestamos_id', ['template' => '{input}'])->textInput(['style' => 'display:none']); ?>
+    <?= $form->field($model, 'multas_id', ['template' => '{input}'])->textInput(['style' => 'display:none']); ?>
 
-    <?= $form->field($model, 'extension')->checkbox() ?>
-
-    <?= $form->field($model, 'fecha_devolucion')->widget(\kartik\datecontrol\DateControl::classname(), [
+    <?= $form->field($model, 'fin_multa')->widget(\kartik\datecontrol\DateControl::classname(), [
         'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
         'saveFormat' => 'php:Y-m-d',
         'ajaxConversion' => true,
         'options' => [
             'pluginOptions' => [
-                'placeholder' => Yii::t('app', 'Choose Fecha Devolucion'),
+                'placeholder' => Yii::t('app', 'Choose Fin Multa'),
                 'autoclose' => true
             ]
         ],
     ]); ?>
 
-    <?= $form->field($model, 'lectores_idl')->widget(\kartik\widgets\Select2::classname(), [
-        'data' => \yii\helpers\ArrayHelper::map(\app\models\Lectores::find()->orderBy('lectores_id')->asArray()->all(), 'lectores_id', 'lectores_id'),
-        'options' => ['placeholder' => Yii::t('app', 'Choose Lectores')],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
-    ]); ?>
-
-    <?= $form->field($model, 'copias_id')->widget(\kartik\widgets\Select2::classname(), [
-        'data' => \yii\helpers\ArrayHelper::map(\app\models\Copias::find()->orderBy('copias_id')->asArray()->all(), 'copias_id', 'copias_id'),
-        'options' => ['placeholder' => Yii::t('app', 'Choose Copias')],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
-    ]); ?>
-
-    <?= $form->field($model, 'activo')->checkbox() ?>
+    <?= $form->field($model, 'activa')->checkbox() ?>
 
     <?php
     $forms = [
+        [
+            'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode(Yii::t('app', 'LectoresHasMultas')),
+            'content' => $this->render('_formLectoresHasMultas', [
+                'row' => \yii\helpers\ArrayHelper::toArray($model->lectoresHasMultas),
+            ]),
+        ],
         [
             'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode(Yii::t('app', 'PrestamosHasMultas')),
             'content' => $this->render('_formPrestamosHasMultas', [

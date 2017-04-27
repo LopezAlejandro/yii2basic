@@ -21,7 +21,7 @@ echo TabularForm::widget([
         'type' => TabularForm::INPUT_TEXT,
     ],
     'attributes' => [
-        'copias_id' => ['type' => TabularForm::INPUT_HIDDEN],
+       // 'copias_id' => ['type' => TabularForm::INPUT_HIDDEN],
         'estado_id' => [
             'label' => 'Estado',
             'type' => TabularForm::INPUT_WIDGET,
@@ -32,7 +32,13 @@ echo TabularForm::widget([
             ],
             'columnOptions' => ['width' => '200px']
         ],
-        'nro_copia' => ['type' => TabularForm::INPUT_TEXT],
+        
+        'nro_copia' => [
+        		'type' => TabularForm::INPUT_TEXT,
+        		'label' => 'Nro Ejemplar',
+        		'columnOptions' => ['width' => '200px']
+        		],
+        		
         'deposito_id' => [
             'label' => 'Deposito',
             'type' => TabularForm::INPUT_WIDGET,

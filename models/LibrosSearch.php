@@ -12,8 +12,6 @@ use app\models\Libros;
  */
  class LibrosSearch extends Libros
 {
-    
-	public $autorname;    
     /**
      * @inheritdoc
      */
@@ -21,7 +19,7 @@ use app\models\Libros;
     {
         return [
             [['libros_id', 'ano', 'tipo_libro_id', 'nro_libro', 'edicion'], 'integer'],
-            [['titulo', 'editorial', 'created_at', 'updated_at', 'created_by', 'updated_by', 'deleted_at', 'deleted_by', 'created', 'modified', 'deleted','autorname'], 'safe'],
+            [['titulo', 'editorial', 'created_at', 'updated_at', 'created_by', 'updated_by', 'deleted_at', 'deleted_by', 'created', 'modified', 'deleted'], 'safe'],
         ];
     }
 

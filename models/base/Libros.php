@@ -5,7 +5,6 @@ namespace app\models\base;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\BlameableBehavior;
-use mootensai\behaviors\UUIDBehavior;
 
 /**
  * This is the base model class for table "libros".
@@ -42,7 +41,7 @@ class Libros extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['titulo', 'nro_libro'], 'required'],
+            [['titulo', 'nro_libro', 'created_at', 'updated_at', 'deleted_at', 'created', 'modified', 'deleted'], 'required'],
             [['ano', 'tipo_libro_id', 'nro_libro', 'edicion'], 'integer'],
             [['created_at', 'updated_at', 'created_by', 'updated_by', 'deleted_at', 'deleted_by', 'created', 'modified', 'deleted'], 'safe'],
             [['titulo', 'editorial'], 'string', 'max' => 45]
@@ -122,11 +121,6 @@ class Libros extends \yii\db\ActiveRecord
                 'class' => BlameableBehavior::className(),
                 'createdByAttribute' => 'created_by',
                 'updatedByAttribute' => 'updated_by',
-                'value' => '1',
-            ],
-            'uuid' => [
-                'class' => UUIDBehavior::className(),
-                'column' => 'libros_id',
             ],
         ];
     }

@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Prestamos;
-use app\models\PrestamosSearch;
+use app\models\PrestamosHasMultas;
+use app\models\PrestamosHasMultasController;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PrestamosController implements the CRUD actions for Prestamos model.
+ * PrestamosHasMultasController implements the CRUD actions for PrestamosHasMultas model.
  */
-class PrestamosController extends Controller
+class PrestamosHasMultasController extends Controller
 {
     public function behaviors()
     {
@@ -27,12 +27,12 @@ class PrestamosController extends Controller
     }
 
     /**
-     * Lists all Prestamos models.
+     * Lists all PrestamosHasMultas models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new PrestamosSearch();
+        $searchModel = new PrestamosHasMultasController();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -42,33 +42,30 @@ class PrestamosController extends Controller
     }
 
     /**
-     * Displays a single Prestamos model.
-     * @param integer $id
+     * Displays a single PrestamosHasMultas model.
+     * @param integer $prestamos_prestamos_id
+     * @param integer $prestamos_multas_id
      * @return mixed
      */
-    public function actionView($id)
+    public function actionView($prestamos_prestamos_id, $prestamos_multas_id)
     {
-        $model = $this->findModel($id);
-        $providerPrestamosHasMultas = new \yii\data\ArrayDataProvider([
-            'allModels' => $model->prestamosHasMultas,
-        ]);
+        $model = $this->findModel($prestamos_prestamos_id, $prestamos_multas_id);
         return $this->render('view', [
-            'model' => $this->findModel($id),
-            'providerPrestamosHasMultas' => $providerPrestamosHasMultas,
+            'model' => $this->findModel($prestamos_prestamos_id, $prestamos_multas_id),
         ]);
     }
 
     /**
-     * Creates a new Prestamos model.
+     * Creates a new PrestamosHasMultas model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Prestamos();
+        $model = new PrestamosHasMultas();
 
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
-            return $this->redirect(['view', 'id' => $model->prestamos_id]);
+            return $this->redirect(['view', 'prestamos_prestamos_id' => $model->prestamos_prestamos_id, 'prestamos_multas_id' => $model->prestamos_multas_id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -77,17 +74,18 @@ class PrestamosController extends Controller
     }
 
     /**
-     * Updates an existing Prestamos model.
+     * Updates an existing PrestamosHasMultas model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param integer $prestamos_prestamos_id
+     * @param integer $prestamos_multas_id
      * @return mixed
      */
-    public function actionUpdate($id)
+    public function actionUpdate($prestamos_prestamos_id, $prestamos_multas_id)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($prestamos_prestamos_id, $prestamos_multas_id);
 
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
-            return $this->redirect(['view', 'id' => $model->prestamos_id]);
+            return $this->redirect(['view', 'prestamos_prestamos_id' => $model->prestamos_prestamos_id, 'prestamos_multas_id' => $model->prestamos_multas_id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -96,33 +94,31 @@ class PrestamosController extends Controller
     }
 
     /**
-     * Deletes an existing Prestamos model.
+     * Deletes an existing PrestamosHasMultas model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param integer $prestamos_prestamos_id
+     * @param integer $prestamos_multas_id
      * @return mixed
      */
-    public function actionDelete($id)
+    public function actionDelete($prestamos_prestamos_id, $prestamos_multas_id)
     {
-        $this->findModel($id)->deleteWithRelated();
+        $this->findModel($prestamos_prestamos_id, $prestamos_multas_id)->deleteWithRelated();
 
         return $this->redirect(['index']);
     }
     
     /**
      * 
-     * Export Prestamos information into PDF format.
-     * @param integer $id
+     * Export PrestamosHasMultas information into PDF format.
+     * @param integer $prestamos_prestamos_id
+     * @param integer $prestamos_multas_id
      * @return mixed
      */
-    public function actionPdf($id) {
-        $model = $this->findModel($id);
-        $providerPrestamosHasMultas = new \yii\data\ArrayDataProvider([
-            'allModels' => $model->prestamosHasMultas,
-        ]);
+    public function actionPdf($prestamos_prestamos_id, $prestamos_multas_id) {
+        $model = $this->findModel($prestamos_prestamos_id, $prestamos_multas_id);
 
         $content = $this->renderAjax('_pdf', [
             'model' => $model,
-            'providerPrestamosHasMultas' => $providerPrestamosHasMultas,
         ]);
 
         $pdf = new \kartik\mpdf\Pdf([
@@ -145,36 +141,17 @@ class PrestamosController extends Controller
 
     
     /**
-     * Finds the Prestamos model based on its primary key value.
+     * Finds the PrestamosHasMultas model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Prestamos the loaded model
+     * @param integer $prestamos_prestamos_id
+     * @param integer $prestamos_multas_id
+     * @return PrestamosHasMultas the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel($prestamos_prestamos_id, $prestamos_multas_id)
     {
-        if (($model = Prestamos::findOne($id)) !== null) {
+        if (($model = PrestamosHasMultas::findOne(['prestamos_prestamos_id' => $prestamos_prestamos_id, 'prestamos_multas_id' => $prestamos_multas_id])) !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
-        }
-    }
-    
-    /**
-    * Action to load a tabular form grid
-    * for PrestamosHasMultas
-    * @author Yohanes Candrajaya <moo.tensai@gmail.com>
-    * @author Jiwantoro Ndaru <jiwanndaru@gmail.com>
-    *
-    * @return mixed
-    */
-    public function actionAddPrestamosHasMultas()
-    {
-        if (Yii::$app->request->isAjax) {
-            $row = Yii::$app->request->post('PrestamosHasMultas');
-            if((Yii::$app->request->post('isNewRecord') && Yii::$app->request->post('_action') == 'load' && empty($row)) || Yii::$app->request->post('_action') == 'add')
-                $row[] = [];
-            return $this->renderAjax('_formPrestamosHasMultas', ['row' => $row]);
         } else {
             throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
         }

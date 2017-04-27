@@ -1,4 +1,4 @@
-<div class="form-group" id="add-libros-has-autor">
+<div class="form-group" id="add-lectores-has-multas">
 <?php
 use kartik\grid\GridView;
 use kartik\builder\TabularForm;
@@ -14,20 +14,20 @@ $dataProvider = new ArrayDataProvider([
 ]);
 echo TabularForm::widget([
     'dataProvider' => $dataProvider,
-    'formName' => 'LibrosHasAutor',
+    'formName' => 'LectoresHasMultas',
     'checkboxColumn' => false,
     'actionColumn' => false,
     'attributeDefaults' => [
         'type' => TabularForm::INPUT_TEXT,
     ],
     'attributes' => [
-        'autor_autor_id' => [
-            'label' => 'Autor',
+        'lectores_lectores_id' => [
+            'label' => 'Lectores',
             'type' => TabularForm::INPUT_WIDGET,
             'widgetClass' => \kartik\widgets\Select2::className(),
             'options' => [
-                'data' => \yii\helpers\ArrayHelper::map(\app\models\Autor::find()->orderBy('autor_id')->asArray()->all(), 'autor_id', 'nombre'),
-                'options' => ['placeholder' => Yii::t('app', 'Choose Autor')],
+                'data' => \yii\helpers\ArrayHelper::map(\app\models\Lectores::find()->orderBy('lectores_id')->asArray()->all(), 'lectores_id', 'lectores_id'),
+                'options' => ['placeholder' => Yii::t('app', 'Choose Lectores')],
             ],
             'columnOptions' => ['width' => '200px']
         ],
@@ -37,7 +37,7 @@ echo TabularForm::widget([
             'value' => function($model, $key) {
                 return
                     Html::hiddenInput('Children[' . $key . '][id]', (!empty($model['id'])) ? $model['id'] : "") .
-                    Html::a('<i class="glyphicon glyphicon-trash"></i>', '#', ['title' =>  Yii::t('app', 'Delete'), 'onClick' => 'delRowLibrosHasAutor(' . $key . '); return false;', 'id' => 'libros-has-autor-del-btn']);
+                    Html::a('<i class="glyphicon glyphicon-trash"></i>', '#', ['title' =>  Yii::t('app', 'Delete'), 'onClick' => 'delRowLectoresHasMultas(' . $key . '); return false;', 'id' => 'lectores-has-multas-del-btn']);
             },
         ],
     ],
@@ -47,7 +47,7 @@ echo TabularForm::widget([
             'type' => GridView::TYPE_DEFAULT,
             'before' => false,
             'footer' => false,
-            'after' => Html::button('<i class="glyphicon glyphicon-plus"></i>' . Yii::t('app', 'Agregar Autor'), ['type' => 'button', 'class' => 'btn btn-success kv-batch-create', 'onClick' => 'addRowLibrosHasAutor()']),
+            'after' => Html::button('<i class="glyphicon glyphicon-plus"></i>' . Yii::t('app', 'Add Lectores Has Multas'), ['type' => 'button', 'class' => 'btn btn-success kv-batch-create', 'onClick' => 'addRowLectoresHasMultas()']),
         ]
     ]
 ]);
