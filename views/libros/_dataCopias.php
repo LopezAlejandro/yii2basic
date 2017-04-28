@@ -22,17 +22,17 @@ use yii\helpers\Html;
             
 			[
             'class' => 'yii\grid\ActionColumn',
+				'header' => Yii::t('app','Prestar'),            
+            'visible' => 'estado_id === 1',
             'controller' => 'copias',
             'template' => '{prestar}',
             'buttons' => [
-                    'prestar' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-paste"></span>',
+                    'prestar' => function ($url, $model,$key) {
+                        return $model->estado_id !== 1 ? '' : Html::a('<span class="glyphicon glyphicon-paste"></span>',
                             Yii::$app->urlManager->createUrl(['prestamos/create', 'id' => $model->libros_id]),
                             ['title' => Yii::t('yii', 'Prestar'),]
                         );
                     }],
-        
-            
         ],            
             
         [
