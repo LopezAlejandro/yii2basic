@@ -8,6 +8,16 @@ $config = [
     'bootstrap' => ['log'],
     'language' => 'es',
     'components' => [
+    
+	'view'=>[
+            'theme'=>[
+                'pathMap'=>[
+                    '@app/views'=>'@app/themes/agency'
+                ]
+            ]
+        ],
+
+    
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'kg8bxnGgMtZFcYgkR9xLw8aB4lQqRLVt',

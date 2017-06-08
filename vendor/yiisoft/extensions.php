@@ -3,15 +3,6 @@
 $vendorDir = dirname(__DIR__);
 
 return array (
-  'yiisoft/yii2-swiftmailer' => 
-  array (
-    'name' => 'yiisoft/yii2-swiftmailer',
-    'version' => '2.0.6.0',
-    'alias' => 
-    array (
-      '@yii/swiftmailer' => $vendorDir . '/yiisoft/yii2-swiftmailer',
-    ),
-  ),
   'yiisoft/yii2-bootstrap' => 
   array (
     'name' => 'yiisoft/yii2-bootstrap',
@@ -102,15 +93,6 @@ return array (
       '@kartik/popover' => $vendorDir . '/kartik-v/yii2-popover-x',
     ),
   ),
-  'kartik-v/yii2-editable' => 
-  array (
-    'name' => 'kartik-v/yii2-editable',
-    'version' => '9999999-dev',
-    'alias' => 
-    array (
-      '@kartik/editable' => $vendorDir . '/kartik-v/yii2-editable',
-    ),
-  ),
   'kartik-v/yii2-widget-typeahead' => 
   array (
     'name' => 'kartik-v/yii2-widget-typeahead',
@@ -192,15 +174,6 @@ return array (
       '@kartik/growl' => $vendorDir . '/kartik-v/yii2-widget-growl',
     ),
   ),
-  'kartik-v/yii2-widget-fileinput' => 
-  array (
-    'name' => 'kartik-v/yii2-widget-fileinput',
-    'version' => '1.0.5.0',
-    'alias' => 
-    array (
-      '@kartik/file' => $vendorDir . '/kartik-v/yii2-widget-fileinput',
-    ),
-  ),
   'kartik-v/yii2-widget-depdrop' => 
   array (
     'name' => 'kartik-v/yii2-widget-depdrop',
@@ -208,15 +181,6 @@ return array (
     'alias' => 
     array (
       '@kartik/depdrop' => $vendorDir . '/kartik-v/yii2-widget-depdrop',
-    ),
-  ),
-  'kartik-v/yii2-widget-datetimepicker' => 
-  array (
-    'name' => 'kartik-v/yii2-widget-datetimepicker',
-    'version' => '1.4.3.0',
-    'alias' => 
-    array (
-      '@kartik/datetime' => $vendorDir . '/kartik-v/yii2-widget-datetimepicker',
     ),
   ),
   'kartik-v/yii2-widget-datepicker' => 
@@ -327,15 +291,6 @@ return array (
       '@kartik/select2' => $vendorDir . '/kartik-v/yii2-widget-select2',
     ),
   ),
-  'kartik-v/yii2-grid' => 
-  array (
-    'name' => 'kartik-v/yii2-grid',
-    'version' => '9999999-dev',
-    'alias' => 
-    array (
-      '@kartik/grid' => $vendorDir . '/kartik-v/yii2-grid',
-    ),
-  ),
   'kartik-v/yii2-tabs-x' => 
   array (
     'name' => 'kartik-v/yii2-tabs-x',
@@ -399,6 +354,60 @@ return array (
       '@mootensai/relation' => $vendorDir . '/mootensai/yii2-relation-trait',
     ),
   ),
+  'creocoder/yii2-nested-sets' => 
+  array (
+    'name' => 'creocoder/yii2-nested-sets',
+    'version' => '0.9.0.0',
+    'alias' => 
+    array (
+      '@creocoder/nestedsets' => $vendorDir . '/creocoder/yii2-nested-sets/src',
+    ),
+  ),
+  'yiisoft/yii2-swiftmailer' => 
+  array (
+    'name' => 'yiisoft/yii2-swiftmailer',
+    'version' => '2.0.7.0',
+    'alias' => 
+    array (
+      '@yii/swiftmailer' => $vendorDir . '/yiisoft/yii2-swiftmailer',
+    ),
+  ),
+  'kartik-v/yii2-widget-datetimepicker' => 
+  array (
+    'name' => 'kartik-v/yii2-widget-datetimepicker',
+    'version' => '1.4.4.0',
+    'alias' => 
+    array (
+      '@kartik/datetime' => $vendorDir . '/kartik-v/yii2-widget-datetimepicker',
+    ),
+  ),
+  'kartik-v/yii2-widget-fileinput' => 
+  array (
+    'name' => 'kartik-v/yii2-widget-fileinput',
+    'version' => '1.0.6.0',
+    'alias' => 
+    array (
+      '@kartik/file' => $vendorDir . '/kartik-v/yii2-widget-fileinput',
+    ),
+  ),
+  'kartik-v/yii2-grid' => 
+  array (
+    'name' => 'kartik-v/yii2-grid',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@kartik/grid' => $vendorDir . '/kartik-v/yii2-grid',
+    ),
+  ),
+  'kartik-v/yii2-editable' => 
+  array (
+    'name' => 'kartik-v/yii2-editable',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@kartik/editable' => $vendorDir . '/kartik-v/yii2-editable',
+    ),
+  ),
   'mootensai/yii2-enhanced-gii' => 
   array (
     'name' => 'mootensai/yii2-enhanced-gii',
@@ -409,15 +418,6 @@ return array (
     ),
     'bootstrap' => 'mootensai\\enhancedgii\\Bootstrap',
   ),
-  'creocoder/yii2-nested-sets' => 
-  array (
-    'name' => 'creocoder/yii2-nested-sets',
-    'version' => '0.9.0.0',
-    'alias' => 
-    array (
-      '@creocoder/nestedsets' => $vendorDir . '/creocoder/yii2-nested-sets/src',
-    ),
-  ),
   'kartik-v/yii2-tree-manager' => 
   array (
     'name' => 'kartik-v/yii2-tree-manager',
@@ -425,6 +425,15 @@ return array (
     'alias' => 
     array (
       '@kartik/tree' => $vendorDir . '/kartik-v/yii2-tree-manager',
+    ),
+  ),
+  'dixonsatit/yii2-agency-theme' => 
+  array (
+    'name' => 'dixonsatit/yii2-agency-theme',
+    'version' => '1.0.2.0',
+    'alias' => 
+    array (
+      '@dixonsatit/agencyTheme' => $vendorDir . '/dixonsatit/yii2-agency-theme',
     ),
   ),
 );

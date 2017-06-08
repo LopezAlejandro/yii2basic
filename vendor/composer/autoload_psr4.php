@@ -60,6 +60,7 @@ return array(
     'kartik\\base\\' => array($vendorDir . '/kartik-v/yii2-krajee-base'),
     'kartik\\alert\\' => array($vendorDir . '/kartik-v/yii2-widget-alert'),
     'kartik\\affix\\' => array($vendorDir . '/kartik-v/yii2-widget-affix'),
+    'dixonsatit\\agencyTheme\\' => array($vendorDir . '/dixonsatit/yii2-agency-theme'),
     'creocoder\\nestedsets\\' => array($vendorDir . '/creocoder/yii2-nested-sets/src'),
     'cornernote\\linkall\\' => array($vendorDir . '/cornernote/yii2-linkall/src'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
