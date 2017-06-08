@@ -29,7 +29,7 @@ use yii\helpers\Html;
             'buttons' => [
                     'prestar' => function ($url, $model,$key) {
                         return $model->estado_id !== 1 ? '' : Html::a('<span class="glyphicon glyphicon-paste"></span>',
-                            Yii::$app->urlManager->createUrl(['prestamos/create', 'id' => $model->libros_id]),
+                            Yii::$app->urlManager->createUrl(['prestamos/create', 'id' => $model->libros_id,'cp'=>$model->copias_id]),
                             ['title' => Yii::t('yii', 'Prestar'),]
                         );
                     }],
