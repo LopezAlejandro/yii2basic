@@ -17,8 +17,8 @@ class Prestamos extends BasePrestamos
         return array_replace_recursive(parent::rules(),
 	    [
             [['extension', 'lectores_idl', 'copias_id', 'activo', 'created_by', 'updated_by'], 'integer'],
-            [['fecha_devolucion', 'lectores_idl', 'copias_id', 'activo', 'created_at', 'updated_at'], 'required'],
-            [['fecha_devolucion', 'created_at', 'updated_at'], 'safe']
+            [['fecha_devolucion', 'lectores_idl', 'copias_id', 'activo'], 'required'],
+            [['fecha_devolucion', 'created_at', 'updated_at', 'created_at', 'updated_at'], 'safe']
         ]);
     }
 	

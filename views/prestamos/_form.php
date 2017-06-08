@@ -15,6 +15,16 @@ use yii\widgets\ActiveForm;
         'isNewRecord' => ($model->isNewRecord) ? 1 : 0
     ]
 ]);
+
+\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos'=> \yii\web\View::POS_END, 
+    'viewParams' => [
+        'class' => 'LectoresIdl', 
+        'relID' => 'lectores-idl', 
+        'value' => \yii\helpers\Json::encode($model->lectoresIdl),
+        'isNewRecord' => ($model->isNewRecord) ? 1 : 0
+    ]
+]);
+
 ?>
 
 <div class="prestamos-form">
@@ -22,30 +32,38 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->errorSummary($model); ?>
-
-    <?= $form->field($model, 'prestamos_id', ['template' => '{input}'])->textInput(['style' => 'display:none']); ?>
-
-    <?= $form->field($model, 'extension')->checkbox() ?>
-
-    <?= $form->field($model, 'fecha_devolucion')->widget(\kartik\datecontrol\DateControl::classname(), [
-        'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
-        'saveFormat' => 'php:Y-m-d',
-        'ajaxConversion' => true,
-        'options' => [
-            'pluginOptions' => [
-                'placeholder' => Yii::t('app', 'Choose Fecha Devolucion'),
-                'autoclose' => true
-            ]
-        ],
-    ]); ?>
-
+    
+    
     <?= $form->field($model, 'lectores_idl')->widget(\kartik\widgets\Select2::classname(), [
-        'data' => \yii\helpers\ArrayHelper::map(\app\models\Lectores::find()->orderBy('lectores_id')->asArray()->all(), 'lectores_id', 'lectores_id'),
+        'data' => \yii\helpers\ArrayHelper::map(\app\models\Lectores::find()->orderBy('lectores_id')->asArray()->all(), 'lectores_id', 'nombre'),
         'options' => ['placeholder' => Yii::t('app', 'Choose Lectores')],
         'pluginOptions' => [
             'allowClear' => true
         ],
     ]); ?>
+
+    <?= $form->field($model, 'prestamos_id', ['template' => '{input}'])->textInput(['style' => 'display:none']); ?>
+
+    <?= $form->field($model, 'extension')->checkbox() ?>
+    <?php $model->fecha_devolucion = '15-05-2017'; ?>
+    <?= $form->field($model, 'fecha_devolucion')->widget(\kartik\datecontrol\DateControl::classname(), [
+        'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
+        'saveFormat' => 'php:Y-m-d',
+        'displayFormat' => 'php:d-m-Y', 
+		  'value' => '15-02-2017',        
+        'ajaxConversion' => true,
+        'options' => [
+        		
+            'pluginOptions' => [
+                'placeholder' => Yii::t('app', 'Choose Fecha Devolucion'),
+                'autoclose' => true,
+                'format' => 'php:d-m-Y',
+                'todayHighlight' => true
+            ]
+        ],
+    ]); ?>
+
+    
 
     <?= $form->field($model, 'copias_id')->widget(\kartik\widgets\Select2::classname(), [
         'data' => \yii\helpers\ArrayHelper::map(\app\models\Copias::find()->orderBy('copias_id')->asArray()->all(), 'copias_id', 'copias_id'),
@@ -63,6 +81,13 @@ use yii\widgets\ActiveForm;
             'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode(Yii::t('app', 'PrestamosHasMultas')),
             'content' => $this->render('_formPrestamosHasMultas', [
                 'row' => \yii\helpers\ArrayHelper::toArray($model->prestamosHasMultas),
+            ]),
+        ],
+        
+        [
+            'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode(Yii::t('app', 'LectoresIdl')),
+            'content' => $this->render('_formPrestamosHasMultas', [
+                'row' => \yii\helpers\ArrayHelper::toArray($model->lectoresIdl),
             ]),
         ],
     ];

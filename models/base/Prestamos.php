@@ -35,9 +35,9 @@ class Prestamos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['extension', 'lectores_idl', 'copias_id', 'activo', 'created_by', 'updated_by'], 'integer'],
-            [['fecha_devolucion', 'lectores_idl', 'copias_id', 'activo', 'created_at', 'updated_at'], 'required'],
-            [['fecha_devolucion', 'created_at', 'updated_at'], 'safe']
+            [['extension', 'lectores_idl', 'copias_id', 'activo'], 'integer'],
+            [['fecha_devolucion', 'lectores_idl', 'copias_id', 'activo'], 'required'],
+            [['fecha_devolucion', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'safe']
         ];
     }
     
