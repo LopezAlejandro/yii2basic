@@ -600,67 +600,6 @@
         ]
     },
     {
-        "name": "symfony/polyfill-mbstring",
-        "version": "v1.3.0",
-        "version_normalized": "1.3.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/polyfill-mbstring.git",
-            "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/e79d363049d1c2128f133a2667e4f4190904f7f4",
-            "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "suggest": {
-            "ext-mbstring": "For best performance"
-        },
-        "time": "2016-11-14T01:06:16+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.3-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Polyfill\\Mbstring\\": ""
-            },
-            "files": [
-                "bootstrap.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Nicolas Grekas",
-                "email": "p@tchwork.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony polyfill for the Mbstring extension",
-        "homepage": "https://symfony.com",
-        "keywords": [
-            "compatibility",
-            "mbstring",
-            "polyfill",
-            "portable",
-            "shim"
-        ]
-    },
-    {
         "name": "psr/log",
         "version": "1.0.2",
         "version_normalized": "1.0.2.0",
@@ -1835,12 +1774,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kartik-v/yii2-grid.git",
-            "reference": "87a588ff71c524669bb157907c825403c4012f52"
+            "reference": "ffccccb8ab23838461483a6139814f66187bcb3b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/87a588ff71c524669bb157907c825403c4012f52",
-            "reference": "87a588ff71c524669bb157907c825403c4012f52",
+            "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/ffccccb8ab23838461483a6139814f66187bcb3b",
+            "reference": "ffccccb8ab23838461483a6139814f66187bcb3b",
             "shasum": ""
         },
         "require": {
@@ -1850,7 +1789,7 @@
         "suggest": {
             "kartik-v/yii2-mpdf": "For exporting grids to PDF"
         },
-        "time": "2017-06-08T04:45:41+00:00",
+        "time": "2017-06-09T10:08:02+00:00",
         "type": "yii2-extension",
         "extra": {
             "branch-alias": {
@@ -4385,67 +4324,6 @@
         ]
     },
     {
-        "name": "bower-asset/jquery.inputmask",
-        "version": "3.3.6",
-        "version_normalized": "3.3.6.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/RobinHerbots/Inputmask.git",
-            "reference": "e42852f4afa01a80815394a5b2f9ce504c1a8d0b"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/RobinHerbots/Inputmask/zipball/e42852f4afa01a80815394a5b2f9ce504c1a8d0b",
-            "reference": "e42852f4afa01a80815394a5b2f9ce504c1a8d0b",
-            "shasum": ""
-        },
-        "require": {
-            "bower-asset/jquery": ">=1.7"
-        },
-        "type": "bower-asset-library",
-        "extra": {
-            "bower-asset-main": [
-                "./dist/inputmask/inputmask.js",
-                "./dist/inputmask/inputmask.extensions.js",
-                "./dist/inputmask/inputmask.date.extensions.js",
-                "./dist/inputmask/inputmask.numeric.extensions.js",
-                "./dist/inputmask/inputmask.phone.extensions.js",
-                "./dist/inputmask/jquery.inputmask.js",
-                "./dist/inputmask/global/document.js",
-                "./dist/inputmask/global/window.js",
-                "./dist/inputmask/phone-codes/phone.js",
-                "./dist/inputmask/phone-codes/phone-be.js",
-                "./dist/inputmask/phone-codes/phone-nl.js",
-                "./dist/inputmask/phone-codes/phone-ru.js",
-                "./dist/inputmask/phone-codes/phone-uk.js",
-                "./dist/inputmask/dependencyLibs/inputmask.dependencyLib.jqlite.js",
-                "./dist/inputmask/dependencyLibs/inputmask.dependencyLib.jquery.js",
-                "./dist/inputmask/dependencyLibs/inputmask.dependencyLib.js",
-                "./dist/inputmask/bindings/inputmask.binding.js"
-            ],
-            "bower-asset-ignore": [
-                "**/*",
-                "!dist/*",
-                "!dist/inputmask/*",
-                "!dist/min/*",
-                "!dist/min/inputmask/*"
-            ]
-        },
-        "installation-source": "dist",
-        "license": [
-            "http://opensource.org/licenses/mit-license.php"
-        ],
-        "description": "Inputmask is a javascript library which creates an input mask.  Inputmask can run against vanilla javascript, jQuery and jqlite.",
-        "keywords": [
-            "form",
-            "input",
-            "inputmask",
-            "jquery",
-            "mask",
-            "plugins"
-        ]
-    },
-    {
         "name": "yiisoft/yii2",
         "version": "2.0.12",
         "version_normalized": "2.0.12.0",
@@ -5379,48 +5257,6 @@
         ]
     },
     {
-        "name": "theseer/tokenizer",
-        "version": "1.1.0",
-        "version_normalized": "1.1.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/theseer/tokenizer.git",
-            "reference": "cb2f008f3f05af2893a87208fe6a6c4985483f8b"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/theseer/tokenizer/zipball/cb2f008f3f05af2893a87208fe6a6c4985483f8b",
-            "reference": "cb2f008f3f05af2893a87208fe6a6c4985483f8b",
-            "shasum": ""
-        },
-        "require": {
-            "ext-dom": "*",
-            "ext-tokenizer": "*",
-            "ext-xmlwriter": "*",
-            "php": "^7.0"
-        },
-        "time": "2017-04-07T12:08:54+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "src/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Arne Blankerts",
-                "email": "arne@blankerts.de",
-                "role": "Developer"
-            }
-        ],
-        "description": "A small library for converting tokenized PHP source code into XML and potentially other formats"
-    },
-    {
         "name": "sebastian/environment",
         "version": "3.0.3",
         "version_normalized": "3.0.3.0",
@@ -5539,53 +5375,6 @@
         ]
     },
     {
-        "name": "sebastian/object-reflector",
-        "version": "1.1.1",
-        "version_normalized": "1.1.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sebastianbergmann/object-reflector.git",
-            "reference": "773f97c67f28de00d397be301821b06708fca0be"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/object-reflector/zipball/773f97c67f28de00d397be301821b06708fca0be",
-            "reference": "773f97c67f28de00d397be301821b06708fca0be",
-            "shasum": ""
-        },
-        "require": {
-            "php": "^7.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^6.0"
-        },
-        "time": "2017-03-29T09:07:27+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.1-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "src/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Sebastian Bergmann",
-                "email": "sebastian@phpunit.de"
-            }
-        ],
-        "description": "Allows reflection of object attributes, including inherited and non-public ones",
-        "homepage": "https://github.com/sebastianbergmann/object-reflector/"
-    },
-    {
         "name": "sebastian/object-enumerator",
         "version": "3.0.2",
         "version_normalized": "3.0.2.0",
@@ -5686,112 +5475,6 @@
         "keywords": [
             "global state"
         ]
-    },
-    {
-        "name": "phar-io/version",
-        "version": "1.0.1",
-        "version_normalized": "1.0.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/phar-io/version.git",
-            "reference": "a70c0ced4be299a63d32fa96d9281d03e94041df"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/phar-io/version/zipball/a70c0ced4be299a63d32fa96d9281d03e94041df",
-            "reference": "a70c0ced4be299a63d32fa96d9281d03e94041df",
-            "shasum": ""
-        },
-        "require": {
-            "php": "^5.6 || ^7.0"
-        },
-        "time": "2017-03-05T17:38:23+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "src/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Arne Blankerts",
-                "email": "arne@blankerts.de",
-                "role": "Developer"
-            },
-            {
-                "name": "Sebastian Heuer",
-                "email": "sebastian@phpeople.de",
-                "role": "Developer"
-            },
-            {
-                "name": "Sebastian Bergmann",
-                "email": "sebastian@phpunit.de",
-                "role": "Developer"
-            }
-        ],
-        "description": "Library for handling version information and constraints"
-    },
-    {
-        "name": "phar-io/manifest",
-        "version": "1.0.1",
-        "version_normalized": "1.0.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/phar-io/manifest.git",
-            "reference": "2df402786ab5368a0169091f61a7c1e0eb6852d0"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/phar-io/manifest/zipball/2df402786ab5368a0169091f61a7c1e0eb6852d0",
-            "reference": "2df402786ab5368a0169091f61a7c1e0eb6852d0",
-            "shasum": ""
-        },
-        "require": {
-            "ext-dom": "*",
-            "ext-phar": "*",
-            "phar-io/version": "^1.0.1",
-            "php": "^5.6 || ^7.0"
-        },
-        "time": "2017-03-05T18:14:27+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.0.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "src/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Arne Blankerts",
-                "email": "arne@blankerts.de",
-                "role": "Developer"
-            },
-            {
-                "name": "Sebastian Heuer",
-                "email": "sebastian@phpeople.de",
-                "role": "Developer"
-            },
-            {
-                "name": "Sebastian Bergmann",
-                "email": "sebastian@phpunit.de",
-                "role": "Developer"
-            }
-        ],
-        "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)"
     },
     {
         "name": "phpunit/phpunit",
@@ -6363,70 +6046,102 @@
         ]
     },
     {
-        "name": "bower-asset/fontawesome",
-        "version": "v4.3.0",
-        "version_normalized": "4.3.0.0",
+        "name": "bower-asset/jquery.inputmask",
+        "version": "3.3.7",
+        "version_normalized": "3.3.7.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/FortAwesome/Font-Awesome.git",
-            "reference": "41b9ed01103e6820c3cb043ba7ddab30ecd3f4c0"
+            "url": "https://github.com/RobinHerbots/Inputmask.git",
+            "reference": "9835731cb78cac749734d94a1cb5bd70da4d3b10"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/41b9ed01103e6820c3cb043ba7ddab30ecd3f4c0",
-            "reference": "41b9ed01103e6820c3cb043ba7ddab30ecd3f4c0",
+            "url": "https://api.github.com/repos/RobinHerbots/Inputmask/zipball/9835731cb78cac749734d94a1cb5bd70da4d3b10",
+            "reference": "9835731cb78cac749734d94a1cb5bd70da4d3b10",
             "shasum": ""
+        },
+        "require": {
+            "bower-asset/jquery": ">=1.7"
         },
         "type": "bower-asset-library",
         "extra": {
             "bower-asset-main": [
-                "./css/font-awesome.css",
-                "./fonts/*"
+                "./dist/inputmask/inputmask.js",
+                "./dist/inputmask/inputmask.extensions.js",
+                "./dist/inputmask/inputmask.date.extensions.js",
+                "./dist/inputmask/inputmask.numeric.extensions.js",
+                "./dist/inputmask/inputmask.phone.extensions.js",
+                "./dist/inputmask/jquery.inputmask.js",
+                "./dist/inputmask/global/document.js",
+                "./dist/inputmask/global/window.js",
+                "./dist/inputmask/phone-codes/phone.js",
+                "./dist/inputmask/phone-codes/phone-be.js",
+                "./dist/inputmask/phone-codes/phone-nl.js",
+                "./dist/inputmask/phone-codes/phone-ru.js",
+                "./dist/inputmask/phone-codes/phone-uk.js",
+                "./dist/inputmask/dependencyLibs/inputmask.dependencyLib.jqlite.js",
+                "./dist/inputmask/dependencyLibs/inputmask.dependencyLib.jquery.js",
+                "./dist/inputmask/dependencyLibs/inputmask.dependencyLib.js",
+                "./dist/inputmask/bindings/inputmask.binding.js"
             ],
             "bower-asset-ignore": [
-                "*/.*",
-                "*.json",
-                "src",
-                "*.yml",
-                "Gemfile",
-                "Gemfile.lock",
-                "*.md"
+                "**/*",
+                "!dist/*",
+                "!dist/inputmask/*",
+                "!dist/min/*",
+                "!dist/min/inputmask/*"
             ]
         },
         "installation-source": "dist",
         "license": [
-            "OFL-1.1",
-            "MIT",
-            "CC-BY-3.0"
+            "http://opensource.org/licenses/mit-license.php"
         ],
-        "description": "Font Awesome"
+        "description": "Inputmask is a javascript library which creates an input mask.  Inputmask can run against vanilla javascript, jQuery and jqlite.",
+        "keywords": [
+            "form",
+            "input",
+            "inputmask",
+            "jquery",
+            "mask",
+            "plugins"
+        ]
     },
     {
-        "name": "dixonsatit/yii2-agency-theme",
-        "version": "1.0.2",
-        "version_normalized": "1.0.2.0",
+        "name": "symfony/polyfill-mbstring",
+        "version": "v1.4.0",
+        "version_normalized": "1.4.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/dixonsatit/yii2-agency-theme.git",
-            "reference": "eb0258561775092c269ad20c585b5e402d7cd3bc"
+            "url": "https://github.com/symfony/polyfill-mbstring.git",
+            "reference": "f29dca382a6485c3cbe6379f0c61230167681937"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/dixonsatit/yii2-agency-theme/zipball/eb0258561775092c269ad20c585b5e402d7cd3bc",
-            "reference": "eb0258561775092c269ad20c585b5e402d7cd3bc",
+            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/f29dca382a6485c3cbe6379f0c61230167681937",
+            "reference": "f29dca382a6485c3cbe6379f0c61230167681937",
             "shasum": ""
         },
         "require": {
-            "bower-asset/fontawesome": "4.3.*",
-            "yiisoft/yii2": "*"
+            "php": ">=5.3.3"
         },
-        "time": "2015-07-24T06:28:41+00:00",
-        "type": "yii2-extension",
+        "suggest": {
+            "ext-mbstring": "For best performance"
+        },
+        "time": "2017-06-09T14:24:12+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.4-dev"
+            }
+        },
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "dixonsatit\\agencyTheme\\": ""
-            }
+                "Symfony\\Polyfill\\Mbstring\\": ""
+            },
+            "files": [
+                "bootstrap.php"
+            ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
@@ -6434,13 +6149,498 @@
         ],
         "authors": [
             {
-                "name": "satit seethaphon",
-                "email": "dixonsatit@gmail.com"
+                "name": "Nicolas Grekas",
+                "email": "p@tchwork.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
             }
         ],
-        "description": "Yii 2 Agency Theme Asset Bundle",
+        "description": "Symfony polyfill for the Mbstring extension",
+        "homepage": "https://symfony.com",
         "keywords": [
+            "compatibility",
+            "mbstring",
+            "polyfill",
+            "portable",
+            "shim"
+        ]
+    },
+    {
+        "name": "theseer/tokenizer",
+        "version": "1.1.0",
+        "version_normalized": "1.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/theseer/tokenizer.git",
+            "reference": "cb2f008f3f05af2893a87208fe6a6c4985483f8b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/theseer/tokenizer/zipball/cb2f008f3f05af2893a87208fe6a6c4985483f8b",
+            "reference": "cb2f008f3f05af2893a87208fe6a6c4985483f8b",
+            "shasum": ""
+        },
+        "require": {
+            "ext-dom": "*",
+            "ext-tokenizer": "*",
+            "ext-xmlwriter": "*",
+            "php": "^7.0"
+        },
+        "time": "2017-04-07T12:08:54+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Arne Blankerts",
+                "email": "arne@blankerts.de",
+                "role": "Developer"
+            }
+        ],
+        "description": "A small library for converting tokenized PHP source code into XML and potentially other formats"
+    },
+    {
+        "name": "phar-io/version",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/phar-io/version.git",
+            "reference": "a70c0ced4be299a63d32fa96d9281d03e94041df"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/phar-io/version/zipball/a70c0ced4be299a63d32fa96d9281d03e94041df",
+            "reference": "a70c0ced4be299a63d32fa96d9281d03e94041df",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.6 || ^7.0"
+        },
+        "time": "2017-03-05T17:38:23+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Arne Blankerts",
+                "email": "arne@blankerts.de",
+                "role": "Developer"
+            },
+            {
+                "name": "Sebastian Heuer",
+                "email": "sebastian@phpeople.de",
+                "role": "Developer"
+            },
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "Developer"
+            }
+        ],
+        "description": "Library for handling version information and constraints"
+    },
+    {
+        "name": "phar-io/manifest",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/phar-io/manifest.git",
+            "reference": "2df402786ab5368a0169091f61a7c1e0eb6852d0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/phar-io/manifest/zipball/2df402786ab5368a0169091f61a7c1e0eb6852d0",
+            "reference": "2df402786ab5368a0169091f61a7c1e0eb6852d0",
+            "shasum": ""
+        },
+        "require": {
+            "ext-dom": "*",
+            "ext-phar": "*",
+            "phar-io/version": "^1.0.1",
+            "php": "^5.6 || ^7.0"
+        },
+        "time": "2017-03-05T18:14:27+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Arne Blankerts",
+                "email": "arne@blankerts.de",
+                "role": "Developer"
+            },
+            {
+                "name": "Sebastian Heuer",
+                "email": "sebastian@phpeople.de",
+                "role": "Developer"
+            },
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "Developer"
+            }
+        ],
+        "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)"
+    },
+    {
+        "name": "sebastian/object-reflector",
+        "version": "1.1.1",
+        "version_normalized": "1.1.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/object-reflector.git",
+            "reference": "773f97c67f28de00d397be301821b06708fca0be"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/object-reflector/zipball/773f97c67f28de00d397be301821b06708fca0be",
+            "reference": "773f97c67f28de00d397be301821b06708fca0be",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^6.0"
+        },
+        "time": "2017-03-29T09:07:27+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de"
+            }
+        ],
+        "description": "Allows reflection of object attributes, including inherited and non-public ones",
+        "homepage": "https://github.com/sebastianbergmann/object-reflector/"
+    },
+    {
+        "name": "hiqdev/php-collection",
+        "version": "0.1.0",
+        "version_normalized": "0.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/hiqdev/php-collection.git",
+            "reference": "285eba8e15b66bfc1b83949bcc0148a17b76f17d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/hiqdev/php-collection/zipball/285eba8e15b66bfc1b83949bcc0148a17b76f17d",
+            "reference": "285eba8e15b66bfc1b83949bcc0148a17b76f17d",
+            "shasum": ""
+        },
+        "require-dev": {
+            "hiqdev/hidev-hiqdev": "*",
+            "hiqdev/hidev-php": "*"
+        },
+        "time": "2016-12-30T15:29:11+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "hiqdev\\php\\collection\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Dmitry Naumenko",
+                "email": "silverfire@hiqdev.com",
+                "homepage": "http://silverfire.me/",
+                "role": "Lead backend developer"
+            },
+            {
+                "name": "Andrii Vasyliev",
+                "email": "sol@hiqdev.com",
+                "homepage": "http://hipanel.com/",
+                "role": "Project lead"
+            },
+            {
+                "name": "Andrey Klochok",
+                "email": "tafid@hiqdev.com",
+                "homepage": "http://hiqdev.com/",
+                "role": "Lead frontend developer"
+            },
+            {
+                "name": "Yuriy Myronchuk",
+                "email": "bladeroot@hiqdev.com",
+                "homepage": "http://hiqdev.com/",
+                "role": "QA Lead"
+            }
+        ],
+        "description": "Collection library for PHP",
+        "homepage": "https://github.com/hiqdev/php-collection",
+        "keywords": [
+            "collection",
+            "library",
+            "php"
+        ]
+    },
+    {
+        "name": "hiqdev/yii2-collection",
+        "version": "0.1.1",
+        "version_normalized": "0.1.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/hiqdev/yii2-collection.git",
+            "reference": "2d2fcd7ea245bddfd6a51665fab9db6e17fd2099"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/hiqdev/yii2-collection/zipball/2d2fcd7ea245bddfd6a51665fab9db6e17fd2099",
+            "reference": "2d2fcd7ea245bddfd6a51665fab9db6e17fd2099",
+            "shasum": ""
+        },
+        "require": {
+            "hiqdev/php-collection": "*",
+            "yiisoft/yii2": "~2.0"
+        },
+        "require-dev": {
+            "hiqdev/hidev-hiqdev": "<2.0",
+            "hiqdev/hidev-php": "<2.0"
+        },
+        "time": "2017-05-10T10:00:06+00:00",
+        "type": "yii2-extension",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "hiqdev\\yii2\\collection\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Andrii Vasyliev",
+                "email": "sol@hiqdev.com",
+                "homepage": "http://hipanel.com/",
+                "role": "Project lead"
+            },
+            {
+                "name": "Dmitry Naumenko",
+                "email": "d.naumenko.a@gmail.com",
+                "homepage": "http://silverfire.me/",
+                "role": "Lead backend developer"
+            },
+            {
+                "name": "Andrey Klochok",
+                "email": "andreyklochok@gmail.com",
+                "homepage": "http://hiqdev.com/",
+                "role": "Lead frontend developer"
+            },
+            {
+                "name": "Yuriy Myronchuk",
+                "email": "bladeroot@gmail.com",
+                "homepage": "http://hiqdev.com/",
+                "role": "QA Lead"
+            }
+        ],
+        "description": "Collection library for Yii2",
+        "homepage": "https://github.com/hiqdev/yii2-collection",
+        "keywords": [
+            "collection",
             "extension",
+            "yii2"
+        ]
+    },
+    {
+        "name": "hiqdev/yii2-thememanager",
+        "version": "0.3.1",
+        "version_normalized": "0.3.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/hiqdev/yii2-thememanager.git",
+            "reference": "291b1d28d29872fcecba260e32f19c6506436625"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/hiqdev/yii2-thememanager/zipball/291b1d28d29872fcecba260e32f19c6506436625",
+            "reference": "291b1d28d29872fcecba260e32f19c6506436625",
+            "shasum": ""
+        },
+        "require": {
+            "hiqdev/yii2-collection": "*"
+        },
+        "require-dev": {
+            "hiqdev/hidev-hiqdev": "<2.0",
+            "hiqdev/hidev-php": "<2.0"
+        },
+        "time": "2017-04-19T07:14:27+00:00",
+        "type": "yii2-extension",
+        "extra": {
+            "config-plugin": {
+                "params": "src/config/params.php",
+                "hisite": "src/config/hisite.php"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "hiqdev\\thememanager\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Andrii Vasyliev",
+                "email": "sol@hiqdev.com",
+                "homepage": "http://hipanel.com/",
+                "role": "Project lead"
+            },
+            {
+                "name": "Dmitry Naumenko",
+                "email": "d.naumenko.a@gmail.com",
+                "homepage": "http://silverfire.me/",
+                "role": "Lead backend developer"
+            },
+            {
+                "name": "Andrey Klochok",
+                "email": "andreyklochok@gmail.com",
+                "homepage": "http://hiqdev.com/",
+                "role": "Lead frontend developer"
+            },
+            {
+                "name": "Yuriy Myronchuk",
+                "email": "bladeroot@gmail.com",
+                "homepage": "http://hiqdev.com/",
+                "role": "QA Lead"
+            }
+        ],
+        "description": "Theme Manager for Yii2",
+        "homepage": "https://github.com/hiqdev/yii2-thememanager",
+        "keywords": [
+            "manager",
+            "theme",
+            "yii2"
+        ]
+    },
+    {
+        "name": "hiqdev/yii2-theme-hyde",
+        "version": "0.1.0",
+        "version_normalized": "0.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/hiqdev/yii2-theme-hyde.git",
+            "reference": "e5d5e6c22437c7725adee5d7b8ce0e63859ca3fb"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/hiqdev/yii2-theme-hyde/zipball/e5d5e6c22437c7725adee5d7b8ce0e63859ca3fb",
+            "reference": "e5d5e6c22437c7725adee5d7b8ce0e63859ca3fb",
+            "shasum": ""
+        },
+        "require": {
+            "hiqdev/yii2-thememanager": "<2.0 || dev-master"
+        },
+        "require-dev": {
+            "hiqdev/hidev-hiqdev": "<2.0 || dev-master",
+            "hiqdev/hidev-php": "<2.0"
+        },
+        "time": "2017-03-15T09:02:14+00:00",
+        "type": "yii2-extension",
+        "extra": {
+            "config-plugin": {
+                "hisite": "src/config/hisite.php"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "hiqdev\\themes\\hyde\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Andrii Vasyliev",
+                "email": "sol@hiqdev.com",
+                "homepage": "http://hipanel.com/",
+                "role": "Project lead"
+            },
+            {
+                "name": "Dmitry Naumenko",
+                "email": "d.naumenko.a@gmail.com",
+                "homepage": "http://silverfire.me/",
+                "role": "Lead backend developer"
+            },
+            {
+                "name": "Andrey Klochok",
+                "email": "andreyklochok@gmail.com",
+                "homepage": "http://hiqdev.com/",
+                "role": "Lead frontend developer"
+            },
+            {
+                "name": "Yuriy Myronchuk",
+                "email": "bladeroot@gmail.com",
+                "homepage": "http://hiqdev.com/",
+                "role": "QA Lead"
+            }
+        ],
+        "description": "Hyde Theme for hiqdev/yii2-thememanager",
+        "homepage": "https://github.com/hiqdev/yii2-theme-hyde",
+        "keywords": [
+            "Hyde",
+            "extension",
+            "theme",
             "yii2"
         ]
     }

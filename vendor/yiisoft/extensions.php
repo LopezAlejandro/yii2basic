@@ -390,15 +390,6 @@ return array (
       '@kartik/file' => $vendorDir . '/kartik-v/yii2-widget-fileinput',
     ),
   ),
-  'kartik-v/yii2-grid' => 
-  array (
-    'name' => 'kartik-v/yii2-grid',
-    'version' => '9999999-dev',
-    'alias' => 
-    array (
-      '@kartik/grid' => $vendorDir . '/kartik-v/yii2-grid',
-    ),
-  ),
   'kartik-v/yii2-editable' => 
   array (
     'name' => 'kartik-v/yii2-editable',
@@ -427,13 +418,40 @@ return array (
       '@kartik/tree' => $vendorDir . '/kartik-v/yii2-tree-manager',
     ),
   ),
-  'dixonsatit/yii2-agency-theme' => 
+  'kartik-v/yii2-grid' => 
   array (
-    'name' => 'dixonsatit/yii2-agency-theme',
-    'version' => '1.0.2.0',
+    'name' => 'kartik-v/yii2-grid',
+    'version' => '9999999-dev',
     'alias' => 
     array (
-      '@dixonsatit/agencyTheme' => $vendorDir . '/dixonsatit/yii2-agency-theme',
+      '@kartik/grid' => $vendorDir . '/kartik-v/yii2-grid',
+    ),
+  ),
+  'hiqdev/yii2-collection' => 
+  array (
+    'name' => 'hiqdev/yii2-collection',
+    'version' => '0.1.1.0',
+    'alias' => 
+    array (
+      '@hiqdev/yii2/collection' => $vendorDir . '/hiqdev/yii2-collection/src',
+    ),
+  ),
+  'hiqdev/yii2-thememanager' => 
+  array (
+    'name' => 'hiqdev/yii2-thememanager',
+    'version' => '0.3.1.0',
+    'alias' => 
+    array (
+      '@hiqdev/thememanager' => $vendorDir . '/hiqdev/yii2-thememanager/src',
+    ),
+  ),
+  'hiqdev/yii2-theme-hyde' => 
+  array (
+    'name' => 'hiqdev/yii2-theme-hyde',
+    'version' => '0.1.0.0',
+    'alias' => 
+    array (
+      '@hiqdev/themes/hyde' => $vendorDir . '/hiqdev/yii2-theme-hyde/src',
     ),
   ),
 );
